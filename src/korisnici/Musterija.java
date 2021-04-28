@@ -1,5 +1,7 @@
 package korisnici;
 
+import voznje.Voznja;
+
 import java.util.ArrayList;
 
 

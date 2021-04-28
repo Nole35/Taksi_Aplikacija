@@ -2,40 +2,50 @@ package korisnici;
 
 public abstract class Osoba {
     protected long id;
-    protected String korisnicko_ime;
+    protected String korisnickoIme;
     protected String lozinka;
     protected String ime;
     protected String prezime;
     protected String jmbg;
     protected String adresa;
     protected Pol pol;
-    protected String broj_telefona;
+    protected String brojTelefona;
     protected boolean obrisan;
 
     public Osoba() {
         this.id = 0;
-        this.korisnicko_ime = "";
+        this.korisnickoIme = "";
         this.lozinka = "";
         this.ime = "";
         this.prezime = "";
         this.jmbg = "";
         this.adresa = "";
         this.pol = Pol.ZENSKI;
-        this.broj_telefona = "";
+        this.brojTelefona = "";
         this.obrisan = false;
     }
 
-    public Osoba(long id, String korisnicko_ime, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String broj_telefona, boolean obrisan) {
+    public Osoba(long id,
+                 String korisnickoIme,
+                 String lozinka,
+                 String ime,
+                 String prezime,
+                 String jmbg,
+                 String adresa,
+                 Pol pol,
+                 String brojTelefona,
+                 boolean obrisan)
+    {
         super();
         this.id = id;
-        this.korisnicko_ime = korisnicko_ime;
+        this.korisnickoIme = korisnickoIme;
         this.lozinka = lozinka;
         this.ime = ime;
         this.prezime = prezime;
         this.jmbg = jmbg;
         this.adresa = adresa;
         this.pol = pol;
-        this.broj_telefona = broj_telefona;
+        this.brojTelefona = brojTelefona;
         this.obrisan = obrisan;
     }
     public long getId () {
@@ -46,12 +56,12 @@ public abstract class Osoba {
         this.id = id;
     }
 
-    public String getKorisnicko_ime() {
-        return korisnicko_ime;
+    public String getKorisnickoIme() {
+        return korisnickoIme;
     }
 
-    public void setKorisnicko_ime(String korisnicko_ime) {
-        this.korisnicko_ime = korisnicko_ime;
+    public void setKorisnicko_ime(String korisnickoIme) {
+        this.korisnickoIme = korisnickoIme;
     }
 
     public String getLozinka() {
@@ -102,12 +112,12 @@ public abstract class Osoba {
         this.pol = pol;
     }
 
-    public String getBroj_telefona() {
-        return broj_telefona;
+    public String getBrojTelefona() {
+        return brojTelefona;
     }
 
-    public void setBroj_telefona(String broj_telefona) {
-        this.broj_telefona = broj_telefona;
+    public void setBrojTelefona(String brojTelefona) {
+        this.brojTelefona = brojTelefona;
     }
 
     public boolean isObrisan() {
@@ -122,14 +132,14 @@ public abstract class Osoba {
     @Override
     public String toString() {
         return "\n id" + id
-                + "\nkorisnicko ime: " + korisnicko_ime
+                + "\nkorisnicko ime: " + korisnickoIme
                 + "\nlozinka: " + lozinka
                 + "\nime: " + ime
                 + "\nprezime: " + prezime
                 + "\nJMBG: " + jmbg
                 + "\nadresa: " + adresa
                 + "\npol: " + pol
-                + "\nbroj telefona: " + broj_telefona
+                + "\nbroj telefona: " + brojTelefona
                 + "\nObrisan: " + obrisan;
     }
 }

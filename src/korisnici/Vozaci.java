@@ -8,19 +8,22 @@ import java.util.ArrayList;
 
 public class Vozaci extends Osoba {
     private double plata;
-    private int broj_clanske_karte;
+    private int brojClanskeKarte;
     private ArrayList<Voznja> voznje;
     private Automobil automobil = null;
 
     public Vozaci() {
         this.plata = 0;
-        this.broj_clanske_karte = 0;
+        this.brojClanskeKarte = 0;
         this.voznje = new ArrayList<Voznja>();
     }
-    public Vozaci(long id, String korisnicko_ime, String lozinka, String ime, String prezime,String jmbg, String adresa, Pol pol, String broj_telefona, boolean obrisan, double plata, int broj_clanske_karte, ArrayList<Vozaci> vozaci) {
-        super(id, korisnicko_ime, lozinka, ime, prezime, jmbg, adresa, pol, broj_telefona, obrisan);
+    public Vozaci(long id, String korisnickoIme, String lozinka,
+                  String ime, String prezime,String jmbg, String adresa,
+                  Pol pol, String brojTelefona, boolean obrisan,
+                  double plata, int brojClanskeKarte, ArrayList<Vozaci> vozaci) {
+        super(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan);
         this.plata = plata;
-        this.broj_clanske_karte = broj_clanske_karte;
+        this.brojClanskeKarte = brojClanskeKarte;
         this.voznje = voznje;
     }
 
@@ -40,12 +43,12 @@ public class Vozaci extends Osoba {
         this.plata = plata;
     }
 
-    public int getBroj_clanske_karte() {
-        return broj_clanske_karte;
+    public int getBrojClanskeKarte() {
+        return brojClanskeKarte;
     }
 
-    public void setBroj_clanske_karte(int broj_clanske_karte) {
-        this.broj_clanske_karte = broj_clanske_karte;
+    public void setBrojClanskeKarte(int brojClanskeKarte) {
+        this.brojClanskeKarte = brojClanskeKarte;
     }
 
     public ArrayList<Voznja> getVoznja() {
@@ -59,7 +62,7 @@ public class Vozaci extends Osoba {
     public String toString() {
         String s = "Vozaci " + super.toString() +
                 "\nPlata: " + this.plata +
-                "\nBroj clanske karte: " + this.broj_clanske_karte;
+                "\nBroj clanske karte: " + this.brojClanskeKarte;
         for (Voznja voznje : voznje) {
             s += "\n" + voznje;
         }
