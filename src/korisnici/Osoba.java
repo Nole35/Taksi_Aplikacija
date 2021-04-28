@@ -132,8 +132,4 @@ public abstract class Osoba {
                 + "\nbroj telefona: " + broj_telefona
                 + "\nObrisan: " + obrisan;
     }
-
 }
-
-
-
