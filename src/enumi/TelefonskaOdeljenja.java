@@ -1,4 +1,4 @@
-package src.enumi;
+package enumi;
 
 public enum TelefonskaOdeljenja {
     ODELJENJE_ZA_PRIJEM_VOZNJI,
