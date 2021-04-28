@@ -9,9 +9,9 @@ import java.time.LocalDateTime;
 
 public abstract class Voznja {
     private long id;
-    private LocalDateTime datum_i_vreme_poruzbine;
+    private LocalDateTime datumIVremePoruzbine;
     private String adresaPolaska;
-    private String adresa_destinacije;
+    private String adresaDestinacije;
     private long musterija_id;
     private Musterija musterija;
     private long vozac_id;
