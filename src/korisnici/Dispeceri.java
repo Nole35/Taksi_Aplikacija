@@ -4,13 +4,13 @@ import enumi.TelefonskaOdeljenja;
 
 public class Dispeceri extends Osoba {
     private double plata;
-    private String br_tel_linije;
+    private String brTelLinije;
     private TelefonskaOdeljenja telefonskaOdeljenja;
 
     public Dispeceri() {
         super();
         this.plata =0;
-        this.br_tel_linije =" ";
+        this.brTelLinije =" ";
         this.telefonskaOdeljenja = TelefonskaOdeljenja.ODELJENJE_ZA_PRIJEM_VOZNJI;
     }
 

@@ -3,6 +3,7 @@ package korisnici;
 import voznje.Voznja;
 
 import java.util.ArrayList;
+import voznje.Voznja;
 
 
 public class Musterija extends Osoba {
@@ -12,9 +13,9 @@ public class Musterija extends Osoba {
         this.voznje = new ArrayList<Voznja>();
     }
 
-    public Musterija(long id, String korisnicko_ime, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String broj_telefona, boolean obrisan,
+    public Musterija(long id, String korisnickoIme, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String brojTelefona, boolean obrisan,
                 ArrayList<Voznja> voznje) {
-        super(id, korisnicko_ime,lozinka,ime,prezime,jmbg,adresa,pol,broj_telefona,obrisan);
+        super(id, korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,obrisan);
         this.voznje = voznje;
     }
 

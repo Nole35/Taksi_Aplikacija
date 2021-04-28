@@ -18,11 +18,10 @@ public class Automobil{
             this.godinaProizvodnje = 0;
             this.brojRegistarskeOznake = "";
             this.brojTaksiVozila = 0;
-            this.vrstaAutomobila = VrstaAutomobila.Putnicki_Automobil;
+            this.vrstaAutomobila = VrstaAutomobila.PutnickiAutomobil;
             this.obrisan = false;
         }
         public Automobil(long id, String model, String proizvodjac, long godinaProizvodnje, String brojRegistarskeOznake, long brojTaksiVozila, VrstaAutomobila vrstaAutomobila, boolean obrisan) {
-            super();
             this.id = id;
             this.model = model;
             this.proizvodjac = proizvodjac;
