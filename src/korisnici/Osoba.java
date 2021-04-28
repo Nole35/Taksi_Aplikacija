@@ -1,6 +1,7 @@
 package korisnici;
 
 public abstract class Osoba {
+    protected long id;
     protected String korisnicko_ime;
     protected String lozinka;
     protected String ime;
@@ -12,6 +13,7 @@ public abstract class Osoba {
     protected boolean obrisan;
 
     public Osoba() {
+        this.id = 0;
         this.korisnicko_ime = "";
         this.lozinka = "";
         this.ime = "";
@@ -23,8 +25,9 @@ public abstract class Osoba {
         this.obrisan = false;
     }
 
-    public Osoba(String korisnicko_ime, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String broj_telefona, boolean obrisan) {
+    public Osoba(long id, String korisnicko_ime, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String broj_telefona, boolean obrisan) {
         super();
+        this.id = id;
         this.korisnicko_ime = korisnicko_ime;
         this.lozinka = lozinka;
         this.ime = ime;
@@ -34,6 +37,13 @@ public abstract class Osoba {
         this.pol = pol;
         this.broj_telefona = broj_telefona;
         this.obrisan = obrisan;
+    }
+    public long getId () {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getKorisnicko_ime() {
@@ -111,7 +121,8 @@ public abstract class Osoba {
 
     @Override
     public String toString() {
-        return "\nkorisnicko ime: " + korisnicko_ime
+        return "\n id" + id
+                + "\nkorisnicko ime: " + korisnicko_ime
                 + "\nlozinka: " + lozinka
                 + "\nime: " + ime
                 + "\nprezime: " + prezime
