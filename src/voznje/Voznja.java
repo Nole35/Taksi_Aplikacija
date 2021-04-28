@@ -17,7 +17,7 @@ public abstract class Voznja {
     protected long vozacId;
     protected Vozaci vozac;
     protected int brojPredjenihKilometara;
-    protected LocalDateTime trajanjeVoznje;
+    protected int trajanjeVoznje;
     protected Status status;
 
     public Voznja (){
@@ -28,7 +28,7 @@ public abstract class Voznja {
         this.musterijaId = 0;
         this.vozacId = 0;
         this.brojPredjenihKilometara = 0;
-        this.trajanjeVoznje = null;
+        this.trajanjeVoznje = 0;
         this.status = Status.KREIRANA;
 
     }
@@ -44,7 +44,7 @@ public abstract class Voznja {
                   long vozacId,
                   Vozaci vozac,
                   int brojPredjenihKilometara,
-                  LocalDateTime trajanjeVoznje,
+                  int trajanjeVoznje,
                   Status status)
     {
         this.id = id;
@@ -131,11 +131,11 @@ public abstract class Voznja {
         this.brojPredjenihKilometara = brojPredjenihKilometara;
     }
 
-    public LocalDateTime getTrajanjeVoznje() {
+    public int getTrajanjeVoznje() {
         return trajanjeVoznje;
     }
 
-    public void setTrajanjeVoznje(LocalDateTime trajanjeVoznje) {
+    public void setTrajanjeVoznje(int trajanjeVoznje) {
         this.trajanjeVoznje = trajanjeVoznje;
     }
 
