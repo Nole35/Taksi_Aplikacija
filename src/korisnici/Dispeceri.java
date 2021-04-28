@@ -14,10 +14,10 @@ public class Dispeceri extends Osoba {
         this.telefonskaOdeljenja = TelefonskaOdeljenja.ODELJENJE_ZA_PRIJEM_VOZNJI;
     }
 
-    public Dispeceri(long id, String korisnicko_ime, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String broj_telefona, boolean obrisan, double plata, String br_tel_linije, TelefonskaOdeljenja telefonskaOdeljenja) {
-        super(id, korisnicko_ime, lozinka, ime, prezime, jmbg, adresa, pol, broj_telefona, obrisan);
+    public Dispeceri(long id, String korisnickoIme, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String brojTelefona, boolean obrisan, double plata, String brTelLinije, TelefonskaOdeljenja telefonskaOdeljenja) {
+        super(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan);
         this.plata = plata;
-        this.br_tel_linije = br_tel_linije;
+        this.brTelLinije = brTelLinije;
         this.telefonskaOdeljenja = telefonskaOdeljenja;
     }
 
@@ -29,12 +29,12 @@ public class Dispeceri extends Osoba {
         this.plata = plata;
     }
 
-    public String getBr_tel_linije() {
-        return br_tel_linije;
+    public String getBrTelLinije() {
+        return brTelLinije;
     }
 
-    public void setBr_tel_linije(String br_tel_linije) {
-        this.br_tel_linije = br_tel_linije;
+    public void setBrTelLinije(String brTelLinije) {
+        this.brTelLinije = brTelLinije;
     }
 
     public TelefonskaOdeljenja getTelefonskaOdeljenja() {
@@ -48,7 +48,7 @@ public class Dispeceri extends Osoba {
     public String toString() {
         return "Dispeceri " + super.toString() +
                 "\nPlata: " + this.plata +
-                "\nBroj telefonske linije: " + this.br_tel_linije +
+                "\nBroj telefonske linije: " + this.brTelLinije +
                 "\nTelefonsko odeljenje: " + this.telefonskaOdeljenja;
     }
 
