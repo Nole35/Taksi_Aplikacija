@@ -382,7 +382,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (Automobil automobil : vozila) {
                 sadrzaj += automobil.getId() + "|" + automobil.getModel() + "|" + automobil.getProizvodjac() + "|"
-                        + automobil.getGodinaProizvodnje() + "|" + automobil.getBrojRegistarskeOznake() + "|" + automobil.getBrojTaksiVozila() + "|" + automobil.getVrstaAutomobila() + "|" + automobil.isObrisan() +  "\n";
+                        + automobil.getGodinaProizvodnje() + "|" + automobil.getBrojRegistarskeOznake() + "|" + automobil.getBrojTaksiVozila() + "|" + automobil.getVrstaAutomobila().ordinal() + "|" + automobil.isObrisan() +  "\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
