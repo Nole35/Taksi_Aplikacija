@@ -1,5 +1,5 @@
-1|Miro23|jordan|Miroslav|Mir|1111|Pupinova 14|1|988|false|950.00|1234
-2|Cobe24|brajant|Cican|Cicak|2222|Strumicka 4|1|766|false|805.50|5678
+1|Miro23|jordan|Miroslav|Mir|1111|Pupinova 14|1|988|false|950.0|1234
+2|Cobe24|brajant|Cican|Cicak|2222|Strumicka 4|1|766|false|805.5|5678
 3|Ana10|mesi|Ana|Antonic|3333|Slovacka 8|0|544|false|750.25|9012
 4|Kris7|ronaldo|Kristijan|Krstic|4444|Gogoljeva 14|1|322|false|1208.72|3456
 5|Jana2|barabar|Jana|Jankovic|5555|Buha 22|0|100|false|452.66|7890
