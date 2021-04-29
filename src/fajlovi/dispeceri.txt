@@ -1,4 +1,5 @@
 21|Dadinjo12|dida|Dalibor|Daliborovic|1011|Daliborova|1|0651|false|1802.5|3871|0
-21|Dadinjo12|dida|Dalibor3|Daliborovic|1011|Daliborova|1|0651|false|1802.5|3871|0
-21|Dadinjo12|dida|Dalibor2|Daliborovic|1011|Daliborova|1|0651|false|1802.5|3871|0
-21|Dadinjo12|dida|Dalibor1|Daliborovic|1011|Daliborova|1|0651|false|1802.5|3871|0
+22|Ceca39|temperatura|Svjetlana|Nesic|1022|Stepina|0|0652|false|967.00|3872|1
+23|Suzi|tugica|Suzana|Suzic|1033|Zivojinova|0|0653|false|554.05|3873|0
+24|Kaka22|rikardo|Milan|Milanovic|1044|Racanska|1|0654|false|782.00|3874|0
+25|Nina|tina|Kristina|Krasic|1045|Boskova|0|0655|false|441.25|3875|1
