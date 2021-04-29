@@ -4,12 +4,13 @@ import korisnici.Dispeceri;
 import korisnici.Musterija;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
+import vozila.Automobil;
+import voznje.Voznja;
 
 public class Main {
 
     public static void main(String[] args) {
 	// write your code here
-        System.out.println("fs");
         TaksiSluzba taksiSluzba = new TaksiSluzba();
         for (Dispeceri dispecer: taksiSluzba.getDispeceri()
              ) {
@@ -29,6 +30,20 @@ public class Main {
 
         }
         taksiSluzba.snimiVozace("vozaci.txt");
+        for (Automobil automobil : taksiSluzba.getVozila()
+        ) {
+            System.out.println(automobil.getModel());
+
+        }
+        taksiSluzba.snimiVozila("automobil.txt");
+
+        // for (Voznja voznja : taksiSluzba.getVoznje()
+        //) {
+         //   System.out.println(voznja.getAdresaDestinacije());
+
+        //}
+        //taksiSluzba.snimiVoznje("voznje.txt"); //
+
 
         }
 

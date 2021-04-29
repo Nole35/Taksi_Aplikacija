@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import enumi.Pol;
 import enumi.TelefonskaOdeljenja;
+import enumi.VrstaAutomobila;
 import korisnici.Musterija;
 import korisnici.Vozaci;
 import korisnici.Dispeceri;
@@ -38,6 +39,7 @@ public class TaksiSluzba {
         ucitajDispecere("dispeceri.txt");
         ucitajMusterije("musterija.txt");
         ucitajVozace("vozaci.txt");
+        ucitajVozila("automobil.txt");
     }
 
 
@@ -337,6 +339,50 @@ public class TaksiSluzba {
             for (Vozaci vozaci : vozaci) {
                 sadrzaj += vozaci.getId() + "|" + vozaci.getKorisnickoIme() + "|" + vozaci.getLozinka() + "|"
                         + vozaci.getIme() + "|" + vozaci.getPrezime() + "|" + vozaci.getJmbg() + "|" + vozaci.getAdresa() + "|" + vozaci.getPol().ordinal() + "|" + vozaci.getBrojTelefona() + "|" + vozaci.isObrisan() + "|" + vozaci.getPlata() + "|" + vozaci.getBrojClanskeKarte() +  "\n";
+                System.out.println(sadrzaj);
+            }
+            br.write(sadrzaj);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void ucitajVozila(String imeFajla) {
+        try {
+            File vozilaFile = new File("src/fajlovi/" + imeFajla);
+            BufferedReader br = new BufferedReader(new FileReader(vozilaFile));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String[] split = line.split("\\|");
+                long id = Long.parseLong(split[0]);
+                String model = split[1];
+                String proizvodjac = split[2];
+                long godinaProizvodnje = Long.parseLong(split[3]);
+                String brojRegistarskeOznake = split[4];
+                long brojTaksiVozila = Long.parseLong(split[5]);
+                int vrstaAutomobila = Integer.parseInt(split[6]);
+                VrstaAutomobila vrstaAutomobila1 = VrstaAutomobila.values()[vrstaAutomobila];
+                boolean obrisan = Boolean.parseBoolean(split[7]);
+
+
+
+                Automobil automobil = new Automobil(id, model, proizvodjac, godinaProizvodnje, brojRegistarskeOznake, brojTaksiVozila, vrstaAutomobila1, obrisan);
+                vozila.add(automobil);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void snimiVozila(String imeFajla) {
+        try {
+            File file = new File("src/fajlovi/" + imeFajla);
+            BufferedWriter br = new BufferedWriter(new FileWriter(file));
+            String sadrzaj = "";
+            for (Automobil automobil : vozila) {
+                sadrzaj += automobil.getId() + "|" + automobil.getModel() + "|" + automobil.getProizvodjac() + "|"
+                        + automobil.getGodinaProizvodnje() + "|" + automobil.getBrojRegistarskeOznake() + "|" + automobil.getBrojTaksiVozila() + "|" + automobil.getVrstaAutomobila() + "|" + automobil.isObrisan() +  "\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);

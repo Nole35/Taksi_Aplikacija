@@ -20,7 +20,7 @@ public abstract class Voznja {
     protected int trajanjeVoznje;
     protected Status status;
 
-    public Voznja (){
+    public Voznja(long id, LocalDateTime datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status){
         this.id = 0;
         this.datumIVremePoruzbine = null;
         this.adresaPolaska = "";
@@ -58,6 +58,9 @@ public abstract class Voznja {
         this.brojPredjenihKilometara = brojPredjenihKilometara;
         this.trajanjeVoznje = trajanjeVoznje;
         this.status = status;
+    }
+
+    public Voznja(long id, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status) {
     }
 
     public long getId() {
