@@ -13,10 +13,10 @@ public class Musterija extends Osoba {
         this.voznje = new ArrayList<Voznja>();
     }
 
-    public Musterija(long id, String korisnickoIme, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String brojTelefona, boolean obrisan,
-                     ArrayList<Voznja> voznje) {
+    public Musterija(long id, String korisnickoIme, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String brojTelefona, boolean obrisan
+                     ) {
         super(id, korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,obrisan);
-        this.voznje = voznje;
+
     }
 
     public ArrayList<Voznja> getVoznje() {

@@ -21,11 +21,11 @@ public class Vozaci extends Osoba {
     public Vozaci(long id, String korisnickoIme, String lozinka,
                   String ime, String prezime, String jmbg, String adresa,
                   Pol pol, String brojTelefona, boolean obrisan,
-                  double plata, int brojClanskeKarte, ArrayList<Vozaci> vozaci) {
+                  double plata, int brojClanskeKarte) {
         super(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan);
         this.plata = plata;
         this.brojClanskeKarte = brojClanskeKarte;
-        this.voznje = voznje;
+
     }
 
     public void setAutomobili(Automobil automobil) {
@@ -56,7 +56,7 @@ public class Vozaci extends Osoba {
         return voznje;
     }
 
-    public void setVozaci(ArrayList<Voznja> voznje) {
+    public void setVoznje(ArrayList<Voznja> voznje) {
         this.voznje = voznje;
     }
     @Override

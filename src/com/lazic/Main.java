@@ -1,6 +1,8 @@
 package com.lazic;
 
 import korisnici.Dispeceri;
+import korisnici.Musterija;
+import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 
 public class Main {
@@ -15,7 +17,25 @@ public class Main {
 
         }
         taksiSluzba.snimiDispecere("dispeceri.txt");
+        for (Musterija musterija : taksiSluzba.getMusterije()
+        ) {
+            System.out.println(musterija.getIme());
+
+        }
+        taksiSluzba.snimiMusterije("musterija.txt");
+        for (Vozaci vozac: taksiSluzba.getVozaci()
+             ) {
+            System.out.println(vozac.getIme());
+
+        }
+        taksiSluzba.snimiVozace("vozaci.txt");
+
+        }
+
+
+
 
     }
 
-}
+
+

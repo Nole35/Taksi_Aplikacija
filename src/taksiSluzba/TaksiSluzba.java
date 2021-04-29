@@ -36,6 +36,8 @@ public class TaksiSluzba {
         this.vozila = new ArrayList<Automobil>();
         this.voznje = new ArrayList<Voznja>();
         ucitajDispecere("dispeceri.txt");
+        ucitajMusterije("musterija.txt");
+        ucitajVozace("vozaci.txt");
     }
 
 
@@ -238,6 +240,103 @@ public class TaksiSluzba {
             for (Dispeceri dispeceri : dispeceri) {
                 sadrzaj += dispeceri.getId() + "|" + dispeceri.getKorisnickoIme() + "|" + dispeceri.getLozinka() + "|"
                         + dispeceri.getIme() + "|" + dispeceri.getPrezime() + "|" + dispeceri.getJmbg() + "|" + dispeceri.getAdresa() + "|" + dispeceri.getPol().ordinal() + "|" + dispeceri.getBrojTelefona() + "|" + dispeceri.isObrisan() + "|" + dispeceri.getPlata() + "|" + dispeceri.getBrTelLinije() + "|" + dispeceri.getTelefonskaOdeljenja().ordinal()+ "\n";
+
+            }
+            br.write(sadrzaj);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void ucitajMusterije(String imeFajla) {
+        try {
+            File musterijeFile = new File("src/fajlovi/" + imeFajla);
+            BufferedReader br = new BufferedReader(new FileReader(musterijeFile));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String[] split = line.split("\\|");
+                long id = Long.parseLong(split[0]);
+                String korinickoIme = split[1];
+                String lozinka = split[2];
+                String ime = split[3];
+                String prezime = split[4];
+                String jmbg = split[5];
+                String adresa = split[6];
+                int polInt = Integer.parseInt(split[7]);
+                Pol pol = Pol.values()[polInt];
+                String brojTelefona = split[8];
+                boolean obrisan = Boolean.parseBoolean(split[9]);
+
+
+
+                Musterija musterija = new Musterija(id, korinickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan);
+                musterije.add(musterija);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void snimiMusterije(String imeFajla) {
+        try {
+            File file = new File("src/fajlovi/" + imeFajla);
+            BufferedWriter br = new BufferedWriter(new FileWriter(file));
+            String sadrzaj = "";
+            for (Musterija musterija : musterije) {
+                sadrzaj += musterija.getId() + "|" + musterija.getKorisnickoIme() + "|" + musterija.getLozinka() + "|"
+                        + musterija.getIme() + "|" + musterija.getPrezime() + "|" + musterija.getJmbg() + "|" + musterija.getAdresa() + "|" + musterija.getPol().ordinal() + "|" + musterija.getBrojTelefona() + "|" + musterija.isObrisan() +  "\n";
+                System.out.println(sadrzaj);
+            }
+            br.write(sadrzaj);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void ucitajVozace(String imeFajla) {
+        try {
+            File vozaciFile = new File("src/fajlovi/" + imeFajla);
+            BufferedReader br = new BufferedReader(new FileReader(vozaciFile));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+
+                String[] split = line.split("\\|");
+                long id = Long.parseLong(split[0]);
+                String korinickoIme = split[1];
+                String lozinka = split[2];
+                String ime = split[3];
+                String prezime = split[4];
+                String jmbg = split[5];
+                String adresa = split[6];
+                int polInt = Integer.parseInt(split[7]);
+                Pol pol = Pol.values()[polInt];
+                String brojTelefona = split[8];
+                boolean obrisan = Boolean.parseBoolean(split[9]);
+                double plata = Double.parseDouble(split[10]);
+                int brojClanskeKarte = Integer.parseInt(split[11]);
+
+
+
+
+
+
+                Vozaci vozac = new Vozaci(id, korinickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan, plata, brojClanskeKarte);
+                vozaci.add(vozac);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void snimiVozace(String imeFajla) {
+        try {
+            File file = new File("src/fajlovi/" + imeFajla);
+            BufferedWriter br = new BufferedWriter(new FileWriter(file));
+            String sadrzaj = "";
+            for (Vozaci vozaci : vozaci) {
+                sadrzaj += vozaci.getId() + "|" + vozaci.getKorisnickoIme() + "|" + vozaci.getLozinka() + "|"
+                        + vozaci.getIme() + "|" + vozaci.getPrezime() + "|" + vozaci.getJmbg() + "|" + vozaci.getAdresa() + "|" + vozaci.getPol().ordinal() + "|" + vozaci.getBrojTelefona() + "|" + vozaci.isObrisan() + "|" + vozaci.getPlata() + "|" + vozaci.getBrojClanskeKarte() +  "\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -250,10 +349,4 @@ public class TaksiSluzba {
 
 
 
-
-
-
-
 }
-
-
