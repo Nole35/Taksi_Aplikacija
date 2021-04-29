@@ -1,6 +1,11 @@
 package korisnici;
 
+import enumi.Pol;
 import enumi.TelefonskaOdeljenja;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 
 public class Dispeceri extends Osoba {
     private double plata;
@@ -8,7 +13,7 @@ public class Dispeceri extends Osoba {
     private TelefonskaOdeljenja telefonskaOdeljenja;
 
     public Dispeceri() {
-        super();
+
         this.plata =0;
         this.brTelLinije =" ";
         this.telefonskaOdeljenja = TelefonskaOdeljenja.ODELJENJE_ZA_PRIJEM_VOZNJI;
@@ -51,6 +56,7 @@ public class Dispeceri extends Osoba {
                 "\nBroj telefonske linije: " + this.brTelLinije +
                 "\nTelefonsko odeljenje: " + this.telefonskaOdeljenja;
     }
+
 
 
 }

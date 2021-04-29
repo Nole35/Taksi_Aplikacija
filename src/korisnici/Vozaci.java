@@ -1,6 +1,7 @@
 package korisnici;
 
 
+import enumi.Pol;
 import vozila.Automobil;
 import voznje.Voznja;
 
@@ -18,7 +19,7 @@ public class Vozaci extends Osoba {
         this.voznje = new ArrayList<Voznja>();
     }
     public Vozaci(long id, String korisnickoIme, String lozinka,
-                  String ime, String prezime,String jmbg, String adresa,
+                  String ime, String prezime, String jmbg, String adresa,
                   Pol pol, String brojTelefona, boolean obrisan,
                   double plata, int brojClanskeKarte, ArrayList<Vozaci> vozaci) {
         super(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan);

@@ -13,7 +13,7 @@ public class VoznjaTelefon extends Voznja {
             long id, LocalDateTime datumIVremePoruzbine, String adresaPolaska,
             String adresaDestinacije, long musterijaId, Musterija musterija,
             long vozacId, Vozaci vozac, int brojPredjenihKilometara,
-            LocalDateTime trajanjeVoznje, Status status, TipPorucivanja tipPorucivanja
+            int trajanjeVoznje, Status status, TipPorucivanja tipPorucivanja
     ){
         super(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije,
                 musterijaId, musterija, vozacId, vozac, brojPredjenihKilometara, trajanjeVoznje, status);

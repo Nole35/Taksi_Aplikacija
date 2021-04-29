@@ -20,7 +20,7 @@ public class VoznjaAplikacija extends Voznja {
             long vozacId,
             Vozaci vozac,
             int brojPredjenihKilometara,
-            LocalDateTime trajanjeVoznje,
+            int trajanjeVoznje,
             Status status,
             TipPorucivanja tipPorucivanja
     )

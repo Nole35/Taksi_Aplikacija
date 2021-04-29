@@ -1,4 +1,4 @@
-package korisnici;
+package enumi;
 
 public enum Pol {
     ZENSKI, 	// 0

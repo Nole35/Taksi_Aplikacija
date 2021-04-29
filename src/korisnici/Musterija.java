@@ -1,9 +1,9 @@
 package korisnici;
 
+import enumi.Pol;
 import voznje.Voznja;
 
 import java.util.ArrayList;
-import voznje.Voznja;
 
 
 public class Musterija extends Osoba {
@@ -14,7 +14,7 @@ public class Musterija extends Osoba {
     }
 
     public Musterija(long id, String korisnickoIme, String lozinka, String ime, String prezime, String jmbg, String adresa, Pol pol, String brojTelefona, boolean obrisan,
-                ArrayList<Voznja> voznje) {
+                     ArrayList<Voznja> voznje) {
         super(id, korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,obrisan);
         this.voznje = voznje;
     }

@@ -1,5 +1,7 @@
 package korisnici;
 
+import enumi.Pol;
+
 public abstract class Osoba {
     protected long id;
     protected String korisnickoIme;
