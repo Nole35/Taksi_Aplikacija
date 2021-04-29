@@ -1,9 +1,12 @@
 package taksiSluzba;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import enumi.Pol;
+import enumi.Status;
 import enumi.TelefonskaOdeljenja;
 import enumi.VrstaAutomobila;
 import korisnici.Musterija;
@@ -40,6 +43,7 @@ public class TaksiSluzba {
         ucitajMusterije("musterija.txt");
         ucitajVozace("vozaci.txt");
         ucitajVozila("automobil.txt");
+        ucitajVoznje("voznje.txt");
     }
 
 
@@ -391,6 +395,58 @@ public class TaksiSluzba {
             e.printStackTrace();
         }
     }
+    // ucitavanje i upisivanje voznje radi samo
+    // kada se iskopira sadrzaj voznje.txt fajla
+    // i prilikom svakog pokretanja Paste opet u .txt fajl
+    // jer zbog greske nestane sadrzaj fajla
+
+    public void ucitajVoznje(String imeFajla) {
+        try {
+            File voznjeFile = new File("src/fajlovi/" + imeFajla);
+            BufferedReader br = new BufferedReader(new FileReader(voznjeFile));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String[] split = line.split("\\|");
+                long id = Long.parseLong(split[0]);
+                String datumIVremePoruzbine = split[1];
+                Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(datumIVremePoruzbine);
+                String adresaPolaska = split[2];
+                String adresaDestinacije = split[3];
+                long musterijaId = Long.parseLong(split[4]);
+                long vozacId = Long.parseLong(split[5]);
+                int brojPredjenihKilometara = Integer.parseInt(split[6]);
+                int trajanjeVoznje = Integer.parseInt(split[7]);
+                int status = Integer.parseInt(split[8]);
+                Status status1 = Status.values()[status];
+
+
+                Voznja voznja = new Voznja(id, adresaPolaska, adresaDestinacije, musterijaId, vozacId, brojPredjenihKilometara, trajanjeVoznje, status1) {
+                };
+                voznje.add(voznja);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void snimiVoznje(String imeFajla) {
+        try {
+            File file = new File("src/fajlovi/" + imeFajla);
+            BufferedWriter br = new BufferedWriter(new FileWriter(file));
+            String sadrzaj = "";
+            for (Voznja voznja : voznje) {
+                sadrzaj += voznja.getId() + "|" + voznja.getDatumIVremePoruzbine() + "|" + voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
+                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "\n";
+                System.out.println(sadrzaj);
+            }
+            br.write(sadrzaj);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
 

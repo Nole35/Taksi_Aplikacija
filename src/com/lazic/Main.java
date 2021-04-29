@@ -37,12 +37,12 @@ public class Main {
         }
         taksiSluzba.snimiVozila("automobil.txt");
 
-        // for (Voznja voznja : taksiSluzba.getVoznje()
-        //) {
-         //   System.out.println(voznja.getAdresaDestinacije());
+         for (Voznja voznja : taksiSluzba.getVoznje()
+        ) {
+            System.out.println(voznja.getId());
 
-        //}
-        //taksiSluzba.snimiVoznje("voznje.txt"); //
+        }
+        taksiSluzba.snimiVoznje("voznje.txt");
 
 
         }
