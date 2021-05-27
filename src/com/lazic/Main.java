@@ -1,5 +1,7 @@
 package com.lazic;
 
+import gui.Prijava;
+
 import korisnici.Dispeceri;
 import korisnici.Musterija;
 import korisnici.Vozaci;
@@ -43,9 +45,14 @@ public class Main {
 
         }
         taksiSluzba.snimiVoznje("voznje.txt");
-
+        Prijava p = new Prijava();
+		p.setVisible(true);
+		
+        
+    
 
         }
+    
 
 
 

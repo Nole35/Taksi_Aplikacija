@@ -417,11 +417,11 @@ public class TaksiSluzba {
                 long vozacId = Long.parseLong(split[5]);
                 int brojPredjenihKilometara = Integer.parseInt(split[6]);
                 int trajanjeVoznje = Integer.parseInt(split[7]);
-                int status = Integer.parseInt(split[8]);
-                Status status1 = Status.values()[status];
+                int statusInt = Integer.parseInt(split[8]);
+                Status status = Status.values()[statusInt];
 
 
-                Voznja voznja = new Voznja(id, adresaPolaska, adresaDestinacije, musterijaId, vozacId, brojPredjenihKilometara, trajanjeVoznje, status1) {
+                Voznja voznja = new Voznja(id, adresaPolaska, adresaDestinacije, musterijaId, vozacId, brojPredjenihKilometara, trajanjeVoznje, status) {
                 };
                 voznje.add(voznja);
             }
