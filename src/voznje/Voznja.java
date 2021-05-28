@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public abstract class Voznja {
     protected long id;
-    protected LocalDateTime datumIVremePoruzbine;
+    protected String datumIVremePoruzbine;
     protected String adresaPolaska;
     protected String adresaDestinacije;
     protected long musterijaId;
@@ -20,9 +20,9 @@ public abstract class Voznja {
     protected int trajanjeVoznje;
     protected Status status;
 
-    public Voznja(long id, LocalDateTime datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status){
+    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status){
         this.id = 0;
-        this.datumIVremePoruzbine = null;
+        this.datumIVremePoruzbine = "";
         this.adresaPolaska = "";
         this.adresaDestinacije = "";
         this.musterijaId = 0;
@@ -36,7 +36,7 @@ public abstract class Voznja {
 
 
     public Voznja(long id,
-                  LocalDateTime datumIVremePoruzbine,
+                  String datumIVremePoruzbine,
                   String adresaPolaska,
                   String adresaDestinacije,
                   long musterijaId,
@@ -60,7 +60,7 @@ public abstract class Voznja {
         this.status = status;
     }
 
-    public Voznja(long id, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status) {
+    public Voznja(long id,  String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status) {
     }
 
     public long getId() {
@@ -71,11 +71,11 @@ public abstract class Voznja {
         this.id = id;
     }
 
-    public LocalDateTime getDatumIVremePoruzbine() {
+    public String getDatumIVremePoruzbine() {
         return datumIVremePoruzbine;
     }
 
-    public void setDatumIVremePoruzbine(LocalDateTime datumIVremePoruzbine) {
+    public void setDatumIVremePoruzbine(String datumIVremePoruzbine) {
         this.datumIVremePoruzbine = datumIVremePoruzbine;
     }
     public String getAdresaPolaska() {

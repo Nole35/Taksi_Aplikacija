@@ -2,12 +2,14 @@ package taksiSluzba;
 
 import java.io.*;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
 import enumi.Pol;
 import enumi.Status;
 import enumi.TelefonskaOdeljenja;
+import enumi.TipPorucivanja;
 import enumi.VrstaAutomobila;
 import korisnici.Musterija;
 import korisnici.Vozaci;
@@ -15,7 +17,8 @@ import korisnici.Dispeceri;
 
 import vozila.Automobil;
 
-import voznje.Voznja;
+import voznje.VoznjaAplikacija;
+import voznje.VoznjaTelefon;
 
 
 public class TaksiSluzba {
@@ -29,7 +32,8 @@ public class TaksiSluzba {
     private ArrayList<Dispeceri> dispeceri;
     private ArrayList<Vozaci> vozaci;
     private ArrayList<Automobil> vozila;
-    private ArrayList<Voznja> voznje;
+    private ArrayList<VoznjaAplikacija> voznje;
+    
 
     public TaksiSluzba() {
 
@@ -38,12 +42,14 @@ public class TaksiSluzba {
         this.dispeceri = new ArrayList<Dispeceri>();
         this.vozaci = new ArrayList<Vozaci>();
         this.vozila = new ArrayList<Automobil>();
-        this.voznje = new ArrayList<Voznja>();
+        this.voznje = new ArrayList<VoznjaAplikacija>();
+
         ucitajDispecere("dispeceri.txt");
         ucitajMusterije("musterija.txt");
         ucitajVozace("vozaci.txt");
         ucitajVozila("automobil.txt");
         ucitajVoznje("voznje.txt");
+
     }
 
 
@@ -194,15 +200,15 @@ public class TaksiSluzba {
     public void obrisiVozilo(Automobil automobil) {
         this.vozila.remove(automobil);
     }
-    public ArrayList<Voznja> getVoznje() {
+    public ArrayList<VoznjaAplikacija> getVoznje() {
         return voznje;
     }
 
-    public void dodajVoznju(Voznja voznja) {
+    public void dodajVoznju(VoznjaAplikacija voznja) {
         this.voznje.add(voznja);
     }
 
-    public void obrisiVoznju(Voznja voznja) {
+    public void obrisiVoznju(VoznjaAplikacija voznja) {
         this.voznje.remove(voznja);
     }
     public void ucitajDispecere(String imeFajla) {
@@ -395,10 +401,7 @@ public class TaksiSluzba {
             e.printStackTrace();
         }
     }
-    // ucitavanje i upisivanje voznje radi samo
-    // kada se iskopira sadrzaj voznje.txt fajla
-    // i prilikom svakog pokretanja Paste opet u .txt fajl
-    // jer zbog greske nestane sadrzaj fajla
+   
 
     public void ucitajVoznje(String imeFajla) {
         try {
@@ -410,7 +413,6 @@ public class TaksiSluzba {
                 String[] split = line.split("\\|");
                 long id = Long.parseLong(split[0]);
                 String datumIVremePoruzbine = split[1];
-                Date date1=new SimpleDateFormat("dd/MM/yyyy").parse(datumIVremePoruzbine);
                 String adresaPolaska = split[2];
                 String adresaDestinacije = split[3];
                 long musterijaId = Long.parseLong(split[4]);
@@ -419,9 +421,10 @@ public class TaksiSluzba {
                 int trajanjeVoznje = Integer.parseInt(split[7]);
                 int statusInt = Integer.parseInt(split[8]);
                 Status status = Status.values()[statusInt];
+                TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
 
 
-                Voznja voznja = new Voznja(id, adresaPolaska, adresaDestinacije, musterijaId, vozacId, brojPredjenihKilometara, trajanjeVoznje, status) {
+                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, tipPorucivanja) {
                 };
                 voznje.add(voznja);
             }
@@ -435,9 +438,9 @@ public class TaksiSluzba {
             File file = new File("src/fajlovi/" + imeFajla);
             BufferedWriter br = new BufferedWriter(new FileWriter(file));
             String sadrzaj = "";
-            for (Voznja voznja : voznje) {
+            for (VoznjaAplikacija voznja : voznje) {
                 sadrzaj += voznja.getId() + "|" + voznja.getDatumIVremePoruzbine() + "|" + voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
-                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "\n";
+                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "|" + voznja.getTipPorucivanja()+"\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -451,4 +454,13 @@ public class TaksiSluzba {
 
 
 
+
+
+
+
+
+
+
+
 }
+

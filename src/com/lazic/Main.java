@@ -45,6 +45,10 @@ public class Main {
 
         }
         taksiSluzba.snimiVoznje("voznje.txt");
+        
+        
+        
+        
         Prijava p = new Prijava();
 		p.setVisible(true);
 		

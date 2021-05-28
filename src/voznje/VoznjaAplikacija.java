@@ -12,7 +12,7 @@ public class VoznjaAplikacija extends Voznja {
     private final TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
     public VoznjaAplikacija(
             long id,
-            LocalDateTime datumIVremePoruzbine,
+            String datumIVremePoruzbine,
             String adresaPolaska,
             String adresaDestinacije,
             long musterijaId,
