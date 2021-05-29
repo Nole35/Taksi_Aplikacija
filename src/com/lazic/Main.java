@@ -47,6 +47,14 @@ public class Main {
         }
         taksiSluzba.snimiVoznje("voznje.txt");
         
+        for (Voznja voznjat : taksiSluzba.getVoznjet()
+                ) {
+                    System.out.println(voznjat.getId());
+
+                }
+                taksiSluzba.snimiVoznjet("voznjet.txt");
+                
+        
         
         Prijava p = new Prijava (taksiSluzba);
         p.setVisible(true);

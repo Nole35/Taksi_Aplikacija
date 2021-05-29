@@ -33,9 +33,12 @@ public class TaksiSluzba {
     private ArrayList<Vozaci> vozaci;
     private ArrayList<Automobil> vozila;
     private ArrayList<VoznjaAplikacija> voznje;
+    private ArrayList<VoznjaTelefon> voznjet;
+    
     
 
     public TaksiSluzba() {
+    	
 
 
         this.musterije = new ArrayList<Musterija>();
@@ -43,14 +46,26 @@ public class TaksiSluzba {
         this.vozaci = new ArrayList<Vozaci>();
         this.vozila = new ArrayList<Automobil>();
         this.voznje = new ArrayList<VoznjaAplikacija>();
+        this.voznjet = new ArrayList<VoznjaTelefon>();
+    
+        
 
         ucitajDispecere("dispeceri.txt");
         ucitajMusterije("musterija.txt");
         ucitajVozace("vozaci.txt");
         ucitajVozila("automobil.txt");
         ucitajVoznje("voznje.txt");
+        ucitajVoznjet("voznjet.txt");
+        
+        
+        
+        
 
     }
+    
+ 
+    
+   
 
 
 
@@ -203,6 +218,7 @@ public class TaksiSluzba {
     public ArrayList<VoznjaAplikacija> getVoznje() {
         return voznje;
     }
+ 
 
     public void dodajVoznju(VoznjaAplikacija voznja) {
         this.voznje.add(voznja);
@@ -211,6 +227,22 @@ public class TaksiSluzba {
     public void obrisiVoznju(VoznjaAplikacija voznja) {
         this.voznje.remove(voznja);
     }
+    public ArrayList<VoznjaTelefon> getVoznjet() {
+        return voznjet;
+    }
+    
+      
+        public void dodajVoznjut(VoznjaTelefon voznjat) {
+            this.voznjet.add(voznjat);
+        }
+
+        public void obrisiVoznjut(VoznjaTelefon voznjat) {
+            this.voznjet.remove(voznjat);
+            
+    }
+     
+            
+        
     public void ucitajDispecere(String imeFajla) {
         try {
             File dispeceriFile = new File("src/fajlovi/" + imeFajla);
@@ -449,7 +481,53 @@ public class TaksiSluzba {
             e.printStackTrace();
         }
     }
+    public void ucitajVoznjet(String imeFajla) {
+        try {
+            File voznjetFile = new File("src/fajlovi/" + imeFajla);
+            BufferedReader br = new BufferedReader(new FileReader(voznjetFile));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+                String[] split = line.split("\\|");
+                long id = Long.parseLong(split[0]);
+                String datumIVremePoruzbine = split[1];
+                String adresaPolaska = split[2];
+                String adresaDestinacije = split[3];
+                long musterijaId = Long.parseLong(split[4]);
+                long vozacId = Long.parseLong(split[5]);
+                int brojPredjenihKilometara = Integer.parseInt(split[6]);
+                int trajanjeVoznje = Integer.parseInt(split[7]);
+                int statusInt = Integer.parseInt(split[8]);
+                Status status = Status.values()[statusInt];
+                TipPorucivanja tipPorucivanja = TipPorucivanja.TELEFONOM;
 
+
+                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, tipPorucivanja) {
+                };
+                voznjet.add(voznjat);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void snimiVoznjet(String imeFajla) {
+        try {
+            File file = new File("src/fajlovi/" + imeFajla);
+            BufferedWriter br = new BufferedWriter(new FileWriter(file));
+            String sadrzaj = "";
+            for (VoznjaTelefon voznjat : voznjet) {
+                sadrzaj += voznjat.getId() + "|" + voznjat.getDatumIVremePoruzbine() + "|" + voznjat.getAdresaPolaska() + "|" + voznjat.getAdresaDestinacije() + "|"
+                        + voznjat.getMusterijaId() + "|" + voznjat.getVozacId() + "|"  + voznjat.getBrojPredjenihKilometara() + "|" + voznjat.getTrajanjeVoznje() + "|" + voznjat.getStatus().ordinal() + "|" + voznjat.getTipPorucivanja()+"\n";
+                System.out.println(sadrzaj);
+            }
+            br.write(sadrzaj);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+  
 
 
 
