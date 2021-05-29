@@ -13,26 +13,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import taksiSluzba.TaksiSluzba;
+
 public class DispecerProzor extends JFrame {
 
 	private JPanel contentPane;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					DispecerProzor frame = new DispecerProzor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	
 	 
-	public DispecerProzor() {
+	public DispecerProzor(TaksiSluzba taksiSluzba) {
 		setTitle("Dispecer:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -52,7 +42,7 @@ public class DispecerProzor extends JFrame {
 		JMenuItem prikazItem = new JMenuItem("Prikaz i izmena ");
 		prikazItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor();
+				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor(taksiSluzba);
 				tsp.setVisible(true);
 				dispose();
 			}
@@ -95,7 +85,7 @@ public class DispecerProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaDispecer pd = new PrijavaDispecer();
+				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba);
 				pd.setVisible(true);
 				dispose();
 			}

@@ -13,26 +13,17 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import taksiSluzba.TaksiSluzba;
+
 public class MusterijaProzor extends JFrame {
 
 	private JPanel contentPane;
 
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MusterijaProzor frame = new MusterijaProzor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	
-	public MusterijaProzor() {
+	public MusterijaProzor(TaksiSluzba taksiSluzba) {
 		setTitle("Musterija:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -64,7 +55,7 @@ public class MusterijaProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaMusterija pm = new PrijavaMusterija();
+				PrijavaMusterija pm = new PrijavaMusterija(taksiSluzba);
 				pm.setVisible(true);
 				dispose();
 			}

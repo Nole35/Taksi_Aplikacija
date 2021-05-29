@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import taksiSluzba.TaksiSluzba;
+
 public class TaksiSluzbaProzor extends JFrame {
 
 	private JPanel contentPane;
@@ -22,20 +24,10 @@ public class TaksiSluzbaProzor extends JFrame {
 	private JTextField textField_4;
 
 	
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TaksiSluzbaProzor frame = new TaksiSluzbaProzor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	
 
-	public TaksiSluzbaProzor() {
+	public TaksiSluzbaProzor(TaksiSluzba taksiSluzba) {
 		setTitle("Prikaz i izmjena podataka taksi sluzbe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 401);
@@ -113,7 +105,7 @@ public class TaksiSluzbaProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DispecerProzor dp = new DispecerProzor();
+				DispecerProzor dp = new DispecerProzor(taksiSluzba);
 				dp.setVisible(true);
 				dispose();
 			}

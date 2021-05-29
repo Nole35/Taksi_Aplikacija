@@ -13,25 +13,16 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import taksiSluzba.TaksiSluzba;
+
 public class VozacProzor extends JFrame {
 
 	private JPanel contentPane;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VozacProzor frame = new VozacProzor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	
-	public VozacProzor() {
+	public VozacProzor(TaksiSluzba taksiSluzba) {
 		setTitle("Vozac:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -63,7 +54,7 @@ public class VozacProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaVozac pv = new PrijavaVozac();
+				PrijavaVozac pv = new PrijavaVozac(taksiSluzba);
 				pv.setVisible(true);
 				dispose();
 				
