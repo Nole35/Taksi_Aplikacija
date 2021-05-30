@@ -149,9 +149,6 @@ public class TaksiSluzba {
         this.dispeceri.add(dispeceri);
     }
 
-    public void obrisiDispecera(Dispeceri dispeceri) {
-        this.dispeceri.remove(dispeceri);
-    }
 
     public Dispeceri nadjiDispecera(String korisnickoIme) {
         for (Dispeceri dispeceri : dispeceri) {
@@ -570,6 +567,29 @@ public class TaksiSluzba {
         for(int i = 0; i < voznjet.size(); i++) {
             if(voznjet.get(i).getId() == id)
                 voznjet.set(i, voznjaTelefonZaIzmjenu);
+        }
+    }
+    
+    
+    public void obrisiDispecera(Dispeceri dispecerZaBrisanje) {
+        dispecerZaBrisanje.setObrisan(true);
+
+        for(Dispeceri dispeceri : dispeceri) {
+            if(dispeceri.getId() == dispecerZaBrisanje.getId()) {
+                dispeceri.setObrisan(true);
+                break;
+            }
+        }
+    }
+
+    public void izmjeniDispecera(long id, Dispeceri dispecerZaIzmjenu) {
+
+        if(dispecerZaIzmjenu.getId() != id)
+            return;
+
+        for(int i = 0; i < dispeceri.size(); i++) {
+            if(dispeceri.get(i).getId() == id)
+                dispeceri.set(i, dispecerZaIzmjenu);
         }
     }
 
