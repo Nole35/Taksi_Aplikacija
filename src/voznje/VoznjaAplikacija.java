@@ -22,12 +22,13 @@ public class VoznjaAplikacija extends Voznja {
             int brojPredjenihKilometara,
             int trajanjeVoznje,
             Status status,
+            boolean obrisan,
             TipPorucivanja tipPorucivanja
     )
     {
         super(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije,
                 musterijaId, musterija, vozacId, vozac,
-                brojPredjenihKilometara, trajanjeVoznje, status);
+                brojPredjenihKilometara, trajanjeVoznje, status, obrisan);
 
     }
 
