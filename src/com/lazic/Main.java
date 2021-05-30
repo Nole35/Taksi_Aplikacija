@@ -53,6 +53,14 @@ public class Main {
 
                 }
                 taksiSluzba.snimiVoznjet("voznjet.txt");
+
+
+        for (TaksiSluzba taksiSluzba1 : taksiSluzba.getTaksiSluzba()
+        ) {
+            System.out.println(taksiSluzba1.getPib());
+
+        }
+        taksiSluzba.snimiTaksiSluzbu("taksisluzba.txt");
                 
         
         
