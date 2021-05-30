@@ -19,21 +19,18 @@ import vozila.Automobil;
 
 import voznje.VoznjaAplikacija;
 import voznje.VoznjaTelefon;
+import taksiSluzba.TaksiSluzbai;
 
 
 public class TaksiSluzba {
-    private String pib;
-    private String naziv;
-    private String adresa;
-    private double cijenaStartaVoznje;
-    private double cijenaPoKilometru;
-
+  
     private ArrayList<Musterija> musterije;
     private ArrayList<Dispeceri> dispeceri;
     private ArrayList<Vozaci> vozaci;
     private ArrayList<Automobil> vozila;
     private ArrayList<VoznjaAplikacija> voznje;
     private ArrayList<VoznjaTelefon> voznjet;
+    private ArrayList<TaksiSluzbai> taksisluzba;
     
 
     
@@ -48,6 +45,7 @@ public class TaksiSluzba {
         this.vozila = new ArrayList<Automobil>();
         this.voznje = new ArrayList<VoznjaAplikacija>();
         this.voznjet = new ArrayList<VoznjaTelefon>();
+        this.taksisluzba = new ArrayList<TaksiSluzbai>();
     
         
 
@@ -57,49 +55,13 @@ public class TaksiSluzba {
         ucitajVozila("automobil.txt");
         ucitajVoznje("voznje.txt");
         ucitajVoznjet("voznjet.txt");
+        ucitajTaksisluzbu("taksisluzba.txt");
+        
         }
 
 
-    public String getPib() {
-        return pib;
-    }
 
-    public void setPib(String pib) {
-        this.pib = pib;
-    }
-
-    public String getNaziv() {
-        return naziv;
-    }
-
-    public void setNaziv(String naziv) {
-        this.naziv = naziv;
-    }
-
-    public String getAdresa() {
-        return adresa;
-    }
-
-    public void setAdresa(String adresa) {
-        this.adresa = adresa;
-    }
-
-    public double getCijenaStartaVoznje() {
-        return cijenaStartaVoznje;
-    }
-
-    public void setCijenaStartaVoznje(double cijenaStartaVoznje) {
-        this.cijenaStartaVoznje = cijenaStartaVoznje;
-    }
-
-    public double getCijenaPoKilometru() {
-        return cijenaPoKilometru;
-    }
-
-    public void setCijenaPoKilometru(double cijenaPoKilometru) {
-        this.cijenaPoKilometru = cijenaPoKilometru;
-    }
-
+  
 
     public ArrayList<Musterija> getMusterije() {
         return musterije;
@@ -222,6 +184,16 @@ public class TaksiSluzba {
             this.voznjet.remove(voznjat);
             
     }
+        public ArrayList<TaksiSluzbai> getTaksisluzbu() {
+            return taksisluzba;
+        }
+        public void dodajTaksisluzbu(TaksiSluzbai taksisluzba) {
+            this.taksisluzba.add(taksisluzba);
+        }
+
+        public void obrisiTaksisluzbu(TaksiSluzbai taksisluzba) {
+            this.taksisluzba.remove(taksisluzba);
+        }
 
    
 
@@ -656,6 +628,53 @@ public class TaksiSluzba {
                 voznje.set(i, voznjaAplikacijaZaIzmjenu);
         }
     }
+    public void ucitajTaksisluzbu(String imeFajla) {
+        try {
+            File taksisluzbaFile = new File("src/fajlovi/" + imeFajla);
+            BufferedReader br = new BufferedReader(new FileReader(taksisluzbaFile));
+            String line = null;
+            while ((line = br.readLine()) != null) {
+
+                String[] split = line.split("\\|");
+                
+                String pib = split[0];
+                String naziv = split[1];
+                String adresa = split[2];
+                double cijenaStartaVoznje = Double.parseDouble(split[3]);
+                double cijenaPoKilometru = Double.parseDouble(split[4]);
+                
+                
+              
+
+
+
+
+
+                TaksiSluzbai taksisluzbai = new TaksiSluzbai(pib,naziv,adresa,cijenaStartaVoznje,cijenaPoKilometru);
+                taksisluzba.add(taksisluzbai);
+            }
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void snimiTaksiSluzbu(String imeFajla) {
+        try {
+            File file = new File("src/fajlovi/" + imeFajla);
+            BufferedWriter br = new BufferedWriter(new FileWriter(file));
+            String sadrzaj = "";
+            for (TaksiSluzbai taksisluzbai : taksisluzba ) {
+                sadrzaj += taksisluzbai.getPib() + "|" + taksisluzbai.getNaziv() + "|" + taksisluzbai.getAdresa() + "|" + taksisluzbai.getCijenaStartaVoznje() + "|" + taksisluzbai.getCijenaPoKilometru() + "\n";
+                System.out.println(sadrzaj);
+            }
+            br.write(sadrzaj);
+            br.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
 
 
 

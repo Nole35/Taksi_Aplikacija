@@ -7,6 +7,7 @@ import korisnici.Dispeceri;
 import korisnici.Musterija;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 import vozila.Automobil;
 import voznje.Voznja;
 
@@ -53,6 +54,12 @@ public class Main {
 
                 }
                 taksiSluzba.snimiVoznjet("voznjet.txt");
+        for (TaksiSluzbai taksisluzbai : taksiSluzba.getTaksisluzbu()
+                        ) {
+                            System.out.println(taksisluzbai.getNaziv());
+        }
+        taksiSluzba.snimiTaksiSluzbu("taksisluzba.txt");
+
 
 
      
@@ -68,7 +75,7 @@ public class Main {
 
 		
         
-    
+    }
 
         }
     
@@ -76,7 +83,7 @@ public class Main {
 
 
 
-    }
+
 
 
 
