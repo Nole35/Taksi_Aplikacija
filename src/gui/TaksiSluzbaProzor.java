@@ -5,14 +5,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import taksiSluzba.TaksiSluzba;
+import  taksiSluzba.TaksiSluzbai;
 
 public class TaksiSluzbaProzor extends JFrame {
 
@@ -27,7 +24,7 @@ public class TaksiSluzbaProzor extends JFrame {
 	
 	
 
-	public TaksiSluzbaProzor(TaksiSluzba taksiSluzba) {
+	public TaksiSluzbaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Prikaz i izmjena podataka taksi sluzbe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 401);
@@ -66,35 +63,53 @@ public class TaksiSluzbaProzor extends JFrame {
 		textField.setBounds(246, 30, 305, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
+		textField.setText(taksiSluzba.getPib());
+		
 		
 		textField_1 = new JTextField();
 		textField_1.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		textField_1.setColumns(10);
 		textField_1.setBounds(246, 92, 305, 26);
 		contentPane.add(textField_1);
+		textField_1.setText(taksiSluzba.getNaziv());
 		
 		textField_2 = new JTextField();
 		textField_2.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		textField_2.setColumns(10);
 		textField_2.setBounds(246, 150, 305, 26);
 		contentPane.add(textField_2);
+		textField_2.setText(taksiSluzba.getAdresa());
+
+		
 		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		textField_3.setColumns(10);
 		textField_3.setBounds(246, 214, 305, 26);
 		contentPane.add(textField_3);
+		textField_3.setText(String.valueOf(taksiSluzba.getCijenaStartaVoznje()));
+
 		
 		textField_4 = new JTextField();
 		textField_4.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		textField_4.setColumns(10);
 		textField_4.setBounds(246, 275, 305, 26);
 		contentPane.add(textField_4);
+		textField_4.setText(String.valueOf(taksiSluzba.getCijenaPoKilometru()));
 		
 		JButton btnSubmit = new JButton("Potvrdi izmjene");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				taksiSluzba.setPib(textField.getText());
+				taksiSluzba.setNaziv(textField_1.getText());
+				taksiSluzba.setAdresa(textField_2.getText());
+				taksiSluzba.setCijenaStartaVoznje(Double.parseDouble(textField_3.getText()));
+				taksiSluzba.setCijenaPoKilometru(Double.parseDouble(textField_4.getText()));
+
+				taksiSluzba.snimiTaksiSluzbu("taksisluzba.txt");
+
+				System.out.println("USPJESNO UPISIVANJE");
+				JOptionPane.showMessageDialog(null, "Uspjesno izmjenjena taksi sluzba", "", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});
@@ -105,7 +120,7 @@ public class TaksiSluzbaProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DispecerProzor dp = new DispecerProzor(taksiSluzba);
+				DispecerProzor dp = new DispecerProzor(taksiSluzba, taksiSluzbai);
 				dp.setVisible(true);
 				dispose();
 			}

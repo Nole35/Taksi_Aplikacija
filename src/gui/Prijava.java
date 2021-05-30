@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 
 public class Prijava extends JFrame {
 
@@ -20,7 +21,7 @@ public class Prijava extends JFrame {
 
 
 	
-	public Prijava(TaksiSluzba taksiSluzba) {
+	public Prijava(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Prijava");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 751, 376);
@@ -39,7 +40,7 @@ public class Prijava extends JFrame {
 		btnDLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba);
+				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba, taksiSluzbai);
 				pd.setVisible(true);
 				
 			}
@@ -51,7 +52,7 @@ public class Prijava extends JFrame {
 		JButton btnMLogin = new JButton("Musterija Prijava");
 		btnMLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaMusterija pm = new PrijavaMusterija(taksiSluzba);
+				PrijavaMusterija pm = new PrijavaMusterija(taksiSluzba,taksiSluzbai);
 				pm.setVisible(true);
 				
 			}
@@ -63,7 +64,7 @@ public class Prijava extends JFrame {
 		JButton btnVLogin = new JButton("Vozac Prijava");
 		btnVLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaVozac pv = new PrijavaVozac(taksiSluzba);
+				PrijavaVozac pv = new PrijavaVozac(taksiSluzba,taksiSluzbai);
 				pv.setVisible(true);
 			}
 		});

@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 
 public class MusterijaProzor extends JFrame {
 
@@ -23,7 +24,7 @@ public class MusterijaProzor extends JFrame {
 	
 
 	
-	public MusterijaProzor(TaksiSluzba taksiSluzba) {
+	public MusterijaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Musterija:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -55,7 +56,7 @@ public class MusterijaProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaMusterija pm = new PrijavaMusterija(taksiSluzba);
+				PrijavaMusterija pm = new PrijavaMusterija(taksiSluzba,taksiSluzbai);
 				pm.setVisible(true);
 				dispose();
 			}

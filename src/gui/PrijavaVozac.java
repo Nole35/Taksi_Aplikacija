@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import korisnici.Dispeceri;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -33,7 +34,7 @@ public class PrijavaVozac extends JFrame {
 	
 
 	
-	public PrijavaVozac(TaksiSluzba taksiSluzba) {
+	public PrijavaVozac(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Prijava Vozac");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 300);
@@ -75,7 +76,7 @@ public class PrijavaVozac extends JFrame {
 					if(passwordField.getText().equals(vozac.getLozinka()) && textField.getText().equals(vozac.getKorisnickoIme())) {
 						System.out.println("VOZAC: " + vozac.getIme());
 						 postojiVozac = true;
-				VozacProzor vp = new VozacProzor(taksiSluzba);
+				VozacProzor vp = new VozacProzor(taksiSluzba,taksiSluzbai);
 				vp.setVisible(true);
 				dispose();
 			}
@@ -92,7 +93,7 @@ public class PrijavaVozac extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Prijava p = new Prijava(taksiSluzba);
+				Prijava p = new Prijava(taksiSluzba,taksiSluzbai);
 				p.setVisible(true);
 				dispose();
 			}

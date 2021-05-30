@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 
 public class DispecerProzor extends JFrame {
 
@@ -22,7 +23,7 @@ public class DispecerProzor extends JFrame {
 	
 	
 	 
-	public DispecerProzor(TaksiSluzba taksiSluzba) {
+	public DispecerProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Dispecer:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -42,7 +43,7 @@ public class DispecerProzor extends JFrame {
 		JMenuItem prikazItem = new JMenuItem("Prikaz i izmena ");
 		prikazItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor(taksiSluzba);
+				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor(taksiSluzba, taksiSluzbai);
 				tsp.setVisible(true);
 				dispose();
 			}
@@ -85,7 +86,7 @@ public class DispecerProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba);
+				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba, taksiSluzbai);
 				pd.setVisible(true);
 				dispose();
 			}

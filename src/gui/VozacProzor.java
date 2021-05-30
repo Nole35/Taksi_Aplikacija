@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 
 public class VozacProzor extends JFrame {
 
@@ -22,7 +23,7 @@ public class VozacProzor extends JFrame {
 	
 
 	
-	public VozacProzor(TaksiSluzba taksiSluzba) {
+	public VozacProzor(TaksiSluzba taksiSluzba,TaksiSluzbai taksiSluzbai) {
 		setTitle("Vozac:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -54,7 +55,7 @@ public class VozacProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrijavaVozac pv = new PrijavaVozac(taksiSluzba);
+				PrijavaVozac pv = new PrijavaVozac(taksiSluzba,taksiSluzbai);
 				pv.setVisible(true);
 				dispose();
 				

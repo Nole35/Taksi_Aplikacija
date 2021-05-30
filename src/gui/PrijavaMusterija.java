@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import korisnici.Dispeceri;
 import korisnici.Musterija;
 import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
 
 public class PrijavaMusterija extends JFrame {
 
@@ -27,7 +28,7 @@ public class PrijavaMusterija extends JFrame {
 
 	
 
-	public PrijavaMusterija(TaksiSluzba taksiSluzba) {
+	public PrijavaMusterija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Prijava Musterija");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 300);
@@ -70,7 +71,7 @@ public class PrijavaMusterija extends JFrame {
 					if(passwordField.getText().equals(musterija.getLozinka()) && textField.getText().equals(musterija.getKorisnickoIme())) {
 						System.out.println("MUSTERIJA: " + musterija.getIme());
 						 postojiMusterija = true;
-				MusterijaProzor mp = new MusterijaProzor(taksiSluzba);
+				MusterijaProzor mp = new MusterijaProzor(taksiSluzba,taksiSluzbai);
 				mp.setVisible(true);
 				dispose();
 			}
@@ -87,7 +88,7 @@ public class PrijavaMusterija extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Prijava p = new Prijava(taksiSluzba);
+				Prijava p = new Prijava(taksiSluzba,taksiSluzbai);
 				p.setVisible(true);
 				dispose();
 			}

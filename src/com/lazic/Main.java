@@ -16,6 +16,9 @@ public class Main {
     public static void main(String[] args) {
 	// write your code here
         TaksiSluzba taksiSluzba = new TaksiSluzba();
+        TaksiSluzbai taksiSluzbai = new TaksiSluzbai();
+
+        
         for (Dispeceri dispecer: taksiSluzba.getDispeceri()
              ) {
             System.out.println(dispecer.getIme());
@@ -54,19 +57,17 @@ public class Main {
 
                 }
                 taksiSluzba.snimiVoznjet("voznjet.txt");
-        for (TaksiSluzbai taksisluzbai : taksiSluzba.getTaksisluzbu()
-                        ) {
-                            System.out.println(taksisluzbai.getNaziv());
-        }
+             
         taksiSluzba.snimiTaksiSluzbu("taksisluzba.txt");
 
 
 
+                
      
                 
         
         
-        Prijava p = new Prijava (taksiSluzba);
+        Prijava p = new Prijava (taksiSluzba,taksiSluzbai);
         p.setVisible(true);
         
         
