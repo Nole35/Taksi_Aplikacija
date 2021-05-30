@@ -34,17 +34,13 @@ public class TaksiSluzba {
     private ArrayList<Automobil> vozila;
     private ArrayList<VoznjaAplikacija> voznje;
     private ArrayList<VoznjaTelefon> voznjet;
-    private ArrayList<TaksiSluzba> taksiSluzba;
+    
 
     
     
 
     public TaksiSluzba() {
-    	this.pib = "";
-    	this.naziv = "";
-    	this.adresa = "";
-    	this.cijenaStartaVoznje = 0;
-        this.cijenaPoKilometru = 0;
+    	
 
         this.musterije = new ArrayList<Musterija>();
         this.dispeceri = new ArrayList<Dispeceri>();
@@ -61,23 +57,7 @@ public class TaksiSluzba {
         ucitajVozila("automobil.txt");
         ucitajVoznje("voznje.txt");
         ucitajVoznjet("voznjet.txt");
-        ucitajTaksiSluzbu("taksisluzba.txt");
-        
-        
-        
-        
-
-    }
-
-    public TaksiSluzba(String pib,String naziv, String adresa, double cijenaStartaVoznje, double cijenaPoKilometru){
-        super();
-        this.pib = pib;
-        this.naziv = naziv;
-        this.adresa = adresa;
-        this.cijenaStartaVoznje = cijenaStartaVoznje;
-        this.cijenaPoKilometru = cijenaPoKilometru;
-
-    }
+        }
 
 
     public String getPib() {
@@ -243,9 +223,7 @@ public class TaksiSluzba {
             
     }
 
-    public ArrayList<TaksiSluzba> getTaksiSluzba() {
-        return taksiSluzba;
-    }
+   
 
   
 
@@ -540,48 +518,7 @@ public class TaksiSluzba {
     }
 
 
-    public void ucitajTaksiSluzbu(String imeFajla) {
-        try {
-            File musterijeFile = new File("src/fajlovi/" + imeFajla);
-            BufferedReader br = new BufferedReader(new FileReader(musterijeFile));
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                String[] split = line.split("\\|");
-                String pib = split[0];
-                String naziv = split[1];
-                String adresa = split[2];
-                double cijenaStartaVoznje = Double.parseDouble(split[3]);
-                double cijenaPoKilometru = Double.parseDouble(split[4]);
-
-
-                TaksiSluzba taksiSluzba = new TaksiSluzba(pib, naziv, adresa, cijenaStartaVoznje, cijenaPoKilometru);
-                taksiSluzba.add(taksiSluzba);
-            }
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void add(TaksiSluzba taksiSluzba) {
-    }
-
-    public void snimiTaksiSluzbu(String imeFajla) {
-        try {
-            File file = new File("src/fajlovi/" + imeFajla);
-            BufferedWriter br = new BufferedWriter(new FileWriter(file));
-            String sadrzaj = "";
-            for (TaksiSluzba taksiSluzba : taksiSluzba ) {
-                sadrzaj += taksiSluzba.getPib() + "|" + taksiSluzba.getNaziv() + "|" + taksiSluzba.getAdresa() + "|" + taksiSluzba.getCijenaStartaVoznje() + "|" + taksiSluzba.getCijenaPoKilometru() + "\n";
-                System.out.println(sadrzaj);
-            }
-            br.write(sadrzaj);
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+ 
 
 
     public void obrisiVozaca(Vozaci vozacZaBrisanje) {
