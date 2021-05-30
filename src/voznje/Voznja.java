@@ -19,8 +19,9 @@ public abstract class Voznja {
     protected int brojPredjenihKilometara;
     protected int trajanjeVoznje;
     protected Status status;
+    protected boolean obrisan;
 
-    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status){
+    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan){
         this.id = 0;
         this.datumIVremePoruzbine = "";
         this.adresaPolaska = "";
@@ -30,6 +31,7 @@ public abstract class Voznja {
         this.brojPredjenihKilometara = 0;
         this.trajanjeVoznje = 0;
         this.status = Status.KREIRANA;
+        this.obrisan = false;
 
     }
 
@@ -45,7 +47,7 @@ public abstract class Voznja {
                   Vozaci vozac,
                   int brojPredjenihKilometara,
                   int trajanjeVoznje,
-                  Status status)
+                  Status status, boolean obrisan)
     {
         this.id = id;
         this.datumIVremePoruzbine = datumIVremePoruzbine;
@@ -58,9 +60,10 @@ public abstract class Voznja {
         this.brojPredjenihKilometara = brojPredjenihKilometara;
         this.trajanjeVoznje = trajanjeVoznje;
         this.status = status;
+        this.obrisan = obrisan;
     }
 
-    public Voznja(long id,  String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status) {
+    public Voznja(long id,  String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan) {
     }
 
     public long getId() {
@@ -148,5 +151,13 @@ public abstract class Voznja {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public boolean isObrisan() {
+        return obrisan;
+    }
+
+    public void setObrisan(boolean obrisan) {
+        this.obrisan = obrisan;
     }
 }

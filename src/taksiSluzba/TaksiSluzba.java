@@ -181,9 +181,6 @@ public class TaksiSluzba {
         this.vozaci.add(vozaci);
     }
 
-    public void obrisiVozaca(Vozaci vozaci) {
-        this.vozaci.remove(vozaci);
-    }
 
     public Vozaci nadjiVozaca(String korisnickoIme) {
         for (Vozaci vozaci : vozaci) {
@@ -453,10 +450,11 @@ public class TaksiSluzba {
                 int trajanjeVoznje = Integer.parseInt(split[7]);
                 int statusInt = Integer.parseInt(split[8]);
                 Status status = Status.values()[statusInt];
+                boolean obrisan = Boolean.parseBoolean(split[9]);
                 TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
 
 
-                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, tipPorucivanja) {
+                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan, tipPorucivanja) {
                 };
                 voznje.add(voznja);
             }
@@ -472,7 +470,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (VoznjaAplikacija voznja : voznje) {
                 sadrzaj += voznja.getId() + "|" + voznja.getDatumIVremePoruzbine() + "|" + voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
-                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "|" + voznja.getTipPorucivanja()+"\n";
+                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "|" + voznja.isObrisan() + "|" + voznja.getTipPorucivanja()+"\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -499,10 +497,11 @@ public class TaksiSluzba {
                 int trajanjeVoznje = Integer.parseInt(split[7]);
                 int statusInt = Integer.parseInt(split[8]);
                 Status status = Status.values()[statusInt];
+                boolean obrisan = Boolean.parseBoolean(split[9]);
                 TipPorucivanja tipPorucivanja = TipPorucivanja.TELEFONOM;
 
 
-                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, tipPorucivanja) {
+                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan, tipPorucivanja) {
                 };
                 voznjet.add(voznjat);
             }
@@ -518,7 +517,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (VoznjaTelefon voznjat : voznjet) {
                 sadrzaj += voznjat.getId() + "|" + voznjat.getDatumIVremePoruzbine() + "|" + voznjat.getAdresaPolaska() + "|" + voznjat.getAdresaDestinacije() + "|"
-                        + voznjat.getMusterijaId() + "|" + voznjat.getVozacId() + "|"  + voznjat.getBrojPredjenihKilometara() + "|" + voznjat.getTrajanjeVoznje() + "|" + voznjat.getStatus().ordinal() + "|" + voznjat.getTipPorucivanja()+"\n";
+                        + voznjat.getMusterijaId() + "|" + voznjat.getVozacId() + "|"  + voznjat.getBrojPredjenihKilometara() + "|" + voznjat.getTrajanjeVoznje() + "|" + voznjat.getStatus().ordinal() + "|" + voznjat.isObrisan() + "|" + voznjat.getTipPorucivanja()+"\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -527,14 +526,54 @@ public class TaksiSluzba {
             e.printStackTrace();
         }
     }
-  
 
 
+    public void obrisiVozaca(Vozaci vozacZaBrisanje) {
+        vozacZaBrisanje.setObrisan(true);
+
+        for(Vozaci vozaci : vozaci) {
+            if(vozaci.getId() == vozacZaBrisanje.getId()) {
+                vozaci.setObrisan(true);
+                break;
+            }
+        }
+    }
+
+    public void izmjeniVozaca(long id, Vozaci vozacZaIzmjenu) {
+
+        if(vozacZaIzmjenu.getId() != id)
+            return;
+
+        for(int i = 0; i < vozaci.size(); i++) {
+            if(vozaci.get(i).getId() == id)
+                vozaci.set(i, vozacZaIzmjenu);
+        }
+    }
 
 
+    public void obrisiVoznjeTelefon(VoznjaTelefon voznjaTelefonZaBrisanje) {
+        voznjaTelefonZaBrisanje.setObrisan(true);
 
+        for(VoznjaTelefon voznjaTelefon : voznjet) {
+            if(voznjaTelefon.getId() == voznjaTelefonZaBrisanje.getId()) {
+                voznjaTelefon.setObrisan(true);
+                break;
+            }
+        }
+    }
 
+    public void izmjeniVoznjaTelefon(long id, VoznjaTelefon voznjaTelefonZaIzmjenu) {
 
+        if(voznjaTelefonZaIzmjenu.getId() != id)
+            return;
+
+        for(int i = 0; i < voznjet.size(); i++) {
+            if(voznjet.get(i).getId() == id)
+                voznjet.set(i, voznjaTelefonZaIzmjenu);
+        }
+    }
+
+   
 
 
 
