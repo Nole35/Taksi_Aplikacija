@@ -57,7 +57,7 @@ public class Main {
 
         for (TaksiSluzba taksiSluzba1 : taksiSluzba.getTaksiSluzba()
         ) {
-            System.out.println(taksiSluzba1.getPib());
+            System.out.println(taksiSluzba1.getNaziv());
 
         }
         taksiSluzba.snimiTaksiSluzbu("taksisluzba.txt");

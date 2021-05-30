@@ -131,10 +131,6 @@ public class TaksiSluzba {
 
 
 
-    public void obrisiMusteriju(Musterija musterija) {
-        this.musterije.remove(musterija);
-    }
-
     public Musterija nadjiMusteriju(String korisnickoIme) {
         for (Musterija musterija : musterije) {
             if (musterija.getKorisnickoIme().equals(korisnickoIme)) {
@@ -231,9 +227,7 @@ public class TaksiSluzba {
         this.voznje.add(voznja);
     }
 
-    public void obrisiVoznju(VoznjaAplikacija voznja) {
-        this.voznje.remove(voznja);
-    }
+  
     public ArrayList<VoznjaTelefon> getVoznjet() {
         return voznjet;
     }
@@ -243,6 +237,7 @@ public class TaksiSluzba {
             this.voznjet.add(voznjat);
         }
 
+
         public void obrisiVoznjut(VoznjaTelefon voznjat) {
             this.voznjet.remove(voznjat);
             
@@ -251,6 +246,9 @@ public class TaksiSluzba {
     public ArrayList<TaksiSluzba> getTaksiSluzba() {
         return taksiSluzba;
     }
+
+  
+
      
             
         
@@ -654,7 +652,73 @@ public class TaksiSluzba {
         }
     }
 
-   
+    public void obrisiMusteriju(Musterija musterijaZaBrisanje) {
+        musterijaZaBrisanje.setObrisan(true);
+
+        for(Musterija musterija : musterije) {
+            if(musterija.getId() == musterijaZaBrisanje.getId()) {
+                musterija.setObrisan(true);
+                break;
+            }
+        }
+    }
+
+    public void izmjeniMusteriju(long id, Musterija musterijaZaIzmjenu) {
+
+        if(musterijaZaIzmjenu.getId() != id)
+            return;
+
+        for(int i = 0; i < musterije.size(); i++) {
+            if(musterije.get(i).getId() == id)
+                musterije.set(i, musterijaZaIzmjenu);
+        }
+    }
+    
+    
+    public void obrisiAutomobil(Automobil automobilZaBrisanje) {
+        automobilZaBrisanje.setObrisan(true);
+
+        for(Automobil automobil : vozila) {
+            if(automobil.getId() == automobilZaBrisanje.getId()) {
+                automobil.setObrisan(true);
+                break;
+            }
+        }
+    }
+
+    public void izmjeniAutomobil(long id, Automobil automobilZaIzmjenu) {
+
+        if(automobilZaIzmjenu.getId() != id)
+            return;
+
+        for(int i = 0; i < vozila.size(); i++) {
+            if(vozila.get(i).getId() == id)
+                vozila.set(i, automobilZaIzmjenu);
+        }
+    }
+
+
+ public void obrisiVoznjeAplikacija(VoznjaAplikacija voznjaAplikacijaZaBrisanje) {
+        voznjaAplikacijaZaBrisanje.setObrisan(true);
+
+        for(VoznjaAplikacija voznjaAplikacija : voznje) {
+            if(voznjaAplikacija.getId() == voznjaAplikacijaZaBrisanje.getId()) {
+                voznjaAplikacija.setObrisan(true);
+                break;
+            }
+        }
+    }
+
+    public void izmjeniVoznjaAplikacija(long id, VoznjaAplikacija voznjaAplikacijaZaIzmjenu) {
+
+        if(voznjaAplikacijaZaIzmjenu.getId() != id)
+            return;
+
+        for(int i = 0; i < voznje.size(); i++) {
+            if(voznje.get(i).getId() == id)
+                voznje.set(i, voznjaAplikacijaZaIzmjenu);
+        }
+    }
 
 
 
