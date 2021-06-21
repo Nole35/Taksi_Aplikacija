@@ -80,14 +80,10 @@ public class PrijavaDispecer extends JFrame {
 					} 
 				}
 				if(!postojiDispecer) {
-					JOptionPane.showMessageDialog(null, "Ne postoji trazeni korisnik.", "Greška", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Ne postoji trazeni korisnik.", "Greï¿½ka", JOptionPane.WARNING_MESSAGE);
 				}
 				
-				/*
-				DispecerProzor dp = new DispecerProzor();
-				dp.setVisible(true);
-				dispose();
-				*/
+				
 			}
 		});
 		btnLogin.setFont(new Font("SansSerif", Font.PLAIN, 18));

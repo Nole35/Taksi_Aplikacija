@@ -13,6 +13,7 @@ import enumi.TipPorucivanja;
 import enumi.VrstaAutomobila;
 import korisnici.Musterija;
 import korisnici.Vozaci;
+
 import korisnici.Dispeceri;
 
 import vozila.Automobil;
@@ -30,7 +31,7 @@ public class TaksiSluzba {
     private ArrayList<Automobil> vozila;
     private ArrayList<VoznjaAplikacija> voznje;
     private ArrayList<VoznjaTelefon> voznjet;
-    //private ArrayList<TaksiSluzbai> taksisluzba;
+    
     private String pib;
     private String naziv;
     private String adresa;
@@ -50,7 +51,7 @@ public class TaksiSluzba {
         this.vozila = new ArrayList<Automobil>();
         this.voznje = new ArrayList<VoznjaAplikacija>();
         this.voznjet = new ArrayList<VoznjaTelefon>();
-        //this.taksisluzba = new ArrayList<TaksiSluzbai>();
+        
     
         
 
@@ -161,6 +162,14 @@ public class TaksiSluzba {
     public void dodajVozilo(Automobil automobil) {
         this.vozila.add(automobil);
     }
+    public Automobil nadjiAutomobil(String brojRegistarskeOznake) {
+        for (Automobil automobil : vozila) {
+            if (automobil.getBrojRegistarskeOznake().equals(brojRegistarskeOznake)) {
+                return automobil;
+            }
+        }
+        return null;
+    }
 
     public void obrisiVozilo(Automobil automobil) {
         this.vozila.remove(automobil);
@@ -189,20 +198,7 @@ public class TaksiSluzba {
             this.voznjet.remove(voznjat);
             
     }
-        /*
-        public ArrayList<TaksiSluzbai> getTaksisluzbu() {
-            return taksisluzba;
-        }
-        public void dodajTaksisluzbu(TaksiSluzbai taksisluzba) {
-            this.taksisluzba.add(taksisluzba);
-        }
-
-        public void obrisiTaksisluzbu(TaksiSluzbai taksisluzba) {
-            this.taksisluzba.remove(taksisluzba);
-        }
-        */
-
-   
+       
 
   
 
@@ -594,9 +590,9 @@ public class TaksiSluzba {
     public void obrisiAutomobil(Automobil automobilZaBrisanje) {
         automobilZaBrisanje.setObrisan(true);
 
-        for(Automobil automobil : vozila) {
-            if(automobil.getId() == automobilZaBrisanje.getId()) {
-                automobil.setObrisan(true);
+        for(Automobil auto : vozila) {
+            if(auto.getId() == automobilZaBrisanje.getId()) {
+                auto.setObrisan(true);
                 break;
             }
         }
@@ -682,6 +678,43 @@ public class TaksiSluzba {
         }
         
     }
+    public ArrayList<Automobil> sviNeobrisaniAutomobili() {
+		ArrayList<Automobil> neobrisani = new ArrayList<Automobil>();
+		for (Automobil auto : vozila) {
+			if(!auto.isObrisan()) {
+				neobrisani.add(auto);
+			}
+		}
+		return neobrisani;
+	}
+    
+    public ArrayList<Vozaci> sviNeobrisaniVozaci() {
+		ArrayList<Vozaci> neobrisani = new ArrayList<Vozaci>();
+		for (Vozaci vozaci : vozaci) {
+			if(!vozaci.isObrisan()) {
+				neobrisani.add(vozaci);
+			}
+		}
+		return neobrisani;
+	}
+    public ArrayList<VoznjaAplikacija> sveNeobrisaneVoznjeA() {
+  		ArrayList<VoznjaAplikacija> neobrisani = new ArrayList<VoznjaAplikacija>();
+  		for (VoznjaAplikacija voznja : voznje) {
+  			if(!voznja.isObrisan()) {
+  				neobrisani.add(voznja);
+  			}
+  		}
+  		return neobrisani;
+  	}
+    public ArrayList<VoznjaTelefon> sveNeobrisaneVoznjeT() {
+  		ArrayList<VoznjaTelefon> neobrisani = new ArrayList<VoznjaTelefon>();
+  		for (VoznjaTelefon voznjat : voznjet) {
+  			if(!voznjat.isObrisan()) {
+  				neobrisani.add(voznjat);
+  			}
+  		}
+  		return neobrisani;
+  	}
     
 
 

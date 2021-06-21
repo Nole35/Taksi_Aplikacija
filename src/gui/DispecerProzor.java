@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,6 +12,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.formaZaDodjeluIPrihvatanjeVoznje.DodjelaVoznje;
+import gui.formeZaPrikaz.VozaciProzor;
+import gui.formeZaPrikaz.VozilaProzor;
+import gui.formeZaPrikaz.VoznjeAProzor;
+import gui.formeZaPrikaz.VoznjeTProzor;
+import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 
@@ -56,6 +61,15 @@ public class DispecerProzor extends JFrame {
 		mainMenu.add(VozaciMenu);
 		
 		JMenuItem vozaciItem = new JMenuItem("Svi vozaci");
+		vozaciItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VozaciProzor vop = new VozaciProzor(taksiSluzba, taksiSluzbai);
+				vop.setVisible(true);
+				dispose();
+			}
+		});
+		
+		
 		vozaciItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VozaciMenu.add(vozaciItem);
 		
@@ -64,6 +78,14 @@ public class DispecerProzor extends JFrame {
 		mainMenu.add(AutomobiliMenu);
 		
 		JMenuItem automobiliItem = new JMenuItem("Svi automobili");
+		automobiliItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VozilaProzor vpr = new VozilaProzor(taksiSluzba, taksiSluzbai);
+				vpr.setVisible(true);
+				dispose();
+			}
+		});
+		
 		automobiliItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		AutomobiliMenu.add(automobiliItem);
 		
@@ -71,15 +93,43 @@ public class DispecerProzor extends JFrame {
 		VoznjeMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		mainMenu.add(VoznjeMenu);
 		
-		JMenuItem voznjeItem = new JMenuItem("Sve Voznje");
+		JMenuItem voznjeItem = new JMenuItem("Voznje aplikacijom");
+		voznjeItem.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			VoznjeAProzor vapr = new VoznjeAProzor(taksiSluzba, taksiSluzbai);
+			vapr.setVisible(true);
+			dispose();
+		}
+	});
+		
 		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(voznjeItem);
+		
+		JMenuItem voznjetItem = new JMenuItem("Voznje telefonom");
+		voznjetItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VoznjeTProzor vtpr = new VoznjeTProzor(taksiSluzba, taksiSluzbai);
+				vtpr.setVisible(true);
+				dispose();
+			}
+		});
+		
+		voznjetItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		VoznjeMenu.add(voznjetItem);
 		
 		JMenu DodelaMenu = new JMenu("Dodeljivanje voznji");
 		DodelaMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		mainMenu.add(DodelaMenu);
 		
 		JMenuItem kreiranjeItem = new JMenuItem("Kreirane telefonom");
+		kreiranjeItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DodjelaVoznje dvo = new DodjelaVoznje(taksiSluzba, taksiSluzbai);
+				dvo.setVisible(true);
+				dispose();
+			}
+		});
+		
 		kreiranjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		DodelaMenu.add(kreiranjeItem);
 		
