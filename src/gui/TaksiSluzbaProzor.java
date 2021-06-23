@@ -121,8 +121,7 @@ public class TaksiSluzbaProzor extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DispecerProzor dp = new DispecerProzor(taksiSluzba, taksiSluzbai);
-				dp.setVisible(true);
+				
 				dispose();
 			}
 		});

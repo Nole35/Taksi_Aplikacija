@@ -74,6 +74,7 @@ public class PrijavaMusterija extends JFrame {
 				MusterijaProzor mp = new MusterijaProzor(taksiSluzba,taksiSluzbai);
 				mp.setVisible(true);
 				dispose();
+				break;
 			}
 		}
 				if(!postojiMusterija) {
@@ -88,9 +89,9 @@ public class PrijavaMusterija extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Prijava p = new Prijava(taksiSluzba,taksiSluzbai);
-				p.setVisible(true);
+			
 				dispose();
+				
 			}
 		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 18));

@@ -3,6 +3,7 @@ package gui;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -24,11 +25,12 @@ import taksiSluzba.TaksiSluzbai;
 public class DispecerProzor extends JFrame {
 
 	private JPanel contentPane;
+	
 
 	
 	
 	 
-	public DispecerProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public DispecerProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Dispecer:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -40,6 +42,7 @@ public class DispecerProzor extends JFrame {
 		JMenuBar mainMenu = new JMenuBar();
 		mainMenu.setBounds(0, 0, 696, 47);
 		contentPane.add(mainMenu);
+
 		
 		JMenu TaksiSluzbaMenu = new JMenu("Taksi Sluzba");
 		TaksiSluzbaMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
@@ -50,7 +53,7 @@ public class DispecerProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor(taksiSluzba, taksiSluzbai);
 				tsp.setVisible(true);
-				dispose();
+				
 			}
 		});
 		prikazItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
@@ -65,7 +68,7 @@ public class DispecerProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VozaciProzor vop = new VozaciProzor(taksiSluzba, taksiSluzbai);
 				vop.setVisible(true);
-				dispose();
+				
 			}
 		});
 		
@@ -82,7 +85,7 @@ public class DispecerProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VozilaProzor vpr = new VozilaProzor(taksiSluzba, taksiSluzbai);
 				vpr.setVisible(true);
-				dispose();
+				
 			}
 		});
 		
@@ -98,7 +101,7 @@ public class DispecerProzor extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			VoznjeAProzor vapr = new VoznjeAProzor(taksiSluzba, taksiSluzbai);
 			vapr.setVisible(true);
-			dispose();
+			
 		}
 	});
 		
@@ -110,7 +113,7 @@ public class DispecerProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				VoznjeTProzor vtpr = new VoznjeTProzor(taksiSluzba, taksiSluzbai);
 				vtpr.setVisible(true);
-				dispose();
+				
 			}
 		});
 		
@@ -126,7 +129,7 @@ public class DispecerProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				DodjelaVoznje dvo = new DodjelaVoznje(taksiSluzba, taksiSluzbai);
 				dvo.setVisible(true);
-				dispose();
+				
 			}
 		});
 		
@@ -138,10 +141,13 @@ public class DispecerProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba, taksiSluzbai);
 				pd.setVisible(true);
-				dispose();
+				DispecerProzor.this.setVisible(false);
 			}
 		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		mainMenu.add(btnClose);
-	}
-}
+	
+	    
+}}
+
+

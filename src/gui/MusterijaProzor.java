@@ -58,7 +58,7 @@ public class MusterijaProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				PrijavaMusterija pm = new PrijavaMusterija(taksiSluzba,taksiSluzbai);
 				pm.setVisible(true);
-				dispose();
+				MusterijaProzor.this.setVisible(false);
 			}
 		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 14));

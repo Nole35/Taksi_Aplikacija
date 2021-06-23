@@ -62,8 +62,26 @@ public class TaksiSluzba {
         ucitajVoznje("voznje.txt");
         ucitajVoznjet("voznjet.txt");
         ucitajTaksisluzbu("taksisluzba.txt");
+        for (Vozaci vozaci:this.getVozaci()
+             ) {
+            for (Automobil automobil: this.getVozila()
+                 ) {
+                if (automobil.getIdVozaca()== vozaci.getId()) {
+                    vozaci.setAutomobili(automobil);
+                    System.out.println("automobil " + automobil.getIdVozaca() + " vozac" + vozaci.getId() );
+                }
+
+
+            }
+
+
+        }
+        
+        
+        
         
         }
+    
 
 
 
@@ -368,10 +386,11 @@ public class TaksiSluzba {
                 int vrstaAutomobila = Integer.parseInt(split[6]);
                 VrstaAutomobila vrstaAutomobila1 = VrstaAutomobila.values()[vrstaAutomobila];
                 boolean obrisan = Boolean.parseBoolean(split[7]);
+                int idVozaca = Integer.parseInt(split[8]);
 
 
 
-                Automobil automobil = new Automobil(id, model, proizvodjac, godinaProizvodnje, brojRegistarskeOznake, brojTaksiVozila, vrstaAutomobila1, obrisan);
+                Automobil automobil = new Automobil(id, model, proizvodjac, godinaProizvodnje, brojRegistarskeOznake, brojTaksiVozila, vrstaAutomobila1, obrisan,idVozaca);
                 vozila.add(automobil);
             }
             br.close();
@@ -386,7 +405,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (Automobil automobil : vozila) {
                 sadrzaj += automobil.getId() + "|" + automobil.getModel() + "|" + automobil.getProizvodjac() + "|"
-                        + automobil.getGodinaProizvodnje() + "|" + automobil.getBrojRegistarskeOznake() + "|" + automobil.getBrojTaksiVozila() + "|" + automobil.getVrstaAutomobila().ordinal() + "|" + automobil.isObrisan() +  "\n";
+                        + automobil.getGodinaProizvodnje() + "|" + automobil.getBrojRegistarskeOznake() + "|" + automobil.getBrojTaksiVozila() + "|" + automobil.getVrstaAutomobila().ordinal() + "|" + automobil.isObrisan() + "|"+ automobil.getIdVozaca() +   "\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -700,7 +719,7 @@ public class TaksiSluzba {
     public ArrayList<VoznjaAplikacija> sveNeobrisaneVoznjeA() {
   		ArrayList<VoznjaAplikacija> neobrisani = new ArrayList<VoznjaAplikacija>();
   		for (VoznjaAplikacija voznja : voznje) {
-  			if(!voznja.isObrisan()) {
+  			if(!voznja.isObrisan() && voznja.getStatus().equals(Status.ZAVRSENA)) {
   				neobrisani.add(voznja);
   			}
   		}
@@ -709,8 +728,26 @@ public class TaksiSluzba {
     public ArrayList<VoznjaTelefon> sveNeobrisaneVoznjeT() {
   		ArrayList<VoznjaTelefon> neobrisani = new ArrayList<VoznjaTelefon>();
   		for (VoznjaTelefon voznjat : voznjet) {
-  			if(!voznjat.isObrisan()) {
+  			if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.ZAVRSENA)) {
   				neobrisani.add(voznjat);
+  			}
+  		}
+  		return neobrisani;
+  	}
+    public ArrayList<VoznjaTelefon> sveNeobrisaneVoznjeDodTel() {
+  		ArrayList<VoznjaTelefon> neobrisani = new ArrayList<VoznjaTelefon>();
+  		for (VoznjaTelefon voznjat : voznjet) {
+  			if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.DODELJENA)) {
+  				neobrisani.add(voznjat);
+  			}
+  		}
+  		return neobrisani;
+  	}
+    public ArrayList<VoznjaAplikacija> sveNeobrisaneVoznjeNaCekApl() {
+  		ArrayList<VoznjaAplikacija> neobrisani = new ArrayList<VoznjaAplikacija>();
+  		for (VoznjaAplikacija voznja : voznje) {
+  			if(!voznja.isObrisan() && voznja.getStatus().equals(Status.KREIRANA_NA_CEKANJU)) {
+  				neobrisani.add(voznja);
   			}
   		}
   		return neobrisani;

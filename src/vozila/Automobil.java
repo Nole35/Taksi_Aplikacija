@@ -9,7 +9,17 @@ public class Automobil{
         private String brojRegistarskeOznake;
         private long brojTaksiVozila;
         private VrstaAutomobila vrstaAutomobila;
-        private boolean obrisan;
+
+    public int getIdVozaca() {
+        return idVozaca;
+    }
+
+    public void setIdVozaca(int idVozaca) {
+        this.idVozaca = idVozaca;
+    }
+
+    private boolean obrisan;
+        private int idVozaca;
 
         public Automobil() {
             this.id = 0;
@@ -20,8 +30,9 @@ public class Automobil{
             this.brojTaksiVozila = 0;
             this.vrstaAutomobila = VrstaAutomobila.PutnickiAutomobil;
             this.obrisan = false;
+            this.idVozaca = 0;
         }
-        public Automobil(long id, String model, String proizvodjac, long godinaProizvodnje, String brojRegistarskeOznake, long brojTaksiVozila, VrstaAutomobila vrstaAutomobila, boolean obrisan) {
+        public Automobil(long id, String model, String proizvodjac, long godinaProizvodnje, String brojRegistarskeOznake, long brojTaksiVozila, VrstaAutomobila vrstaAutomobila, boolean obrisan, int idVozaca) {
             this.id = id;
             this.model = model;
             this.proizvodjac = proizvodjac;
@@ -30,6 +41,7 @@ public class Automobil{
             this.brojTaksiVozila = brojTaksiVozila;
             this.vrstaAutomobila = vrstaAutomobila;
             this.obrisan = obrisan;
+            this.idVozaca = idVozaca;
         }
 
         public long getId() {
@@ -107,6 +119,7 @@ public class Automobil{
                     ", broj_taksi_vozila=" + brojTaksiVozila +
                     ", vrstaAutomobila=" + vrstaAutomobila +
                     ", obrisan=" + obrisan +
+                    ", idVozaca =" + idVozaca +
                     '}';
         }
     }

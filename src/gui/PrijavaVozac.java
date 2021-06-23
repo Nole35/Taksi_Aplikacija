@@ -79,6 +79,7 @@ public class PrijavaVozac extends JFrame {
 				VozacProzor vp = new VozacProzor(taksiSluzba,taksiSluzbai);
 				vp.setVisible(true);
 				dispose();
+				break;
 			}
 				}
 				if(!postojiVozac) {
@@ -93,8 +94,7 @@ public class PrijavaVozac extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Prijava p = new Prijava(taksiSluzba,taksiSluzbai);
-				p.setVisible(true);
+				
 				dispose();
 			}
 		});

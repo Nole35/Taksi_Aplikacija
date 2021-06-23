@@ -74,9 +74,11 @@ public class PrijavaDispecer extends JFrame {
 					if(passwordField.getText().equals(dispecer.getLozinka()) && textField.getText().equals(dispecer.getKorisnickoIme())) {
 						System.out.println("DISPECER: " + dispecer.getIme());
 						 postojiDispecer = true;
-						DispecerProzor dp = new DispecerProzor(taksiSluzba, taksiSluzbai);
+						DispecerProzor dp = new DispecerProzor(taksiSluzba, taksiSluzbai,dispecer);
 						dp.setVisible(true);
+						
 						dispose();
+						break;
 					} 
 				}
 				if(!postojiDispecer) {
@@ -93,8 +95,8 @@ public class PrijavaDispecer extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Prijava p = new Prijava(taksiSluzba,taksiSluzbai);
-				p.setVisible(true);
+				
+				
 				dispose();
 				
 			}

@@ -57,7 +57,7 @@ public class VozacProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				PrijavaVozac pv = new PrijavaVozac(taksiSluzba,taksiSluzbai);
 				pv.setVisible(true);
-				dispose();
+				VozacProzor.this.setVisible(false);
 				
 			}
 		});

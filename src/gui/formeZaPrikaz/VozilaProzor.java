@@ -35,6 +35,7 @@ public class VozilaProzor extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private DefaultTableModel tableModel;
 
 	public VozilaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
 		setTitle("Vozila");
@@ -48,7 +49,7 @@ public class VozilaProzor extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 33, 766, 234);
 		contentPane.add(scrollPane);
-		String[] kolone = new String[] {"ID", "Model", "Proizvodjac", "Godina proizvodnje", "Broj registracije", "Broj taksi vozila", "Vrsta automobila"};
+		String[] kolone = new String[] {"ID", "Model", "Proizvodjac", "Godina proizvodnje", "Broj registracije", "Broj taksi vozila", "Vrsta automobila","Id vozaca"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sviNeobrisaniAutomobili().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sviNeobrisaniAutomobili().size(); i++) {
 			Automobil auto = taksiSluzba.sviNeobrisaniAutomobili().get(i);
@@ -59,18 +60,23 @@ public class VozilaProzor extends JFrame {
 			sadrzaj[i][4] = auto.getBrojRegistarskeOznake();
 			sadrzaj[i][5] = auto.getBrojTaksiVozila();
 			sadrzaj[i][6] = auto.getVrstaAutomobila();
+			sadrzaj[i][7] = auto.getIdVozaca();
+			
 			
 		}
+		tableModel = new DefaultTableModel(
+				sadrzaj,kolone );
 		
 		
-		table = new JTable();
+		table = new JTable(tableModel);
 		table.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		table.setBackground(Color.LIGHT_GRAY);
 		scrollPane.setViewportView(table);
 	
 		
-		table.setModel(new DefaultTableModel(
-				sadrzaj,kolone ));
+		tableModel = new DefaultTableModel(
+				sadrzaj,kolone );
+		
 		table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -101,7 +107,7 @@ public class VozilaProzor extends JFrame {
 				if(row == -1) {
 					JOptionPane.showMessageDialog(null, "Izaberite red", "Greska", JOptionPane.WARNING_MESSAGE);}
 				else {
-					String brojRegistarskeOznake = table.getValueAt(row, 5).toString();
+					String brojRegistarskeOznake = table.getValueAt(row, 4).toString();
 					Automobil auto = taksiSluzba.nadjiAutomobil(brojRegistarskeOznake);
 					
 					int izbor = JOptionPane.showConfirmDialog(null, 
@@ -109,7 +115,7 @@ public class VozilaProzor extends JFrame {
 							brojRegistarskeOznake + " - Potvrda brisanja", JOptionPane.YES_NO_OPTION);
 					if(izbor == JOptionPane.YES_OPTION) {
 						auto.setObrisan(true);
-						table.remove(row);
+						tableModel.removeRow(row);
 						taksiSluzba.snimiVozila(Main.VOZILA_FAJL);
 					}
 				}
@@ -134,8 +140,8 @@ public class VozilaProzor extends JFrame {
 		JButton btnNewButton_3 = new JButton("Close");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DispecerProzor dp = new DispecerProzor(taksiSluzba, taksiSluzbai);
-				dp.setVisible(true);
+				
+				
 				dispose();
 			}
 		});
