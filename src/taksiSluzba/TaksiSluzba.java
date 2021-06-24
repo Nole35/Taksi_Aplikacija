@@ -162,6 +162,7 @@ public class TaksiSluzba {
         }
         return null;
     }
+    
 
     public Vozaci loginVozaca(String korisnickoIme, String lozinka) {
         for (Vozaci vozaci : vozaci) {
@@ -222,6 +223,24 @@ public class TaksiSluzba {
             this.voznjet.remove(voznjat);
             
     }
+        public VoznjaTelefon nadjiVoznjut(String adresaDestinacije) {
+            for (VoznjaTelefon voznjat : voznjet) {
+                if (voznjat.getAdresaDestinacije().equals(adresaDestinacije)) {
+                    return voznjat;
+                }
+            }
+            return null;
+        }
+        
+        public VoznjaAplikacija nadjiVoznjua(String adresaDestinacije) {
+            for (VoznjaAplikacija voznja : voznje) {
+                if (voznja.getAdresaDestinacije().equals(adresaDestinacije)) {
+                    return voznja;
+                }
+            }
+            return null;
+        }
+
        
 
   
@@ -447,9 +466,11 @@ public class TaksiSluzba {
                 Status status = Status.values()[statusInt];
                 boolean obrisan = Boolean.parseBoolean(split[9]);
                 TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
+                String napomena = split[11];
+                int cijena = Integer.parseInt(split[12]);
 
 
-                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan, tipPorucivanja) {
+                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena, tipPorucivanja,napomena) {
                 };
                 voznje.add(voznja);
             }
@@ -465,7 +486,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (VoznjaAplikacija voznja : voznje) {
                 sadrzaj += voznja.getId() + "|" + voznja.getDatumIVremePoruzbine() + "|" + voznja.getAdresaPolaska() + "|" + voznja.getAdresaDestinacije() + "|"
-                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "|" + voznja.isObrisan() + "|" + voznja.getTipPorucivanja()+"\n";
+                        + voznja.getMusterijaId() + "|" + voznja.getVozacId() + "|"  + voznja.getBrojPredjenihKilometara() + "|" + voznja.getTrajanjeVoznje() + "|" + voznja.getStatus().ordinal() + "|" + voznja.isObrisan() + "|" + voznja.getTipPorucivanja() +  "|" + voznja.getNapomena() + "|" + voznja.getCijena() + "\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -494,9 +515,10 @@ public class TaksiSluzba {
                 Status status = Status.values()[statusInt];
                 boolean obrisan = Boolean.parseBoolean(split[9]);
                 TipPorucivanja tipPorucivanja = TipPorucivanja.TELEFONOM;
+                int cijena = Integer.parseInt(split[11]);
 
 
-                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan, tipPorucivanja) {
+                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena, tipPorucivanja) {
                 };
                 voznjet.add(voznjat);
             }
@@ -512,7 +534,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (VoznjaTelefon voznjat : voznjet) {
                 sadrzaj += voznjat.getId() + "|" + voznjat.getDatumIVremePoruzbine() + "|" + voznjat.getAdresaPolaska() + "|" + voznjat.getAdresaDestinacije() + "|"
-                        + voznjat.getMusterijaId() + "|" + voznjat.getVozacId() + "|"  + voznjat.getBrojPredjenihKilometara() + "|" + voznjat.getTrajanjeVoznje() + "|" + voznjat.getStatus().ordinal() + "|" + voznjat.isObrisan() + "|" + voznjat.getTipPorucivanja()+"\n";
+                        + voznjat.getMusterijaId() + "|" + voznjat.getVozacId() + "|"  + voznjat.getBrojPredjenihKilometara() + "|" + voznjat.getTrajanjeVoznje() + "|" + voznjat.getStatus().ordinal() + "|" + voznjat.isObrisan() + "|" + voznjat.getTipPorucivanja()+"|" + voznjat.getCijena() +"\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);

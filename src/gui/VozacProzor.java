@@ -13,6 +13,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznje;
+import gui.formeZaPrikaz.VoznjeANaCekanju;
+import gui.formeZaPrikaz.VoznjeTDodijeljene;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 
@@ -44,11 +47,25 @@ public class VozacProzor extends JFrame {
 		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(voznjeItem);
 		
-		JMenuItem zakazanetelItem = new JMenuItem("Voznje telefonom zakazane");
+		JMenuItem zakazanetelItem = new JMenuItem("Voznje zavrsene");
+		zakazanetelItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ZavrsavanjeVoznje zv = new ZavrsavanjeVoznje(taksiSluzba, taksiSluzbai,id);
+				zv.setVisible(true);
+				
+			}
+		});
 		zakazanetelItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(zakazanetelItem);
 		
 		JMenuItem dodeljeneItem = new JMenuItem("Dodeljene voznje");
+		dodeljeneItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VoznjeTDodijeljene vtd = new VoznjeTDodijeljene(taksiSluzba, taksiSluzbai);
+				vtd.setVisible(true);
+				
+			}
+		});
 		dodeljeneItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(dodeljeneItem);
 		

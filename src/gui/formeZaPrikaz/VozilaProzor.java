@@ -46,13 +46,7 @@ public class VozilaProzor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		System.out.println("Autombili prije tabele");
-		for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
-			 ) {
-			System.out.println(automobil);
-
-		}
-		 System.out.println("automobili 1");
+		
 		
 		
 		String[] kolone = new String[] {"ID", "Model", "Proizvodjac", "Godina proizvodnje", "Broj registracije", "Broj taksi vozila", "Vrsta automobila","Id vozaca"};
@@ -70,13 +64,7 @@ public class VozilaProzor extends JFrame {
 			
 			
 		}
-		 System.out.println("Autombili posle tabele");
-		for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
-			 ) {
-			System.out.println(automobil);
-
-		}
-		 System.out.println("automobili 2");
+		
 		tableModel = new DefaultTableModel(
 				sadrzaj,kolone );
 		

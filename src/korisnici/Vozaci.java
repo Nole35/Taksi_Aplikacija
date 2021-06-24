@@ -11,7 +11,7 @@ public class Vozaci extends Osoba {
     private double plata;
     private int brojClanskeKarte;
     private ArrayList<Voznja> voznje;
-    private Automobil automobil = null;
+    private Automobil automobil ;
 
     public Vozaci() {
         this.plata = 0;
@@ -64,9 +64,7 @@ public class Vozaci extends Osoba {
         String s = "Vozaci " + super.toString() +
                 "\nPlata: " + this.plata +
                 "\nBroj clanske karte: " + this.brojClanskeKarte;
-        for (Voznja voznje : voznje) {
-            s += "\n" + voznje;
-        }
+      
         return s;
     }
 }

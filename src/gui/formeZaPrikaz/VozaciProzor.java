@@ -76,8 +76,7 @@ public class VozaciProzor extends JFrame {
 		scrollPane.setViewportView(table);
 	
 		
-		tableModel = new DefaultTableModel(
-				sadrzaj,kolone );
+		
 		table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -113,7 +112,7 @@ public class VozaciProzor extends JFrame {
 					if(izbor == JOptionPane.YES_OPTION) {
 						vozaci.setObrisan(true);
 						tableModel.removeRow(red);
-						taksiSluzba.snimiVozace(Main.VOZACI_FAJL);
+						taksiSluzba.snimiVozace("vozaci.txt");
 					}
 				}
 			}
@@ -127,11 +126,23 @@ public class VozaciProzor extends JFrame {
 		JButton btnNewButton_2 = new JButton("Izmjeni vozaca");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IzmjenaVozaca iv = new IzmjenaVozaca(taksiSluzba, taksiSluzbai);
+				int red = table.getSelectedRow();
+				if(red == -1) {
+					JOptionPane.showMessageDialog(null, "Izaberite red ", "Greska", JOptionPane.WARNING_MESSAGE);
+				}else {
+					String korisnickoIme = table.getValueAt(red, 1).toString();
+					Vozaci vozaci = taksiSluzba.nadjiVozaca(korisnickoIme);
+					if(vozaci == null) {
+						JOptionPane.showMessageDialog(null, "Greska nema korisnika sa tim imenom", "Greska", JOptionPane.WARNING_MESSAGE);
+					}else {
+				IzmjenaVozaca iv = new IzmjenaVozaca(taksiSluzba, taksiSluzbai,vozaci);
 				iv.setVisible(true);
 				dispose();
+					
 			}
-		});
+		}
+				}
+			});
 		btnNewButton_2.setFont(new Font("SansSerif", Font.BOLD, 12));
 		btnNewButton_2.setBounds(515, 303, 115, 50);
 		contentPane.add(btnNewButton_2);

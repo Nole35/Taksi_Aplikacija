@@ -9,13 +9,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import enumi.Pol;
+import enumi.VrstaAutomobila;
 import gui.formeZaPrikaz.VozaciProzor;
+import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
+import vozila.Automobil;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -23,19 +31,28 @@ import java.awt.event.ActionEvent;
 public class IzmjenaVozaca extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
+	
+	private JTextField textField_1 = new JTextField(20);
+	private JTextField textField_2 = new JTextField(20);
+	private JTextField textField_3 = new JTextField(20);
+	private JTextField textField_4 = new JTextField(20);
+	private JTextField textField_5 = new JTextField(20);
+	private JTextField textField_6 = new JTextField(20);
+	private JTextField textField_7 = new JTextField(20);
+	private JTextField textField_8 = new JTextField(20);
+	private JTextField textField_9 = new JTextField(20);
+	private JComboBox<Pol> comboBox = new JComboBox<Pol>(Pol.values());
+	private TaksiSluzba taksiSluzba;
+	private TaksiSluzbai taksiSluzbai;
+	private Vozaci vozaci;
+	
 
 	
-	public IzmjenaVozaca(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public IzmjenaVozaca(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Vozaci vozaci) {
+		this.vozaci = vozaci;
+		this.taksiSluzba = taksiSluzba;
+		this.taksiSluzbai= taksiSluzbai;
+
 		setTitle("Izmjena vozaca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
@@ -44,10 +61,8 @@ public class IzmjenaVozaca extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("ID:");
-		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		lblNewLabel.setBounds(10, 10, 160, 35);
-		contentPane.add(lblNewLabel);
+		
+		
 		
 		JLabel lblKorisnickoIme = new JLabel("Korisnicko ime:");
 		lblKorisnickoIme.setFont(new Font("SansSerif", Font.PLAIN, 16));
@@ -79,43 +94,81 @@ public class IzmjenaVozaca extends JFrame {
 		lblPol.setBounds(200, 341, 160, 35);
 		contentPane.add(lblPol);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(145, 10, 230, 35);
-		contentPane.add(textField);
+		
 		
 		textField_1 = new JTextField();
 		textField_1.setColumns(10);
 		textField_1.setBounds(145, 77, 230, 35);
+		textField_1.setText(vozaci.getKorisnickoIme());
 		contentPane.add(textField_1);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
 		textField_2.setBounds(145, 145, 230, 35);
+		textField_2.setText(vozaci.getLozinka());
 		contentPane.add(textField_2);
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
 		textField_3.setBounds(145, 213, 230, 35);
+		textField_3.setText(vozaci.getIme());
 		contentPane.add(textField_3);
 		
 		textField_4 = new JTextField();
 		textField_4.setColumns(10);
 		textField_4.setBounds(145, 281, 230, 35);
+		textField_4.setText(vozaci.getPrezime());
 		contentPane.add(textField_4);
 		
 		textField_5 = new JTextField();
 		textField_5.setColumns(10);
 		textField_5.setBounds(546, 10, 230, 35);
+		textField_5.setText(vozaci.getJmbg());
 		contentPane.add(textField_5);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(Pol.values()));
 		comboBox.setMaximumRowCount(2);
 		comboBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		comboBox.setBounds(387, 341, 230, 35);
 		contentPane.add(comboBox);
 		
 		JButton btnIzmjeniVozaca = new JButton("Potvrdi izmjene");
+		btnIzmjeniVozaca.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(validacija()) {
+					String korisnickoIme = textField_1.getText();
+					String lozinka = textField_2.getText();
+					String ime = textField_3.getText();
+					String prezime = textField_4.getText();
+					String jmbg = textField_5.getText();
+					Pol pol = (Pol) comboBox.getSelectedItem();
+					String brojTelefona = textField_6.getText();
+					double plata = Double.parseDouble(textField_7.getText());
+					int brojClanskeKarte = Integer.parseInt(textField_8.getText());
+					String adresa = textField_9.getText();
+					if(vozaci != null) {
+						vozaci.setKorisnicko_ime(korisnickoIme);
+						vozaci.setLozinka(lozinka);
+						vozaci.setIme(ime);
+						vozaci.setPrezime(prezime);
+						vozaci.setJmbg(jmbg);
+						vozaci.setPol(pol);
+						vozaci.setBrojTelefona(brojTelefona);
+						vozaci.setPlata(plata);
+						vozaci.setBrojClanskeKarte(brojClanskeKarte);
+						vozaci.setAdresa(adresa);
+						
+					
+					
+				}
+				taksiSluzba.snimiVozace("vozaci.txt");
+				}
+				
+			}
+	}
+);
+			
 		btnIzmjeniVozaca.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		btnIzmjeniVozaca.setBounds(161, 402, 150, 35);
 		contentPane.add(btnIzmjeniVozaca);
@@ -123,8 +176,7 @@ public class IzmjenaVozaca extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VozaciProzor vop = new VozaciProzor(taksiSluzba, taksiSluzbai);
-				vop.setVisible(true);
+				
 				dispose();
 			}
 		});
@@ -140,6 +192,7 @@ public class IzmjenaVozaca extends JFrame {
 		textField_6 = new JTextField();
 		textField_6.setColumns(10);
 		textField_6.setBounds(546, 148, 230, 35);
+		textField_6.setText(vozaci.getBrojTelefona());
 		contentPane.add(textField_6);
 		
 		JLabel lblPlata = new JLabel("Plata:");
@@ -150,6 +203,7 @@ public class IzmjenaVozaca extends JFrame {
 		textField_7 = new JTextField();
 		textField_7.setColumns(10);
 		textField_7.setBounds(546, 221, 230, 35);
+		textField_7.setText(String.valueOf(vozaci.getPlata()));
 		contentPane.add(textField_7);
 		
 		JLabel lblBrojClanskeKarte = new JLabel("Broj clanske karte:");
@@ -160,6 +214,7 @@ public class IzmjenaVozaca extends JFrame {
 		textField_8 = new JTextField();
 		textField_8.setColumns(10);
 		textField_8.setBounds(546, 281, 230, 35);
+		textField_8.setText(String.valueOf(vozaci.getBrojClanskeKarte()));
 		contentPane.add(textField_8);
 		
 		JLabel lblAdresa = new JLabel("Adresa:");
@@ -170,7 +225,66 @@ public class IzmjenaVozaca extends JFrame {
 		textField_9 = new JTextField();
 		textField_9.setColumns(10);
 		textField_9.setBounds(546, 78, 230, 35);
+		textField_9.setText(vozaci.getAdresa());
 		contentPane.add(textField_9);
 	}
+	private boolean validacija() {
+		boolean ok = true;
+		String poruka = "Molimo popravite sledece greske u unosu:\n";
+		
+		if(textField_1.getText().trim().equals("")) {
+			poruka += "- Unesite korisnicko ime\n";
+			ok = false;
+		}
+		if(textField_2.getText().trim().equals("")) {
+			poruka += "- Unesite lozinku\n";
+			ok = false;
+		}
+		if(textField_3.getText().trim().equals("")) {
+			poruka += "- Unesite ime\n";
+			ok = false;
+		}
+		if(textField_4.getText().trim().equals("")) {
+			poruka += "- Unesite  prezime\n";
+			ok = false;
+		}
+		if(textField_5.getText().trim().equals("")) {
+			poruka += "- Unesite  jmbg\n";
+			ok = false;
+		}
+		if(textField_6.getText().trim().equals("")) {
+			poruka += "- Unesite  broj telefona\n";
+			ok = false;
+		}
+		if(textField_7.getText().trim().equals("")) {
+			poruka += "- Unesite  plata\n";
+			ok = false;
+		}
+		if(textField_8.getText().trim().equals("")) {
+			poruka += "- Unesite  broj clanske karte\n";
+			ok = false;
+		}
+		if(textField_9.getText().trim().equals("")) {
+			poruka += "- Unesite  adresu\n";
+			ok = false;
+		}
+		
+		
+		else if(vozaci == null){
+			String korisnickoIme = textField_1.getText().trim();
+			Vozaci nadji = taksiSluzba.nadjiVozaca(korisnickoIme);
+			if(nadji != null) {
+				poruka += "- Vozac sa tim imenom vec postoji\n";
+				ok = false;
+			}
+		}
+			if(ok == false) {
+				JOptionPane.showMessageDialog(null, poruka, "Neispravni podaci", JOptionPane.WARNING_MESSAGE);
+			}
+			
+			return ok;
+	}
+	
+	
 
 }

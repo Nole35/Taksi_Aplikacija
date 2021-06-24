@@ -13,6 +13,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.formeZaNarucivanje.NarucivanjeAplikacija;
+import gui.formeZaNarucivanje.NarucivanjeTelefon;
+import korisnici.Musterija;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 
@@ -24,7 +27,7 @@ public class MusterijaProzor extends JFrame {
 	
 
 	
-	public MusterijaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public MusterijaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Musterija musterija) {
 		setTitle("Musterija:");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
@@ -42,10 +45,20 @@ public class MusterijaProzor extends JFrame {
 		mainMenu.add(VoznjeMenu);
 		
 		JMenuItem narucivanjetItem = new JMenuItem("Narucivanje voznje putem telefona");
+		narucivanjetItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NarucivanjeTelefon nt = new NarucivanjeTelefon( taksiSluzba,  taksiSluzbai, musterija);
+				nt.setVisible(true);
+			}});
 		narucivanjetItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(narucivanjetItem);
 		
 		JMenuItem narucivanjeaItem = new JMenuItem("Narucivanje voznje putem aplikacije");
+		narucivanjeaItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				NarucivanjeAplikacija na = new NarucivanjeAplikacija( taksiSluzba,  taksiSluzbai, musterija);
+				na.setVisible(true);
+			}});
 		narucivanjeaItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(narucivanjeaItem);
 		

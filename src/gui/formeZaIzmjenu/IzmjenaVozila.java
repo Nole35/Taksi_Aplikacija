@@ -55,9 +55,7 @@ public class IzmjenaVozila extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		if(automobil != null && automobil.getModel()!=null) {
-			popuniPolja();
-		}
+		
 		
 		JLabel lblModell = new JLabel("Model:");
 		lblModell.setFont(new Font("SansSerif", Font.PLAIN, 16));
@@ -170,21 +168,7 @@ public class IzmjenaVozila extends JFrame {
 		
 	
 	}
-	private void popuniPolja() {
-		System.out.println("popunjavanje");
-		this.textField_1.setText(automobil.getModel());
-		textField_2.setText(automobil.getProizvodjac());
-		textField_3.setText(String.valueOf(automobil.getGodinaProizvodnje()));
-		textField_4.setText(automobil.getBrojRegistarskeOznake());
-		textField_5.setText(String.valueOf(automobil.getBrojTaksiVozila()));
-		comboBox.setSelectedItem(automobil.getVrstaAutomobila());
-		System.out.println("kraj popunjavanja");
-		System.out.println(automobil);
-
-		
-		
-		
-	}
+	
 	
 	private boolean validacija() {
 		boolean ok = true;
