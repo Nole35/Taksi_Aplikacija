@@ -71,7 +71,7 @@ public class PrijavaMusterija extends JFrame {
 					if(passwordField.getText().equals(musterija.getLozinka()) && textField.getText().equals(musterija.getKorisnickoIme())) {
 						System.out.println("MUSTERIJA: " + musterija.getIme());
 						 postojiMusterija = true;
-				MusterijaProzor mp = new MusterijaProzor(taksiSluzba,taksiSluzbai);
+				MusterijaProzor mp = new MusterijaProzor(taksiSluzba,taksiSluzbai,musterija);
 				mp.setVisible(true);
 				dispose();
 				break;

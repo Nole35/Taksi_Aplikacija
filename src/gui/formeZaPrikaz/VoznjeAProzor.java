@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -12,6 +13,7 @@ import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import vozila.Automobil;
 import voznje.VoznjaAplikacija;
+import voznje.VoznjaTelefon;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -45,7 +47,32 @@ public class VoznjeAProzor extends JFrame {
 		scrollPane.setBounds(10, 10, 866, 150);
 		contentPane.add(scrollPane);
 		
-		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja"};
+		JButton btnNewButton = new JButton("Obrisi voznju");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int row = table.getSelectedRow();
+				if(row == -1) {
+					JOptionPane.showMessageDialog(null, "Izaberite red", "Greska", JOptionPane.WARNING_MESSAGE);}
+				else {
+					String adresaDestinacije = table.getValueAt(row, 3).toString();
+					VoznjaAplikacija voznja = taksiSluzba.nadjiVoznjua(adresaDestinacije);
+					int izbor = JOptionPane.showConfirmDialog(null, 
+							"Da li ste sigurni da zelite da obrisete voznju?", 
+							 adresaDestinacije + " - Potvrda brisanja", JOptionPane.YES_NO_OPTION);
+					if(izbor == JOptionPane.YES_OPTION) {
+						voznja.setObrisan(true);
+						tableModel.removeRow(row);
+						taksiSluzba.snimiVoznje("voznje.txt");
+					}
+				}
+			}
+			
+		});
+		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		btnNewButton.setBounds(154, 238, 143, 49);
+		contentPane.add(btnNewButton);
+		
+		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja","Napomena","Cijena"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeA().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeA().size(); i++) {
 			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeA().get(i);
@@ -59,6 +86,11 @@ public class VoznjeAProzor extends JFrame {
 			sadrzaj[i][7] = voznja.getTrajanjeVoznje();
 			sadrzaj[i][8] = voznja.getStatus();
 			sadrzaj[i][9] = voznja.getTipPorucivanja();
+			sadrzaj[i][10] = voznja.getNapomena();
+			sadrzaj[i][11] = voznja.getCijena();
+			
+			
+			
 		
 		tableModel = new DefaultTableModel(
 				sadrzaj,kolone );

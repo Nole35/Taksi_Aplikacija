@@ -20,8 +20,9 @@ public abstract class Voznja {
     protected int trajanjeVoznje;
     protected Status status;
     protected boolean obrisan;
+    protected int cijena;
 
-    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan){
+    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan,int cijena){
         this.id = 0;
         this.datumIVremePoruzbine = "";
         this.adresaPolaska = "";
@@ -32,6 +33,7 @@ public abstract class Voznja {
         this.trajanjeVoznje = 0;
         this.status = Status.KREIRANA;
         this.obrisan = false;
+        this.cijena = 0;
 
     }
 
@@ -47,7 +49,7 @@ public abstract class Voznja {
                   Vozaci vozac,
                   int brojPredjenihKilometara,
                   int trajanjeVoznje,
-                  Status status, boolean obrisan)
+                  Status status, boolean obrisan,int cijena)
     {
         this.id = id;
         this.datumIVremePoruzbine = datumIVremePoruzbine;
@@ -61,9 +63,16 @@ public abstract class Voznja {
         this.trajanjeVoznje = trajanjeVoznje;
         this.status = status;
         this.obrisan = obrisan;
+        this.cijena = cijena;
     }
 
-    public Voznja(long id,  String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan) {
+
+    public int getCijena() {
+        return cijena;
+    }
+
+    public void setCijena(int cijena) {
+        this.cijena = cijena;
     }
 
     public long getId() {
@@ -160,4 +169,7 @@ public abstract class Voznja {
     public void setObrisan(boolean obrisan) {
         this.obrisan = obrisan;
     }
+
 }
+
+

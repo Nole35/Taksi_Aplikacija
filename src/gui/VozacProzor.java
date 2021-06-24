@@ -13,6 +13,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeT;
 import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznje;
 import gui.formeZaPrikaz.VoznjeANaCekanju;
 import gui.formeZaPrikaz.VoznjeTDodijeljene;
@@ -47,11 +48,11 @@ public class VozacProzor extends JFrame {
 		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(voznjeItem);
 		
-		JMenuItem zakazanetelItem = new JMenuItem("Voznje zavrsene");
+		JMenuItem zakazanetelItem = new JMenuItem("Prihvatanje voznje telefonom");
 		zakazanetelItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ZavrsavanjeVoznje zv = new ZavrsavanjeVoznje(taksiSluzba, taksiSluzbai,id);
-				zv.setVisible(true);
+				PrihvatanjeIOdbijanjeVoznjeT piovt = new PrihvatanjeIOdbijanjeVoznjeT(taksiSluzba, taksiSluzbai);
+				piovt.setVisible(true);
 				
 			}
 		});
