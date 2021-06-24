@@ -17,10 +17,12 @@ import gui.formaZaDodjeluIPrihvatanjeVoznje.DodjelaVoznje;
 import gui.formeZaPrikaz.VozaciProzor;
 import gui.formeZaPrikaz.VozilaProzor;
 import gui.formeZaPrikaz.VoznjeAProzor;
+import gui.formeZaPrikaz.VoznjeTDodijeljene;
 import gui.formeZaPrikaz.VoznjeTProzor;
 import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
+import vozila.Automobil;
 
 public class DispecerProzor extends JFrame {
 
@@ -80,9 +82,18 @@ public class DispecerProzor extends JFrame {
 		AutomobiliMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		mainMenu.add(AutomobiliMenu);
 		
+		
 		JMenuItem automobiliItem = new JMenuItem("Svi automobili");
 		automobiliItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Autombili prije dispecera");
+				for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
+					 ) {
+					System.out.println(automobil);
+
+				}
+				 System.out.println("automobili 16");
+				
 				VozilaProzor vpr = new VozilaProzor(taksiSluzba, taksiSluzbai);
 				vpr.setVisible(true);
 				
@@ -127,9 +138,9 @@ public class DispecerProzor extends JFrame {
 		JMenuItem kreiranjeItem = new JMenuItem("Kreirane telefonom");
 		kreiranjeItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DodjelaVoznje dvo = new DodjelaVoznje(taksiSluzba, taksiSluzbai);
-				dvo.setVisible(true);
-				
+				 DodjelaVoznje dvoz = new  DodjelaVoznje(taksiSluzba, taksiSluzbai);
+				 dvoz.setVisible(true);
+			
 			}
 		});
 		

@@ -16,13 +16,7 @@ public class Main {
 
    
 
-        
-        public static String VOZACI_FAJL = "vozaci.txt";
-    	public static String MUSTERIJE_FAJL = "musterija.txt";
-    	public static String DISPECERI_FAJL = "dispeceri.txt";
-    	public static String VOZILA_FAJL = "automobil.txt";
-    	public static String VOZNJET_FAJL = "voznjet.txt";
-    	public static String VOZNJEA_FAJL = "voznje.txt";
+ 
     	
     	
     	
@@ -32,14 +26,20 @@ public class Main {
     	public static void main(String[] args) {
     		 TaksiSluzba taksiSluzba = new TaksiSluzba();
     	     TaksiSluzbai taksiSluzbai = new TaksiSluzbai();
+    	     System.out.println("Autombili");
+    	     for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
+    				 ) {
+    	    	
+    	    	 
+    				System.out.println(automobil);
+    				 
+    				
+
+    			}
+    	     System.out.println(" kraj Autombili");
     	     
     	
-    		taksiSluzba.ucitajVozace(VOZACI_FAJL);
-    		taksiSluzba.ucitajMusterije(MUSTERIJE_FAJL);
-    		taksiSluzba.ucitajDispecere(DISPECERI_FAJL);
-    		taksiSluzba.ucitajVozila(VOZILA_FAJL);
-			taksiSluzba.ucitajVoznje(VOZNJEA_FAJL);
-			taksiSluzba.ucitajVoznjet(VOZNJET_FAJL);
+    		
 
                 
      

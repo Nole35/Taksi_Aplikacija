@@ -38,9 +38,12 @@ public class DodajVozilo extends JFrame {
 	private TaksiSluzba taksiSluzba;
 	private TaksiSluzbai taksiSluzbai;
 	
-	Automobil automobil;
+	private Automobil automobil;
 
 	public DodajVozilo(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+		this.taksiSluzba = taksiSluzba;
+		this.taksiSluzbai = taksiSluzbai;
+		this.automobil = automobil;
 		setTitle("Dodavanje vozila");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 400);
@@ -106,7 +109,7 @@ public class DodajVozilo extends JFrame {
 		JButton btnNewButton = new JButton("Dodaj");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
+				
 					if(validacija()) {
 					String model = textField_1.getText();
 					String proizvodjac = textField_2.getText();
@@ -118,22 +121,20 @@ public class DodajVozilo extends JFrame {
 
 					for (Automobil automobil: taksiSluzba.getVozila()
 						 ) {
-						if (id<automobil.getId()){
-							id = automobil.getId() + 1;
+						if (id<= automobil.getId()){
+							id = (automobil.getId() + 1);
 						}
-						if (brojTaksiVozila<automobil.getBrojTaksiVozila()){
+						if (brojTaksiVozila<=automobil.getBrojTaksiVozila()){
 							brojTaksiVozila = automobil.getBrojTaksiVozila() + 1;
 						}
 
 					}
+					
 					Automobil automobil = new Automobil(id,model,proizvodjac,godinaProizvodnje,brojRegistarskeOznake,brojTaksiVozila,vrstaAutomobila,false,0);
 					taksiSluzba.getVozila().add(automobil);
 					taksiSluzba.snimiVozila("automobil.txt");
 				}
-				}
-				catch (Exception exception) {
-
-				}
+				
 				
 			}
 		});
@@ -157,11 +158,8 @@ public class DodajVozilo extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 VozilaProzor vpro = new  VozilaProzor( taksiSluzba,  taksiSluzbai);
-				 vpro.setVisible(true);
-				
-				DodajVozilo.this.setVisible(false);
-				DodajVozilo.this.dispose();
+				 
+				dispose();
 			}
 		
 			

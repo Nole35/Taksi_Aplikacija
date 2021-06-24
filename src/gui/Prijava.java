@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
+import vozila.Automobil;
 
 public class Prijava extends JFrame {
 
@@ -22,6 +23,13 @@ public class Prijava extends JFrame {
 
 	
 	public Prijava(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+		System.out.println("Autombili prijava dispecera1");
+		for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
+			 ) {
+			System.out.println(automobil);
+
+		}
+		 System.out.println("automobili 116");
 		setTitle("Prijava");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 751, 376);
@@ -39,6 +47,7 @@ public class Prijava extends JFrame {
 		JButton btnDLogin = new JButton("Dispecer Prijava");
 		btnDLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				
 				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba, taksiSluzbai);
 				pd.setVisible(true);

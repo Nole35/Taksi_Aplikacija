@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
+import vozila.Automobil;
 
 public class PrijavaDispecer extends JFrame {
 
@@ -74,6 +75,13 @@ public class PrijavaDispecer extends JFrame {
 					if(passwordField.getText().equals(dispecer.getLozinka()) && textField.getText().equals(dispecer.getKorisnickoIme())) {
 						System.out.println("DISPECER: " + dispecer.getIme());
 						 postojiDispecer = true;
+						 System.out.println("Autombili prijava dispecera1");
+							for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
+								 ) {
+								System.out.println(automobil);
+
+							}
+							 System.out.println("automobili 116");
 						DispecerProzor dp = new DispecerProzor(taksiSluzba, taksiSluzbai,dispecer);
 						dp.setVisible(true);
 						

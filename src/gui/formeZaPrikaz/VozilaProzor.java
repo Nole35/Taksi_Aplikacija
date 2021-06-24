@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -45,25 +46,37 @@ public class VozilaProzor extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		System.out.println("Autombili prije tabele");
+		for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
+			 ) {
+			System.out.println(automobil);
+
+		}
+		 System.out.println("automobili 1");
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 33, 766, 234);
-		contentPane.add(scrollPane);
+		
 		String[] kolone = new String[] {"ID", "Model", "Proizvodjac", "Godina proizvodnje", "Broj registracije", "Broj taksi vozila", "Vrsta automobila","Id vozaca"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sviNeobrisaniAutomobili().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sviNeobrisaniAutomobili().size(); i++) {
-			Automobil auto = taksiSluzba.sviNeobrisaniAutomobili().get(i);
-			sadrzaj[i][0] = auto.getId();
-			sadrzaj[i][1] = auto.getModel();
-			sadrzaj[i][2] = auto.getProizvodjac();
-			sadrzaj[i][3] = auto.getGodinaProizvodnje();
-			sadrzaj[i][4] = auto.getBrojRegistarskeOznake();
-			sadrzaj[i][5] = auto.getBrojTaksiVozila();
-			sadrzaj[i][6] = auto.getVrstaAutomobila();
-			sadrzaj[i][7] = auto.getIdVozaca();
+			Automobil automobil = taksiSluzba.sviNeobrisaniAutomobili().get(i);
+			sadrzaj[i][0] = automobil.getId();
+			sadrzaj[i][1] = automobil.getModel();
+			sadrzaj[i][2] = automobil.getProizvodjac();
+			sadrzaj[i][3] = automobil.getGodinaProizvodnje();
+			sadrzaj[i][4] = automobil.getBrojRegistarskeOznake();
+			sadrzaj[i][5] = automobil.getBrojTaksiVozila();
+			sadrzaj[i][6] = automobil.getVrstaAutomobila();
+			sadrzaj[i][7] = automobil.getIdVozaca();
 			
 			
 		}
+		 System.out.println("Autombili posle tabele");
+		for (Automobil automobil:taksiSluzba.sviNeobrisaniAutomobili()
+			 ) {
+			System.out.println(automobil);
+
+		}
+		 System.out.println("automobili 2");
 		tableModel = new DefaultTableModel(
 				sadrzaj,kolone );
 		
@@ -71,16 +84,17 @@ public class VozilaProzor extends JFrame {
 		table = new JTable(tableModel);
 		table.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		table.setBackground(Color.LIGHT_GRAY);
-		scrollPane.setViewportView(table);
+		
 	
-		
-		tableModel = new DefaultTableModel(
-				sadrzaj,kolone );
-		
 		table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setDefaultEditor(Object.class, null);
+		table.getTableHeader().setReorderingAllowed(false);
+		JScrollPane scrollPane = new JScrollPane(table);
+		scrollPane.setBounds(10, 33, 766, 234);
+		contentPane.add(scrollPane);
+	
 		
 	
 			
@@ -92,7 +106,7 @@ public class VozilaProzor extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				DodajVozilo dov = new DodajVozilo(taksiSluzba, taksiSluzbai);
 				dov.setVisible(true);
-				dispose();
+				
 				
 			}
 		});
@@ -108,16 +122,15 @@ public class VozilaProzor extends JFrame {
 					JOptionPane.showMessageDialog(null, "Izaberite red", "Greska", JOptionPane.WARNING_MESSAGE);}
 				else {
 					String brojRegistarskeOznake = table.getValueAt(row, 4).toString();
-					Automobil auto = taksiSluzba.nadjiAutomobil(brojRegistarskeOznake);
+					Automobil automobil = taksiSluzba.nadjiAutomobil(brojRegistarskeOznake);
 					
 					int izbor = JOptionPane.showConfirmDialog(null, 
 							"Da li ste sigurni da zelite da obrisete vozilo?", 
 							brojRegistarskeOznake + " - Potvrda brisanja", JOptionPane.YES_NO_OPTION);
 					if(izbor == JOptionPane.YES_OPTION) {
-						auto.setObrisan(true);
+						automobil.setObrisan(true);
 						tableModel.removeRow(row);
-						taksiSluzba.snimiVozila(Main.VOZILA_FAJL);
-						
+						taksiSluzba.snimiVozila("automobil.txt");
 					}
 				}
 			}
@@ -129,9 +142,22 @@ public class VozilaProzor extends JFrame {
 		JButton btnNewButton_2 = new JButton("Izmjeni vozilo");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IzmjenaVozila iv = new IzmjenaVozila(taksiSluzba, taksiSluzbai);
-				iv.setVisible(true);
-				dispose();
+				int row = table.getSelectedRow();
+				if(row == -1) {
+					JOptionPane.showMessageDialog(null, "Izaberite  red ", "Greska", JOptionPane.WARNING_MESSAGE);
+				}else {
+					String brojRegistarskeOznake = table.getValueAt(row, 4).toString();
+					Automobil automobil = taksiSluzba.nadjiAutomobil(brojRegistarskeOznake);
+					if(automobil == null) {
+						JOptionPane.showMessageDialog(null, "Greska nema automobila sa tom registracijom", "Greska", JOptionPane.WARNING_MESSAGE);
+					}else {
+						IzmjenaVozila iv = new IzmjenaVozila(taksiSluzba, taksiSluzbai,automobil);
+						iv.setVisible(true);
+						
+					}
+					
+				}
+	
 			}
 		});
 		btnNewButton_2.setFont(new Font("SansSerif", Font.BOLD, 12));
