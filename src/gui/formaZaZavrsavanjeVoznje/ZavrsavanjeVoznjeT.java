@@ -28,10 +28,9 @@ public class ZavrsavanjeVoznjeT extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
 
 
-	public ZavrsavanjeVoznjeT(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,long id) {
+	public ZavrsavanjeVoznjeT(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,int idVoznja) {
 		setTitle("Zavrsavanje voznje telefonom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 400);
@@ -60,7 +59,19 @@ public class ZavrsavanjeVoznjeT extends JFrame {
 		textField_1.setBounds(218, 98, 350, 35);
 		contentPane.add(textField_1);
 		
-		JButton btnZavrsi = new JButton("Zavrsi"); try {
+		JLabel lblCijena = new JLabel("Cijena:");
+		lblCijena.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblCijena.setBounds(24, 156, 160, 35);
+		contentPane.add(lblCijena);
+		
+		JLabel lblNewLabel = new JLabel("Cijena");
+		lblNewLabel.setFont(new Font("SansSerif", Font.BOLD, 20));
+		lblNewLabel.setBounds(218, 152, 350, 49);
+		contentPane.add(lblNewLabel);
+		
+		JButton btnZavrsi = new JButton("Zavrsi");
+		btnZavrsi.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {try {
             int brojPredjenihKilometara = Integer.parseInt(textField.getText());
             int trajanjeVoznje = Integer.parseInt(textField.getText());
 
@@ -68,25 +79,25 @@ public class ZavrsavanjeVoznjeT extends JFrame {
             
             for (VoznjaTelefon voznjat : taksiSluzba.getVoznjet()
                     ) {
-                        if (voznjat.getId() == id) {
+                        if (voznjat.getId() == idVoznja) {
                             voznjat.setStatus(Status.ZAVRSENA);
                             voznjat.setCijena(cijena);
                             voznjat.setTrajanjeVoznje( trajanjeVoznje);
                             voznjat.setBrojPredjenihKilometara(brojPredjenihKilometara);
                         }
             }
-            JOptionPane.showMessageDialog(new Frame(),
-                    "Cijena vožnje je: " + cijena + " RSD",
-                    null,
-                    JOptionPane.INFORMATION_MESSAGE);
+            lblNewLabel.setText(String.valueOf(cijena));
+            taksiSluzba.snimiVoznjet("voznjet.txt");
+          
 
-            setVisible(false);}
+			}
             catch (Exception exception){
-                JOptionPane.showMessageDialog(new Frame(),
-                        "Greška prilikom završavanje vožnje",
-                        "Greška",
+                JOptionPane.showMessageDialog(
+                        null,"Greska prilikom zavrsavanja voznje",
+                        "Greska",
                         JOptionPane.WARNING_MESSAGE);
-            }
+            }}}
+			);
 
         
 
@@ -97,19 +108,15 @@ public class ZavrsavanjeVoznjeT extends JFrame {
 		contentPane.add(btnZavrsi);
 		
 		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			
+			}
+		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		btnClose.setBounds(575, 10, 85, 35);
 		contentPane.add(btnClose);
 		
-		JLabel lblCijena = new JLabel("Cijena:");
-		lblCijena.setFont(new Font("SansSerif", Font.PLAIN, 16));
-		lblCijena.setBounds(24, 156, 160, 35);
-		contentPane.add(lblCijena);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(218, 156, 350, 35);
-		contentPane.add(textField_2);
-	
 
 }}

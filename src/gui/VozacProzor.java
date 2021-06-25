@@ -53,7 +53,7 @@ public class VozacProzor extends JFrame {
 		JMenuItem zakazanetelItem = new JMenuItem("Prihvatanje voznje telefonom");
 		zakazanetelItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PrihvatanjeIOdbijanjeVoznjeT piovt = new PrihvatanjeIOdbijanjeVoznjeT(taksiSluzba, taksiSluzbai);
+				PrihvatanjeIOdbijanjeVoznjeT piovt = new PrihvatanjeIOdbijanjeVoznjeT(taksiSluzba, taksiSluzbai,vozac);
 				piovt.setVisible(true);
 				
 			}

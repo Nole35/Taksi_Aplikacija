@@ -6,3 +6,4 @@
 156|2021-06-24|asdasd|sdasdsadasas|14|0|0|0|0|true|APLIKACIJOM|nema|1500
 157|2021-06-24|czxczxczxc|zczxczxczxc|14|0|0|0|1|true|APLIKACIJOM|testr|1500
 158|2021-06-24|asdasdasd|asdasdasda|14|0|0|0|1|true|APLIKACIJOM|dime|0
+159|2021-06-25|AAAA|ACACACA|14|0|0|0|1|false|APLIKACIJOM|ACACACACA|0
