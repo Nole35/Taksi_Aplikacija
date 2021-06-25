@@ -17,7 +17,7 @@ import gui.formaZaDodjeluVoznje.TabelaZaDodjelu;
 import gui.formeZaPrikaz.VozaciProzor;
 import gui.formeZaPrikaz.VozilaProzor;
 import gui.formeZaPrikaz.VoznjeAProzor;
-import gui.formeZaPrikaz.VoznjeTDodijeljene;
+
 import gui.formeZaPrikaz.VoznjeTProzor;
 import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;

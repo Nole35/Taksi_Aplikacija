@@ -163,6 +163,7 @@ public class DodajVozaca extends JFrame {
 							Vozaci vozac = new Vozaci (id,korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,false,plata,brojClanskeKarte);
 							taksiSluzba.getVozaci().add(vozac);
 							taksiSluzba.snimiVozace("vozaci.txt");
+							JOptionPane.showMessageDialog(null, "Uspjesno  ste dodali vozaca", "Uspjesno dodavanje  ", JOptionPane.INFORMATION_MESSAGE);
 					if (Long.parseLong(String.valueOf(comboBox_1.getSelectedItem())) != 0){
 						for (Automobil automobil: taksiSluzba.getVozila()
 						) {

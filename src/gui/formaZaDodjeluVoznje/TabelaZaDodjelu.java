@@ -41,7 +41,7 @@ public class TabelaZaDodjelu extends JFrame {
 
 
 	public TabelaZaDodjelu(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
-		setTitle("Prihvatanje voznje telefonom");
+		setTitle("Dodjela voznje telefonom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);
 		contentPane = new JPanel();
@@ -101,7 +101,7 @@ public class TabelaZaDodjelu extends JFrame {
 
 						}
 						taksiSluzba.snimiVoznjet("voznjet.txt");
-						JOptionPane.showMessageDialog(null, null, "Voznja je dodijeljena  ", JOptionPane.INFORMATION_MESSAGE);
+						JOptionPane.showMessageDialog(null, "Voznja je dodijeljena", "Dodjela uspjela  ", JOptionPane.INFORMATION_MESSAGE);
 						
 						
 						
@@ -111,7 +111,7 @@ public class TabelaZaDodjelu extends JFrame {
 					}
 				}
 						catch (Exception exception) {
-							JOptionPane.showMessageDialog(null, null, "Gresak pri dodjeli  ", JOptionPane.WARNING_MESSAGE);
+							JOptionPane.showMessageDialog(null, "Greska pri dodjeli", "Greska   ", JOptionPane.WARNING_MESSAGE);
 							
 						} 
 				}

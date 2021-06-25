@@ -18,6 +18,8 @@ import voznje.VoznjaAplikacija;
 import voznje.VoznjaTelefon;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -82,10 +84,17 @@ public class NarucivanjeTelefon extends JFrame {
              Date datumKreiranja = new Date();
              String strDate = formatter.format(datumKreiranja); 
              Status statusVoznje = Status.KREIRANA;
+             
+             if (adresaPolaska.equals("") || adresaDestinacije.equals("")) {
+                 System.out.println("Niste unijeli podatke");
+                 throw new Exception();}
+             
              int cijena = 0;
              VoznjaTelefon novaVoznja = new VoznjaTelefon(id,strDate,adresaPolaska,adresaDestinacije,musterija.getId(),musterija,0,null,0,0,statusVoznje,false,cijena, TipPorucivanja.TELEFONOM);
              taksiSluzba.getVoznjet().add(novaVoznja);
              taksiSluzba.snimiVoznjet("voznjet.txt");
+ 			JOptionPane.showMessageDialog(null, "Uspjesno narucena voznja", "Uspjesno narucivanje  ", JOptionPane.INFORMATION_MESSAGE);
+
 				}
 				catch (Exception exception) {
 				

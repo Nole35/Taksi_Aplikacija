@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -80,10 +81,15 @@ public NarucivanjeAplikacija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,
          Date datumKreiranja = new Date();
          String strDate = formatter.format(datumKreiranja); 
          Status statusVoznje = Status.KREIRANA_NA_CEKANJU;
+         if (adresaPolaska.equals("") || adresaDestinacije.equals("")) {
+             System.out.println("Niste unijeli podatke");
+             throw new Exception();}
          int cijena = 0;
          VoznjaAplikacija novaVoznja = new VoznjaAplikacija(id,strDate,adresaPolaska,adresaDestinacije,musterija.getId(),musterija,0,null,0,0,statusVoznje,false,cijena, TipPorucivanja.APLIKACIJOM,napomena);
          taksiSluzba.getVoznje().add(novaVoznja);
          taksiSluzba.snimiVoznje("voznje.txt");
+			JOptionPane.showMessageDialog(null, "Uspjesno narucena voznja", "Uspjesno narucivanje  ", JOptionPane.INFORMATION_MESSAGE);
+
 			}
 			catch (Exception exception) {
 			

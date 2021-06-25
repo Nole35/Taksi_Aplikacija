@@ -52,7 +52,7 @@ public class IzmjenaVozaca extends JFrame {
 		this.taksiSluzba = taksiSluzba;
 		this.taksiSluzbai= taksiSluzbai;
 
-		setTitle("Izmjena vozaca");
+		setTitle("Izmjena vozaca " + vozaci.getKorisnickoIme());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
@@ -162,6 +162,7 @@ public class IzmjenaVozaca extends JFrame {
 					
 				}
 				taksiSluzba.snimiVozace("vozaci.txt");
+				JOptionPane.showMessageDialog(null, "Vozac je izmjenjen", "Izmjena uspjela  ", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 			}

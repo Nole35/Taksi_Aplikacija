@@ -88,6 +88,9 @@ public class ZavrsavanjeVoznjeT extends JFrame {
             }
             lblNewLabel.setText(String.valueOf(cijena));
             taksiSluzba.snimiVoznjet("voznjet.txt");
+			JOptionPane.showMessageDialog(null, "Voznja je zavrsena ", " Zavrsena voznja  ", JOptionPane.INFORMATION_MESSAGE);
+
+            
           
 
 			}

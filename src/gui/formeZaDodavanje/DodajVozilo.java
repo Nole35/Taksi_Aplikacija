@@ -133,6 +133,8 @@ public class DodajVozilo extends JFrame {
 					Automobil automobil = new Automobil(id,model,proizvodjac,godinaProizvodnje,brojRegistarskeOznake,brojTaksiVozila,vrstaAutomobila,false,0);
 					taksiSluzba.getVozila().add(automobil);
 					taksiSluzba.snimiVozila("automobil.txt");
+					JOptionPane.showMessageDialog(null, "Uspjesno  ste dodali vozilo", "Uspjesno dodavanje  ", JOptionPane.INFORMATION_MESSAGE);
+
 				}
 				
 				

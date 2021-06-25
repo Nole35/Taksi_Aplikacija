@@ -121,6 +121,7 @@ public class VozaciProzor extends JFrame {
 						vozaci.setObrisan(true);
 						tableModel.removeRow(red);
 						taksiSluzba.snimiVozace("vozaci.txt");
+						JOptionPane.showMessageDialog(null, "Vozac izbrisan", "Brisanje  ", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}

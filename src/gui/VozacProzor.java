@@ -15,9 +15,11 @@ import javax.swing.border.EmptyBorder;
 
 import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeA;
 import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeT;
+import gui.IstorijaVoznji.IstorijaVozacaA;
+import gui.IstorijaVoznji.IstorijaVozacaT;
 import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznjeT;
-import gui.formeZaPrikaz.VoznjeANaCekanju;
-import gui.formeZaPrikaz.VoznjeTDodijeljene;
+
+
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
@@ -46,9 +48,29 @@ public class VozacProzor extends JFrame {
 		VoznjeMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
 		mainMenu.add(VoznjeMenu);
 		
-		JMenuItem voznjeItem = new JMenuItem("Istorija voznji");
+		JMenuItem voznjeItem = new JMenuItem("Istorija voznji telefonom");
+		voznjeItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IstorijaVozacaT ivt = new IstorijaVozacaT(taksiSluzba, taksiSluzbai,vozac);
+				ivt.setVisible(true);
+				
+			}
+		});
+		
 		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(voznjeItem);
+		
+		JMenuItem voznjeAItem = new JMenuItem("Istorija voznji aplikacijom");
+		voznjeAItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IstorijaVozacaA iva = new IstorijaVozacaA(taksiSluzba, taksiSluzbai,vozac);
+				iva.setVisible(true);
+				
+			}
+		});
+		
+		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		VoznjeMenu.add(voznjeAItem);
 		
 		JMenuItem zakazanetelItem = new JMenuItem("Prihvatanje voznje telefonom");
 		zakazanetelItem.addActionListener(new ActionListener() {

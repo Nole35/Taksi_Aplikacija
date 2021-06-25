@@ -146,6 +146,8 @@ public class IzmjenaVozila extends JFrame {
 						
 					}
 					taksiSluzba.snimiVozila("automobil.txt");
+					JOptionPane.showMessageDialog(null, "Vozilo je izmjenjeno", "Izmjena uspjela  ", JOptionPane.INFORMATION_MESSAGE);
+
 						
 					}
 			}

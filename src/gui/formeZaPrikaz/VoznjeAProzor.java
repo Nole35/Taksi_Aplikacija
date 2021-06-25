@@ -64,6 +64,7 @@ public class VoznjeAProzor extends JFrame {
 						voznja.setObrisan(true);
 						tableModel.removeRow(row);
 						taksiSluzba.snimiVoznje("voznje.txt");
+						JOptionPane.showMessageDialog(null, "Voznja je obrisana", "Brisanje  ", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}

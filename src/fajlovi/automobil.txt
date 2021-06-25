@@ -7,7 +7,7 @@
 36|asasdasdsa|dasdasd|424242|42424|916|0|true|9
 36|asasdasdsa|dasdasd|424242|424245464|916|0|true|9
 36|sdfsdfsd|sdfdsfsdf|65368724|876855|916|0|true|9
-36|rato|zxczxzxxz|7887878|7878778|916|0|false|9
-37|xzczxczx|zxczxczxcz|567867678|87678786786|916|0|false|0
+36|rato|zxczxzxxz|7887878|7878778|916|0|true|9
+37|xzczxczx|zxczxczxcz|567867678|87678786786|916|0|true|0
 38|zsczxcxz|dsvsvdzxv|567656786|6786\68\6\86\|9178|1|true|0
 39|aaaa|aaaa|1999|1999|9179|0|true|0

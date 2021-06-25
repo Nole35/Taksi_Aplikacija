@@ -119,6 +119,7 @@ public class VozilaProzor extends JFrame {
 						automobil.setObrisan(true);
 						tableModel.removeRow(row);
 						taksiSluzba.snimiVozila("automobil.txt");
+						JOptionPane.showMessageDialog(null, "Vozilo izbrisano", "Brisanje  ", JOptionPane.INFORMATION_MESSAGE);
 					}
 				}
 			}
