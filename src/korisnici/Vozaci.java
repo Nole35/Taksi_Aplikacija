@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Vozaci extends Osoba {
     private double plata;
     private int brojClanskeKarte;
-    private ArrayList<Voznja> voznje;
+    public ArrayList<Voznja> voznje;
     private Automobil automobil ;
 
     public Vozaci() {

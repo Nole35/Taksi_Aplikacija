@@ -28,7 +28,7 @@ public class MusterijaProzor extends JFrame {
 
 	
 	public MusterijaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Musterija musterija) {
-		setTitle("Musterija:");
+		setTitle("Musterija: " + musterija.getIme());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
 		contentPane = new JPanel();

@@ -76,7 +76,7 @@ public class PrijavaVozac extends JFrame {
 					if(passwordField.getText().equals(vozac.getLozinka()) && textField.getText().equals(vozac.getKorisnickoIme())) {
 						System.out.println("VOZAC: " + vozac.getIme());
 						 postojiVozac = true;
-				VozacProzor vp = new VozacProzor(taksiSluzba,taksiSluzbai);
+				VozacProzor vp = new VozacProzor(taksiSluzba,taksiSluzbai,vozac);
 				vp.setVisible(true);
 				dispose();
 				break;

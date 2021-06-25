@@ -13,10 +13,12 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeA;
 import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeT;
-import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznje;
+import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznjeT;
 import gui.formeZaPrikaz.VoznjeANaCekanju;
 import gui.formeZaPrikaz.VoznjeTDodijeljene;
+import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 
@@ -27,8 +29,8 @@ public class VozacProzor extends JFrame {
 	
 
 	
-	public VozacProzor(TaksiSluzba taksiSluzba,TaksiSluzbai taksiSluzbai) {
-		setTitle("Vozac:");
+	public VozacProzor(TaksiSluzba taksiSluzba,TaksiSluzbai taksiSluzbai,Vozaci vozac) {
+		setTitle("Vozac: " + vozac.getIme());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
 		contentPane = new JPanel();
@@ -59,11 +61,11 @@ public class VozacProzor extends JFrame {
 		zakazanetelItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(zakazanetelItem);
 		
-		JMenuItem dodeljeneItem = new JMenuItem("Dodeljene voznje");
+		JMenuItem dodeljeneItem = new JMenuItem("Prihvatanje voznje aplikacija");
 		dodeljeneItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VoznjeTDodijeljene vtd = new VoznjeTDodijeljene(taksiSluzba, taksiSluzbai);
-				vtd.setVisible(true);
+				PrihvatanjeIOdbijanjeVoznjeA piova = new PrihvatanjeIOdbijanjeVoznjeA(taksiSluzba, taksiSluzbai);
+				piova.setVisible(true);
 				
 			}
 		});

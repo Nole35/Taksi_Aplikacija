@@ -33,7 +33,7 @@ public class DispecerProzor extends JFrame {
 	
 	 
 	public DispecerProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
-		setTitle("Dispecer:");
+		setTitle("Dispecer: " + dispecer.getIme());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
 		contentPane = new JPanel();
