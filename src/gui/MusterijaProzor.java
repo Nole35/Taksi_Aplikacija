@@ -13,6 +13,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.IstorijaVoznji.IstorijaMusterijeA;
+import gui.IstorijaVoznji.IstorijaMusterijeT;
+import gui.IstorijaVoznji.IstorijaVozacaA;
+
 import gui.formeZaNarucivanje.NarucivanjeAplikacija;
 import gui.formeZaNarucivanje.NarucivanjeTelefon;
 import korisnici.Musterija;
@@ -62,9 +66,28 @@ public class MusterijaProzor extends JFrame {
 		narucivanjeaItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(narucivanjeaItem);
 		
-		JMenuItem voznjeItem = new JMenuItem("Istorija voznji");
+		JMenuItem voznjeItem = new JMenuItem("Istorija voznji telefonom");
+		voznjeItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IstorijaMusterijeT imt = new IstorijaMusterijeT(taksiSluzba, taksiSluzbai,musterija);
+				imt.setVisible(true);
+				
+			}
+		});
 		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(voznjeItem);
+		
+		JMenuItem voznjeAItem = new JMenuItem("Istorija voznji aplikacijom");
+		voznjeAItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IstorijaMusterijeA ima = new IstorijaMusterijeA(taksiSluzba, taksiSluzbai,musterija);
+				ima.setVisible(true);
+				
+			}
+			
+		});
+		voznjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		VoznjeMenu.add(voznjeAItem);
 		
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
