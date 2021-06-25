@@ -13,7 +13,7 @@ import javax.swing.border.EmptyBorder;
 import gui.DispecerProzor;
 import gui.formeZaDodavanje.DodajVozilo;
 import gui.formeZaIzmjenu.IzmjenaVozila;
-
+import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import vozila.Automobil;
@@ -38,7 +38,7 @@ public class VozilaProzor extends JFrame {
 	private JTable table;
 	private DefaultTableModel tableModel;
 
-	public VozilaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public VozilaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Vozila");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 401);

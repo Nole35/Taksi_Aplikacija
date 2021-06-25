@@ -25,7 +25,7 @@ public class TaksiSluzbaProzor extends JFrame {
 	
 	
 
-	public TaksiSluzbaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public TaksiSluzbaProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Prikaz i izmjena podataka taksi sluzbe");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 401);

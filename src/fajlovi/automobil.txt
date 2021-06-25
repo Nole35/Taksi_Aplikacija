@@ -7,6 +7,6 @@
 36|asasdasdsa|dasdasd|424242|42424|916|0|true|0
 36|asasdasdsa|dasdasd|424242|424245464|916|0|true|0
 36|sdfsdfsd|sdfdsfsdf|65368724|876855|916|0|true|0
-36|rato|zxczxzxxz|7887878|7878778|916|0|true|0
-37|xzczxczx|zxczxczxcz|567867678|87678786786|916|0|true|0
-38|zsczxcxz|dsvsvdzxv|567656786|6786\68\6\86\|917|1|true|0
+36|rato|zxczxzxxz|7887878|7878778|916|0|false|0
+37|xzczxczx|zxczxczxcz|567867678|87678786786|916|0|false|0
+38|zsczxcxz|dsvsvdzxv|567656786|6786\68\6\86\|917|1|false|0

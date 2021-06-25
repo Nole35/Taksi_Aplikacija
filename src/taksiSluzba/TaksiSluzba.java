@@ -785,7 +785,15 @@ public class TaksiSluzba {
   		}
   		return neobrisani;
   	}
-    
+    public ArrayList<VoznjaTelefon> sveNeobrisaneVoznjeDodTelT() {
+  		ArrayList<VoznjaTelefon> neobrisani = new ArrayList<VoznjaTelefon>();
+  		for (VoznjaTelefon voznjat : voznjet) {
+  			if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.KREIRANA)) {
+  				neobrisani.add(voznjat);
+  			}
+  		}
+  		return neobrisani;
+    }
 
 
 

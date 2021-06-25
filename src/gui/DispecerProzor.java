@@ -13,7 +13,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import gui.formaZaDodjeluIPrihvatanjeVoznje.DodjelaVoznje;
+
+import gui.formaZaDodjeluVoznje.TabelaZaDodjelu;
 import gui.formeZaPrikaz.VozaciProzor;
 import gui.formeZaPrikaz.VozilaProzor;
 import gui.formeZaPrikaz.VoznjeAProzor;
@@ -53,7 +54,7 @@ public class DispecerProzor extends JFrame {
 		JMenuItem prikazItem = new JMenuItem("Prikaz i izmena ");
 		prikazItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor(taksiSluzba, taksiSluzbai);
+				TaksiSluzbaProzor tsp = new TaksiSluzbaProzor(taksiSluzba, taksiSluzbai,dispecer);
 				tsp.setVisible(true);
 				
 			}
@@ -68,7 +69,7 @@ public class DispecerProzor extends JFrame {
 		JMenuItem vozaciItem = new JMenuItem("Svi vozaci");
 		vozaciItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VozaciProzor vop = new VozaciProzor(taksiSluzba, taksiSluzbai);
+				VozaciProzor vop = new VozaciProzor(taksiSluzba, taksiSluzbai,dispecer);
 				vop.setVisible(true);
 				
 			}
@@ -94,7 +95,7 @@ public class DispecerProzor extends JFrame {
 				}
 				 System.out.println("automobili 16");
 				
-				VozilaProzor vpr = new VozilaProzor(taksiSluzba, taksiSluzbai);
+				VozilaProzor vpr = new VozilaProzor(taksiSluzba, taksiSluzbai,dispecer);
 				vpr.setVisible(true);
 				
 			}
@@ -110,7 +111,7 @@ public class DispecerProzor extends JFrame {
 		JMenuItem voznjeItem = new JMenuItem("Voznje aplikacijom");
 		voznjeItem.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			VoznjeAProzor vapr = new VoznjeAProzor(taksiSluzba, taksiSluzbai);
+			VoznjeAProzor vapr = new VoznjeAProzor(taksiSluzba, taksiSluzbai,dispecer);
 			vapr.setVisible(true);
 			
 		}
@@ -122,7 +123,7 @@ public class DispecerProzor extends JFrame {
 		JMenuItem voznjetItem = new JMenuItem("Voznje telefonom");
 		voznjetItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VoznjeTProzor vtpr = new VoznjeTProzor(taksiSluzba, taksiSluzbai);
+				VoznjeTProzor vtpr = new VoznjeTProzor(taksiSluzba, taksiSluzbai,dispecer);
 				vtpr.setVisible(true);
 				
 			}
@@ -138,8 +139,8 @@ public class DispecerProzor extends JFrame {
 		JMenuItem kreiranjeItem = new JMenuItem("Kreirane telefonom");
 		kreiranjeItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 DodjelaVoznje dvoz = new  DodjelaVoznje(taksiSluzba, taksiSluzbai);
-				 dvoz.setVisible(true);
+				TabelaZaDodjelu tzd = new  TabelaZaDodjelu(taksiSluzba, taksiSluzbai,dispecer);
+				 tzd.setVisible(true);
 			
 			}
 		});
