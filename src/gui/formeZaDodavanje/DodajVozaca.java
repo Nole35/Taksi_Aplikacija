@@ -1,7 +1,6 @@
 package gui.formeZaDodavanje;
 
 
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -122,6 +121,23 @@ public class DodajVozaca extends JFrame {
 		comboBox.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		comboBox.setBounds(387, 344, 230, 35);
 		contentPane.add(comboBox);
+
+		JComboBox comboBox_1 = new JComboBox();
+		comboBox_1.setModel(new DefaultComboBoxModel()
+		);
+		comboBox_1.setMaximumRowCount(2);
+		comboBox_1.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		comboBox_1.setBounds(145, 23, 230, 35);
+		contentPane.add(comboBox_1);
+		comboBox_1.addItem(0);
+		for (Automobil automobil: taksiSluzba.getVozila()
+		) {
+			if(automobil.getIdVozaca()== 0){
+				comboBox_1.addItem(automobil.getId());
+
+			}
+
+		}
 		
 		JButton btnNewButton = new JButton("Dodaj");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -147,7 +163,19 @@ public class DodajVozaca extends JFrame {
 							Vozaci vozac = new Vozaci (id,korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,false,plata,brojClanskeKarte);
 							taksiSluzba.getVozaci().add(vozac);
 							taksiSluzba.snimiVozace("vozaci.txt");
+					if (Long.parseLong(String.valueOf(comboBox_1.getSelectedItem())) != 0){
+						for (Automobil automobil: taksiSluzba.getVozila()
+						) {
+							if(Long.parseLong(String.valueOf(comboBox_1.getSelectedItem())) == automobil.getId())
+							{
+								automobil.setIdVozaca((int) id);
+							}
+
 						}
+
+					}
+						}
+
 						
 				
 			}});
@@ -158,8 +186,7 @@ public class DodajVozaca extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				VozaciProzor vop = new VozaciProzor(taksiSluzba, taksiSluzbai);
-				vop.setVisible(true);
+				
 				dispose();
 			}
 		});
@@ -206,6 +233,15 @@ public class DodajVozaca extends JFrame {
 		textField_9.setColumns(10);
 		textField_9.setBounds(546, 81, 230, 35);
 		contentPane.add(textField_9);
+		
+		JLabel lblIdAutomobila = new JLabel("ID automobila:");
+		lblIdAutomobila.setFont(new Font("SansSerif", Font.PLAIN, 16));
+		lblIdAutomobila.setBounds(10, 23, 160, 35);
+		contentPane.add(lblIdAutomobila);
+		
+
+		
+	
 	}
 	private boolean validacija() {
 		boolean ok = true;
@@ -266,4 +302,3 @@ public class DodajVozaca extends JFrame {
 	
 
 }
-

@@ -1,7 +1,6 @@
 package gui.formeZaIzmjenu;
 
 
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -288,3 +287,6 @@ public class IzmjenaVozaca extends JFrame {
 	
 
 }
+
+
+

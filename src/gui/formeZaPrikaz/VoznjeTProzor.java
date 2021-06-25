@@ -1,7 +1,6 @@
 package gui.formeZaPrikaz;
 
 
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -25,6 +24,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import gui.DispecerProzor;
+import korisnici.Dispeceri;
 
 import javax.swing.JScrollPane;
 
@@ -35,7 +35,7 @@ public class VoznjeTProzor extends JFrame {
 	private DefaultTableModel tableModel;
 
 
-	public VoznjeTProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public VoznjeTProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Voznje telefonom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);

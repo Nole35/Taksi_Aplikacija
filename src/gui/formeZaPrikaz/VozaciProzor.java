@@ -1,7 +1,6 @@
 package gui.formeZaPrikaz;
 
 
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -13,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import gui.DispecerProzor;
 import gui.formeZaDodavanje.DodajVozaca;
 import gui.formeZaIzmjenu.IzmjenaVozaca;
+import korisnici.Dispeceri;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
@@ -41,7 +41,7 @@ public class VozaciProzor extends JFrame {
 	
 
 
-	public VozaciProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public VozaciProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Vozaci");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);
@@ -52,7 +52,7 @@ public class VozaciProzor extends JFrame {
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 33, 766, 234);
 		contentPane.add(scrollPane);
-		String[] kolone = new String[] {"ID", "Korisnicko ime", "Lozinka", "Ime", "Prezime", "JMBG", "Adresa ", "Pol", "Broj telefona", "Plata", "Broj clanske karte"};
+		String[] kolone = new String[] {"ID", "Korisnicko ime", "Lozinka", "Ime", "Prezime", "JMBG", "Adresa ", "Pol", "Broj telefona", "Plata", "Broj clanske karte","ID automobila"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sviNeobrisaniVozaci().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sviNeobrisaniVozaci().size(); i++) {
 			Vozaci vozaci = taksiSluzba.sviNeobrisaniVozaci().get(i);
@@ -67,6 +67,14 @@ public class VozaciProzor extends JFrame {
 			sadrzaj[i][8] = vozaci.getBrojTelefona();
 			sadrzaj[i][9] = vozaci.getPlata();
 			sadrzaj[i][10] = vozaci.getBrojClanskeKarte();
+			for (Automobil automobil: taksiSluzba.getVozila()
+				 ) {
+				if (automobil.getIdVozaca() == vozaci.getId()){
+					sadrzaj[i][11] = automobil.getId();
+				}
+
+			}
+			
 		}
 		tableModel = new DefaultTableModel(
 				sadrzaj,kolone );
