@@ -20,7 +20,8 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 import enumi.Status;
-
+import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznjeT;
+import korisnici.Vozaci;
 
 import javax.swing.JScrollPane;
 import java.awt.Font;
@@ -34,7 +35,7 @@ public class PrihvatanjeIOdbijanjeVoznjeT extends JFrame {
 	private JTable table;
 
 
-	public PrihvatanjeIOdbijanjeVoznjeT(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai) {
+	public PrihvatanjeIOdbijanjeVoznjeT(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Vozaci vozac) {
 		setTitle("Prihvatanje voznje telefonom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);
@@ -48,23 +49,36 @@ public class PrihvatanjeIOdbijanjeVoznjeT extends JFrame {
 		contentPane.add(scrollPane);
 		
 		JButton btnNewButton = new JButton("Prihvati");
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+			
 				
-				 int row = table.getSelectedRow();
+				int row = table.getSelectedRow();
 				  
-				 long idVoznjeTP = Long.parseLong((String) table.getValueAt(row, 0));
+				int idVoznjeTP = Integer.parseInt( table.getValueAt(row, 0).toString());
 				
 				 
 					  for (VoznjaTelefon voznjat : taksiSluzba.getVoznjet()
 							  ) {
 	                        if (idVoznjeTP == voznjat.getId()) {
 	                            voznjat.setStatus(Status.PRIHVACENA);
+	                            
 	                        
 	                    }
+	                        
 					 
 				 }
+					  taksiSluzba.snimiVoznjet("voznjet.txt");
+					  ZavrsavanjeVoznjeT zv = new ZavrsavanjeVoznjeT(taksiSluzba,taksiSluzbai, idVoznjeTP);
+	                    zv.setVisible(true);
 			}
+			catch (Exception  exception) {
+				JOptionPane.showMessageDialog(null, "Gresak prilikom prihvatanja  ", "Greska  ", JOptionPane.WARNING_MESSAGE);
+				
+			}
+				}
 		});
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		btnNewButton.setBounds(154, 238, 143, 49);
@@ -73,8 +87,39 @@ public class PrihvatanjeIOdbijanjeVoznjeT extends JFrame {
 		JButton btnOdbij = new JButton("Odbiti");
 		btnOdbij.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+try {
+					
+					
+					int row = table.getSelectedRow();
+					  
+					int idVoznjeTP = Integer.parseInt( table.getValueAt(row, 0).toString());
+					
+					 
+						  for (VoznjaTelefon voznjat : taksiSluzba.getVoznjet()
+								  ) {
+		                        if (idVoznjeTP == voznjat.getId()) {
+		                            voznjat.setStatus(Status.ODBIJENA);
+		                            
+		                        
+		                    }
+		                        
+						 
+					 }
+						  taksiSluzba.snimiVoznjet("voznjet.txt");
+						  JOptionPane.showMessageDialog(null, "Odbijena voznja  ", "Uspijesno odbijena voznja  ", JOptionPane.WARNING_MESSAGE);
+						  
+						 
+				}
+				catch (Exception  exception) {
+					JOptionPane.showMessageDialog(null, "Gresak prilikom odbijanja  ", "Greska  ", JOptionPane.WARNING_MESSAGE);
+					
+				}
+					}
+				
+		
+				
 			}
-		});
+		);
 		btnOdbij.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		btnOdbij.setBounds(614, 238, 143, 49);
 		contentPane.add(btnOdbij);
@@ -83,6 +128,7 @@ public class PrihvatanjeIOdbijanjeVoznjeT extends JFrame {
 		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeDodTel().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeDodTel().size(); i++) {
 			VoznjaTelefon voznjat = taksiSluzba.sveNeobrisaneVoznjeDodTel().get(i);
+			if(voznjat.getVozacId()== vozac.getId()) {
 			sadrzaj[i][0] = voznjat.getId();
 			sadrzaj[i][1] = voznjat.getDatumIVremePoruzbine();
 			sadrzaj[i][2] = voznjat.getAdresaPolaska();
@@ -94,6 +140,7 @@ public class PrihvatanjeIOdbijanjeVoznjeT extends JFrame {
 			sadrzaj[i][8] = voznjat.getStatus();
 			sadrzaj[i][9] = voznjat.getTipPorucivanja();
 			sadrzaj[i][10] = voznjat.getCijena();
+			}
 
 		
 		table = new JTable();
@@ -109,12 +156,12 @@ public class PrihvatanjeIOdbijanjeVoznjeT extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
 				dispose();
-			}
-		});
+			
+		}});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		btnClose.setBounds(361, 243, 150, 35);
 		contentPane.add(btnClose);
 	}
 }}
+
