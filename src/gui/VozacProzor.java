@@ -94,6 +94,10 @@ public class VozacProzor extends JFrame {
 		dodeljeneItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(dodeljeneItem);
 		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Izjestaj voznji");
+		mntmNewMenuItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		VoznjeMenu.add(mntmNewMenuItem);
+		
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

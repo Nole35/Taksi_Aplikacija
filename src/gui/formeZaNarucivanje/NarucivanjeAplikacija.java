@@ -21,6 +21,7 @@ import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import voznje.VoznjaAplikacija;
 import voznje.VoznjaTelefon;
+import javax.swing.JCheckBox;
 
 public class NarucivanjeAplikacija extends JFrame {
 
@@ -97,7 +98,7 @@ public NarucivanjeAplikacija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,
 		}}
 	);
 	btnNaruci.setFont(new Font("SansSerif", Font.PLAIN, 20));
-	btnNaruci.setBounds(306, 240, 160, 80);
+	btnNaruci.setBounds(302, 328, 160, 35);
 	contentPane.add(btnNaruci);
 	
 	JLabel lblAdresaDestinacije = new JLabel("Adresa destinacije:");
@@ -112,13 +113,22 @@ public NarucivanjeAplikacija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,
 	
 	JLabel lblNapomena = new JLabel("Napomena:");
 	lblNapomena.setFont(new Font("SansSerif", Font.PLAIN, 16));
-	lblNapomena.setBounds(40, 172, 160, 35);
+	lblNapomena.setBounds(40, 260, 160, 35);
 	contentPane.add(lblNapomena);
 	
 	textField_2 = new JTextField();
 	textField_2.setColumns(10);
-	textField_2.setBounds(234, 156, 350, 74);
+	textField_2.setBounds(234, 244, 350, 74);
 	contentPane.add(textField_2);
+	
+	JLabel lblNewLabel = new JLabel("Pet friendly");
+	lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 16));
+	lblNewLabel.setBounds(40, 179, 160, 35);
+	contentPane.add(lblNewLabel);
+	
+	JCheckBox chckbxNewCheckBox = new JCheckBox("");
+	chckbxNewCheckBox.setBounds(234, 189, 93, 21);
+	contentPane.add(chckbxNewCheckBox);
 }
 }
 
