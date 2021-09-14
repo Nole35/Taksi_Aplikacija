@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import gui.formaZaDodjeluVoznje.TabelaZaDodjelu;
+import gui.formaZaIzvjestaj.IzvjestajVozaca;
+import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
 import gui.formeZaPrikaz.VozaciProzor;
 import gui.formeZaPrikaz.VozilaProzor;
 import gui.formeZaPrikaz.VoznjeAProzor;
@@ -164,10 +166,26 @@ public class DispecerProzor extends JFrame {
 		mainMenu.add(mnNewMenu_1);
 		
 		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Izvjestaj voznji");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvjestajVoznjiD ivd = new  IzvjestajVoznjiD(taksiSluzba, taksiSluzbai,dispecer);
+				 ivd.setVisible(true);
+			
+			
+				
+			}
+		});
 		mntmNewMenuItem_4.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu_1.add(mntmNewMenuItem_4);
 		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Izvjestaj vozila");
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Izvjestaj vozaca");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvjestajVozaca iv = new  IzvjestajVozaca(taksiSluzba, taksiSluzbai,dispecer);
+				 iv.setVisible(true);
+				
+			}
+		});
 		mntmNewMenuItem_5.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
