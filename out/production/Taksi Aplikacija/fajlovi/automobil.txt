@@ -1,6 +1,13 @@
-31|Golf 2|Volkswagen|2002|aa11|911|0|false
-32|Koral 45|Yugo|2018|aa22|912|0|false
-33|R1|Mazda|2000|aa33|913|0|false
-34|Cbr|Kombi|1966|aa44|914|1|false
-35|Galjardo|Lambordzini|1955|aa55|915|0|false
-36|Sls|Mercedes|2012|aa66|916|0|false
+31|Golf 2|Volkswagen|2002|aa11|911|0|true|1
+32|Koral 45|Yugo|2018|aa22|912|0|false|2
+33|R6|Mazda|2000|aa33|913|0|true|3
+34|Cbr|Kombi|1966|aa44|914|1|false|4
+35|Galjardo12|Lambordzini|1955|aa55|9156|1|false|5
+36|Sls|Mercedes|2012|aa66|916|0|true|9
+36|asasdasdsa|dasdasd|424242|42424|916|0|true|9
+36|asasdasdsa|dasdasd|424242|424245464|916|0|true|9
+36|sdfsdfsd|sdfdsfsdf|65368724|876855|916|0|true|9
+36|rato|zxczxzxxz|7887878|7878778|916|0|true|9
+37|xzczxczx|zxczxczxcz|567867678|87678786786|916|0|true|0
+38|zsczxcxz|dsvsvdzxv|567656786|6786\68\6\86\|9178|1|true|0
+39|aaaa|aaaa|1999|1999|9179|0|true|0
