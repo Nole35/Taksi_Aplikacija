@@ -86,7 +86,7 @@ public NarucivanjeAplikacija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,
              System.out.println("Niste unijeli podatke");
              throw new Exception();}
          int cijena = 0;
-         VoznjaAplikacija novaVoznja = new VoznjaAplikacija(id,strDate,adresaPolaska,adresaDestinacije,musterija.getId(),musterija,0,null,0,0,statusVoznje,false,cijena, TipPorucivanja.APLIKACIJOM,napomena);
+         VoznjaAplikacija novaVoznja = new VoznjaAplikacija(id,strDate,adresaPolaska,adresaDestinacije,musterija.getId(),musterija,0,null,0,0,statusVoznje,false,cijena, false, TipPorucivanja.APLIKACIJOM,napomena, false);
          taksiSluzba.getVoznje().add(novaVoznja);
          taksiSluzba.snimiVoznje("voznje.txt");
 			JOptionPane.showMessageDialog(null, "Uspjesno narucena voznja", "Uspjesno narucivanje  ", JOptionPane.INFORMATION_MESSAGE);

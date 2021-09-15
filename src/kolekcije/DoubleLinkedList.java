@@ -1,5 +1,7 @@
 package kolekcije;
 
+import vozila.Automobil;
+
 import java.util.Iterator;
 
 public class DoubleLinkedList<T> implements Iterable<T>{
@@ -148,7 +150,7 @@ public class DoubleLinkedList<T> implements Iterable<T>{
 
     }
 
-    public T getElement(int index){
+    public T getElement(long index){
         if(index < 0 || index >= listSize){
             throw new IndexOutOfBoundsException("Index out of bounds!");
         }
@@ -229,5 +231,8 @@ public class DoubleLinkedList<T> implements Iterable<T>{
     public Iterator<T> iterator() {
         return new DoubleLinkedListIterator<T>(this);
     }
+
+
+
 }
 

@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public class VoznjaAplikacija extends Voznja {
 	
     private String napomena;
+    private boolean petFriendly;
     private final TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
     
     
@@ -29,13 +30,16 @@ public class VoznjaAplikacija extends Voznja {
             Status status,
             boolean obrisan,
             int cijena,
+            boolean ocjenjena,
             TipPorucivanja tipPorucivanja,
-            String napomena
+            String napomena,
+            boolean petFriendly
     )
     {
         super(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije,
                 musterijaId, musterija, vozacId, vozac,
-                brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena);
+                brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena);
+        this.petFriendly = petFriendly;
         this.napomena = napomena;
 
     }
@@ -52,5 +56,11 @@ public class VoznjaAplikacija extends Voznja {
         this.napomena = napomena;
     }
 
-    
+    public boolean isPetFriendly() {
+        return petFriendly;
+    }
+
+    public void setPetFriendly(boolean petFriendly) {
+        this.petFriendly = petFriendly;
+    }
 }

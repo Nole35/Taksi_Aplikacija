@@ -90,7 +90,7 @@ public class NarucivanjeTelefon extends JFrame {
                  throw new Exception();}
              
              int cijena = 0;
-             VoznjaTelefon novaVoznja = new VoznjaTelefon(id,strDate,adresaPolaska,adresaDestinacije,musterija.getId(),musterija,0,null,0,0,statusVoznje,false,cijena, TipPorucivanja.TELEFONOM);
+             VoznjaTelefon novaVoznja = new VoznjaTelefon(id,strDate,adresaPolaska,adresaDestinacije,musterija.getId(),musterija,0,null,0,0,statusVoznje,false,cijena,false, TipPorucivanja.TELEFONOM);
              taksiSluzba.getVoznjet().add(novaVoznja);
              taksiSluzba.snimiVoznjet("voznjet.txt");
  			JOptionPane.showMessageDialog(null, "Uspjesno narucena voznja", "Uspjesno narucivanje  ", JOptionPane.INFORMATION_MESSAGE);

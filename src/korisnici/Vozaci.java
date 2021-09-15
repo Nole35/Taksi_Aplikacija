@@ -2,6 +2,7 @@ package korisnici;
 
 
 import enumi.Pol;
+import kolekcije.DoubleLinkedList;
 import vozila.Automobil;
 import voznje.Voznja;
 
@@ -10,21 +11,27 @@ import java.util.ArrayList;
 public class Vozaci extends Osoba {
     private double plata;
     private int brojClanskeKarte;
-    public ArrayList<Voznja> voznje;
+    public DoubleLinkedList<Voznja> voznje;
     private Automobil automobil ;
+    private double prosjecnaOcjena;
 
     public Vozaci() {
         this.plata = 0;
         this.brojClanskeKarte = 0;
-        this.voznje = new ArrayList<Voznja>();
+        this.voznje = new DoubleLinkedList<>();
+        this.prosjecnaOcjena = 0;
     }
+
+
+
     public Vozaci(long id, String korisnickoIme, String lozinka,
                   String ime, String prezime, String jmbg, String adresa,
                   Pol pol, String brojTelefona, boolean obrisan,
-                  double plata, int brojClanskeKarte) {
+                  double plata, int brojClanskeKarte, double prosjecnaOcjena) {
         super(id, korisnickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan);
         this.plata = plata;
         this.brojClanskeKarte = brojClanskeKarte;
+        this.prosjecnaOcjena = prosjecnaOcjena;
 
     }
 
@@ -52,13 +59,17 @@ public class Vozaci extends Osoba {
         this.brojClanskeKarte = brojClanskeKarte;
     }
 
-    public ArrayList<Voznja> getVoznja() {
+    public DoubleLinkedList<Voznja> getVoznja() {
         return voznje;
     }
 
-    public void setVoznje(ArrayList<Voznja> voznje) {
+    public void setVoznje(DoubleLinkedList<Voznja> voznje) {
         this.voznje = voznje;
     }
+
+
+
+
     @Override
     public String toString() {
         String s = "Vozaci " + super.toString() +

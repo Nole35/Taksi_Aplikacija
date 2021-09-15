@@ -160,7 +160,7 @@ public class DodajVozaca extends JFrame {
 								id = (vozaci.getId() + 1);
 							}
 					}
-							Vozaci vozac = new Vozaci (id,korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,false,plata,brojClanskeKarte);
+							Vozaci vozac = new Vozaci (id,korisnickoIme,lozinka,ime,prezime,jmbg,adresa,pol,brojTelefona,false,plata,brojClanskeKarte,0);
 							taksiSluzba.getVozaci().add(vozac);
 							taksiSluzba.snimiVozace("vozaci.txt");
 							JOptionPane.showMessageDialog(null, "Uspjesno  ste dodali vozaca", "Uspjesno dodavanje  ", JOptionPane.INFORMATION_MESSAGE);

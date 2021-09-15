@@ -21,8 +21,9 @@ public abstract class Voznja {
     protected Status status;
     protected boolean obrisan;
     protected int cijena;
+    protected boolean ocjenjena;
 
-    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan,int cijena){
+    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan,int cijena, boolean ocjenjena){
         this.id = 0;
         this.datumIVremePoruzbine = "";
         this.adresaPolaska = "";
@@ -34,8 +35,10 @@ public abstract class Voznja {
         this.status = Status.KREIRANA;
         this.obrisan = false;
         this.cijena = 0;
+        this.ocjenjena = false;
 
     }
+
 
 
 
@@ -49,7 +52,7 @@ public abstract class Voznja {
                   Vozaci vozac,
                   int brojPredjenihKilometara,
                   int trajanjeVoznje,
-                  Status status, boolean obrisan,int cijena)
+                  Status status, boolean obrisan, int cijena, boolean ocjenjena)
     {
         this.id = id;
         this.datumIVremePoruzbine = datumIVremePoruzbine;
@@ -64,6 +67,7 @@ public abstract class Voznja {
         this.status = status;
         this.obrisan = obrisan;
         this.cijena = cijena;
+        this.ocjenjena = ocjenjena;
     }
 
 
@@ -168,6 +172,14 @@ public abstract class Voznja {
 
     public void setObrisan(boolean obrisan) {
         this.obrisan = obrisan;
+    }
+
+    public boolean isOcjenjena() {
+        return ocjenjena;
+    }
+
+    public void setOcjenjena(boolean ocjenjena) {
+        this.ocjenjena = ocjenjena;
     }
 
 }

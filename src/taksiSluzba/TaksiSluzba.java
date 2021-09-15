@@ -11,6 +11,7 @@ import enumi.Status;
 import enumi.TelefonskaOdeljenja;
 import enumi.TipPorucivanja;
 import enumi.VrstaAutomobila;
+import kolekcije.DoubleLinkedList;
 import korisnici.Musterija;
 import korisnici.Vozaci;
 
@@ -25,12 +26,12 @@ import taksiSluzba.TaksiSluzbai;
 
 public class TaksiSluzba {
   
-    private ArrayList<Musterija> musterije;
-    private ArrayList<Dispeceri> dispeceri;
-    private ArrayList<Vozaci> vozaci;
-    private ArrayList<Automobil> vozila;
-    private ArrayList<VoznjaAplikacija> voznje;
-    private ArrayList<VoznjaTelefon> voznjet;
+    private DoubleLinkedList<Musterija> musterije;
+    private DoubleLinkedList<Dispeceri> dispeceri;
+    private DoubleLinkedList<Vozaci> vozaci;
+    private DoubleLinkedList<Automobil> vozila;
+    private DoubleLinkedList<VoznjaAplikacija> voznje;
+    private DoubleLinkedList<VoznjaTelefon> voznjet;
     
     private String pib;
     private String naziv;
@@ -45,12 +46,12 @@ public class TaksiSluzba {
     public TaksiSluzba() {
     	
 
-        this.musterije = new ArrayList<Musterija>();
-        this.dispeceri = new ArrayList<Dispeceri>();
-        this.vozaci = new ArrayList<Vozaci>();
-        this.vozila = new ArrayList<Automobil>();
-        this.voznje = new ArrayList<VoznjaAplikacija>();
-        this.voznjet = new ArrayList<VoznjaTelefon>();
+        this.musterije = new DoubleLinkedList<>();
+        this.dispeceri = new DoubleLinkedList<>();
+        this.vozaci = new DoubleLinkedList<>();
+        this.vozila = new DoubleLinkedList<>();
+        this.voznje = new DoubleLinkedList<>();
+        this.voznjet = new DoubleLinkedList<>();
         
     
         
@@ -87,7 +88,7 @@ public class TaksiSluzba {
 
   
 
-    public ArrayList<Musterija> getMusterije() {
+    public DoubleLinkedList<Musterija> getMusterije() {
         return musterije;
     }
 
@@ -116,7 +117,7 @@ public class TaksiSluzba {
         return null;
     }
 
-    public ArrayList<Dispeceri> getDispeceri() {
+    public DoubleLinkedList<Dispeceri> getDispeceri() {
         return dispeceri;
     }
 
@@ -145,7 +146,7 @@ public class TaksiSluzba {
     }
 
 
-    public ArrayList<Vozaci> getVozaci() {
+    public DoubleLinkedList<Vozaci> getVozaci() {
         return vozaci;
     }
 
@@ -174,7 +175,7 @@ public class TaksiSluzba {
         return null;
     }
 
-    public ArrayList<Automobil> getVozila() {
+    public DoubleLinkedList<Automobil> getVozila() {
         return vozila;
     }
 
@@ -199,7 +200,7 @@ public class TaksiSluzba {
     public void obrisiVozilo(Automobil automobil) {
         this.vozila.remove(automobil);
     }
-    public ArrayList<VoznjaAplikacija> getVoznje() {
+    public DoubleLinkedList<VoznjaAplikacija> getVoznje() {
         return voznje;
     }
  
@@ -209,7 +210,7 @@ public class TaksiSluzba {
     }
 
   
-    public ArrayList<VoznjaTelefon> getVoznjet() {
+    public DoubleLinkedList<VoznjaTelefon> getVoznjet() {
         return voznjet;
     }
     
@@ -364,13 +365,14 @@ public class TaksiSluzba {
                 boolean obrisan = Boolean.parseBoolean(split[9]);
                 double plata = Double.parseDouble(split[10]);
                 int brojClanskeKarte = Integer.parseInt(split[11]);
+                double prosjecnaOcjena = Double.parseDouble(split[12]);
 
 
 
 
 
 
-                Vozaci vozac = new Vozaci(id, korinickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan, plata, brojClanskeKarte);
+                Vozaci vozac = new Vozaci(id, korinickoIme, lozinka, ime, prezime, jmbg, adresa, pol, brojTelefona, obrisan, plata, brojClanskeKarte,prosjecnaOcjena);
                 vozaci.add(vozac);
             }
             br.close();
@@ -468,9 +470,11 @@ public class TaksiSluzba {
                 TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
                 String napomena = split[11];
                 int cijena = Integer.parseInt(split[12]);
+                boolean ocjenjena = Boolean.parseBoolean(split[13]);
+                boolean petFriendly = Boolean.parseBoolean(split[14]);
 
 
-                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena, tipPorucivanja,napomena) {
+                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena, tipPorucivanja,napomena, petFriendly) {
                 };
                 voznje.add(voznja);
             }
@@ -516,9 +520,10 @@ public class TaksiSluzba {
                 boolean obrisan = Boolean.parseBoolean(split[9]);
                 TipPorucivanja tipPorucivanja = TipPorucivanja.TELEFONOM;
                 int cijena = Integer.parseInt(split[11]);
+                boolean ocjenjena = Boolean.parseBoolean(split[12]);
 
 
-                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena, tipPorucivanja) {
+                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena, tipPorucivanja) {
                 };
                 voznjet.add(voznjat);
             }
@@ -564,11 +569,20 @@ public class TaksiSluzba {
         if(vozacZaIzmjenu.getId() != id)
             return;
 
-        for(int i = 0; i < vozaci.size(); i++) {
-            if(vozaci.get(i).getId() == id)
-                vozaci.set(i, vozacZaIzmjenu);
-        }
-    }
+
+           for (Vozaci vozac: vozaci
+           ) {
+
+               if (vozac.getId() == id) {
+
+                   vozaci.getElement(vozac).setElement(vozacZaIzmjenu);
+                   break;
+               }
+           }}
+
+
+
+
 
 
     public void obrisiVoznjeTelefon(VoznjaTelefon voznjaTelefonZaBrisanje) {
@@ -587,9 +601,13 @@ public class TaksiSluzba {
         if(voznjaTelefonZaIzmjenu.getId() != id)
             return;
 
-        for(int i = 0; i < voznjet.size(); i++) {
-            if(voznjet.get(i).getId() == id)
-                voznjet.set(i, voznjaTelefonZaIzmjenu);
+        for(VoznjaTelefon voznjaTelefon: voznjet) {
+            if(voznjaTelefon.getId() == id) {
+
+                voznjet.getElement(voznjaTelefon).setElement(voznjaTelefonZaIzmjenu);
+                break;
+            }
+
         }
     }
     
@@ -610,9 +628,9 @@ public class TaksiSluzba {
         if(dispecerZaIzmjenu.getId() != id)
             return;
 
-        for(int i = 0; i < dispeceri.size(); i++) {
-            if(dispeceri.get(i).getId() == id)
-                dispeceri.set(i, dispecerZaIzmjenu);
+        for(Dispeceri dispecer: dispeceri) {
+            if(dispecer.getId() == id)
+                dispeceri.getElement(dispecer).setElement(dispecerZaIzmjenu);
         }
     }
 
@@ -632,9 +650,9 @@ public class TaksiSluzba {
         if(musterijaZaIzmjenu.getId() != id)
             return;
 
-        for(int i = 0; i < musterije.size(); i++) {
-            if(musterije.get(i).getId() == id)
-                musterije.set(i, musterijaZaIzmjenu);
+        for(Musterija musterija: musterije) {
+            if(musterija.getId() == id)
+                musterije.getElement(musterija).setElement(musterijaZaIzmjenu);
         }
     }
     
@@ -655,9 +673,9 @@ public class TaksiSluzba {
         if(automobilZaIzmjenu.getId() != id)
             return;
 
-        for(int i = 0; i < vozila.size(); i++) {
-            if(vozila.get(i).getId() == id)
-                vozila.set(i, automobilZaIzmjenu);
+        for(Automobil automobil: vozila) {
+            if(automobil.getId() == id)
+                vozila.getElement(automobil).setElement(automobilZaIzmjenu);
         }
     }
 
@@ -678,9 +696,10 @@ public class TaksiSluzba {
         if(voznjaAplikacijaZaIzmjenu.getId() != id)
             return;
 
-        for(int i = 0; i < voznje.size(); i++) {
-            if(voznje.get(i).getId() == id)
-                voznje.set(i, voznjaAplikacijaZaIzmjenu);
+        for(VoznjaAplikacija voznjaAplikacija: voznje) {
+            if(voznjaAplikacija.getId() == id)
+                voznje.getElement(voznjaAplikacija).setElement(voznjaAplikacijaZaIzmjenu);
+            break;
         }
     }
     public void ucitajTaksisluzbu(String imeFajla) {

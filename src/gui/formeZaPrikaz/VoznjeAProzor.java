@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import aisp.BinarnaPretraga;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import vozila.Automobil;
@@ -73,11 +74,16 @@ public class VoznjeAProzor extends JFrame {
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 16));
 		btnNewButton.setBounds(154, 238, 143, 49);
 		contentPane.add(btnNewButton);
-		
+		BinarnaPretraga binarnaPretraga = new BinarnaPretraga();
 		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja","Napomena","Cijena"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeA().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeA().size(); i++) {
+
 			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeA().get(i);
+			String korisnickoIme = "";
+			if (voznja.getVozacId() != 0){
+				korisnickoIme = binarnaPretraga.pronadjiVozacaBinarySearch(taksiSluzba.getVozaci(), voznja.getVozacId()).getKorisnickoIme();
+			}
 			sadrzaj[i][0] = voznja.getId();
 			sadrzaj[i][1] = voznja.getDatumIVremePoruzbine();
 			sadrzaj[i][2] = voznja.getAdresaPolaska();
