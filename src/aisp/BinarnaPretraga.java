@@ -5,8 +5,10 @@ import korisnici.Musterija;
 import korisnici.Dispeceri;
 import vozila.Automobil;
 import kolekcije.DoubleLinkedList;
+import voznje.VoznjaAplikacija;
 
 public class BinarnaPretraga {
+
     public Vozaci pronadjiVozacaBinarySearch(DoubleLinkedList<Vozaci> array, long target){ // Ukloniti static
         return binarySearchVozaca(array, target, 0, array.size());
     }
