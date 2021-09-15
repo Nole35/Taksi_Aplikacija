@@ -75,6 +75,7 @@ public class PretragaVozacaTabela extends JFrame {
 		table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		table.setAutoCreateRowSorter(true);
 		
 		btnNewButton = new JButton("Close");
 		btnNewButton.addActionListener(new ActionListener() {

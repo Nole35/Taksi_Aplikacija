@@ -87,6 +87,7 @@ public class LicitacijaVozaca extends JFrame {
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setDefaultEditor(Object.class, null);
+		table.setAutoCreateRowSorter(true);
 	
 	
 		}

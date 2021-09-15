@@ -70,6 +70,7 @@ public class IzvjestajVozacaTabela extends JFrame {
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setDefaultEditor(Object.class, null);
 		table.getTableHeader().setReorderingAllowed(false);
+		table.setAutoCreateRowSorter(true);
 		JScrollPane scrollPane = new JScrollPane(table);
 		scrollPane.setBounds(10, 33, 766, 234);
 		contentPane.add(scrollPane);

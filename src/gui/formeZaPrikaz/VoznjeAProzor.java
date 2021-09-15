@@ -80,10 +80,7 @@ public class VoznjeAProzor extends JFrame {
 		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeA().size(); i++) {
 
 			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeA().get(i);
-			String korisnickoIme = "";
-			if (voznja.getVozacId() != 0){
-				korisnickoIme = binarnaPretraga.pronadjiVozacaBinarySearch(taksiSluzba.getVozaci(), voznja.getVozacId()).getKorisnickoIme();
-			}
+			
 			sadrzaj[i][0] = voznja.getId();
 			sadrzaj[i][1] = voznja.getDatumIVremePoruzbine();
 			sadrzaj[i][2] = voznja.getAdresaPolaska();
@@ -111,6 +108,7 @@ public class VoznjeAProzor extends JFrame {
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setDefaultEditor(Object.class, null);
+		table.setAutoCreateRowSorter(true);
 	
 	
 		JButton btnClose = new JButton("Close");
