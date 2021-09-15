@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import gui.formaZaDodjeluVoznje.TabelaZaDodjelu;
+import gui.formaZaIzvjestaj.IzvjestajVozaca;
+import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
 import gui.formeZaPrikaz.VozaciProzor;
 import gui.formeZaPrikaz.VozilaProzor;
 import gui.formeZaPrikaz.VoznjeAProzor;
@@ -147,7 +149,60 @@ public class DispecerProzor extends JFrame {
 		kreiranjeItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		DodelaMenu.add(kreiranjeItem);
 		
+		JMenu mnNewMenu = new JMenu("Aukcija");
+		mnNewMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		mainMenu.add(mnNewMenu);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Aktivne aukcije");
+		mntmNewMenuItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Istorija aukcija");
+		mntmNewMenuItem_1.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu.add(mntmNewMenuItem_1);
+		
+		JMenu mnNewMenu_1 = new JMenu("Izvjestaj");
+		mnNewMenu_1.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		mainMenu.add(mnNewMenu_1);
+		
+		JMenuItem mntmNewMenuItem_4 = new JMenuItem("Izvjestaj voznji");
+		mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvjestajVoznjiD ivd = new  IzvjestajVoznjiD(taksiSluzba, taksiSluzbai,dispecer);
+				 ivd.setVisible(true);
+			
+			
+				
+			}
+		});
+		mntmNewMenuItem_4.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu_1.add(mntmNewMenuItem_4);
+		
+		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Izvjestaj vozaca");
+		mntmNewMenuItem_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvjestajVozaca iv = new  IzvjestajVozaca(taksiSluzba, taksiSluzbai,dispecer);
+				 iv.setVisible(true);
+				
+			}
+		});
+		mntmNewMenuItem_5.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu_1.add(mntmNewMenuItem_5);
+		
+		JMenu mnNewMenu_2 = new JMenu("Pretraga");
+		mnNewMenu_2.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		mainMenu.add(mnNewMenu_2);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Pretraga vozila");
+		mntmNewMenuItem_2.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu_2.add(mntmNewMenuItem_2);
+		
+		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Pretraga vozaca");
+		mntmNewMenuItem_3.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu_2.add(mntmNewMenuItem_3);
+		
 		JButton btnClose = new JButton("Close");
+		mainMenu.add(btnClose);
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PrijavaDispecer pd = new PrijavaDispecer(taksiSluzba, taksiSluzbai);
@@ -156,9 +211,9 @@ public class DispecerProzor extends JFrame {
 			}
 		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		mainMenu.add(btnClose);
 	
 	    
-}}
+}	
+}
 
 

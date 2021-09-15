@@ -17,6 +17,8 @@ import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeA;
 import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeT;
 import gui.IstorijaVoznji.IstorijaVozacaA;
 import gui.IstorijaVoznji.IstorijaVozacaT;
+import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
+import gui.formaZaIzvjestaj.IzvjestajVoznjiV;
 import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznjeT;
 
 
@@ -93,6 +95,16 @@ public class VozacProzor extends JFrame {
 		});
 		dodeljeneItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(dodeljeneItem);
+		
+		JMenuItem mntmNewMenuItem = new JMenuItem("Izvjestaj voznji");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvjestajVoznjiV ivv = new  IzvjestajVoznjiV(taksiSluzba, taksiSluzbai,vozac);
+				 ivv.setVisible(true);
+			}
+		});
+		mntmNewMenuItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		VoznjeMenu.add(mntmNewMenuItem);
 		
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
