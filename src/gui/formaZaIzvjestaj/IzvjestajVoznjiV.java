@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.formeZaPrikaz.IzvjestajVoznjiDispecer;
+import gui.formeZaPrikaz.IzvjestajVoznjiVozac;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
@@ -62,6 +64,12 @@ public class IzvjestajVoznjiV extends JFrame {
 		contentPane.add(comboBox_1_1);
 		
 		JButton btnNewButton = new JButton("Kreiraj izvjestaj");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvjestajVoznjiVozac ivv = new  IzvjestajVoznjiVozac(taksiSluzba, taksiSluzbai,vozac);
+				 ivv.setVisible(true);
+			}
+		});
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		btnNewButton.setBounds(49, 196, 162, 41);
 		contentPane.add(btnNewButton);

@@ -6,10 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import gui.formeZaPrikaz.PretragaVozilaTabela;
+import korisnici.Dispeceri;
+import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PretragaVozila extends JFrame {
 
@@ -21,7 +29,7 @@ public class PretragaVozila extends JFrame {
 	private JTextField textField_4;
 
 
-	public PretragaVozila() {
+	public PretragaVozila(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Pretraga vozila");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 399);
@@ -71,11 +79,22 @@ public class PretragaVozila extends JFrame {
 		contentPane.add(textField_3);
 		
 		JButton btnNewButton = new JButton("Pretraga");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PretragaVozilaTabela pvt = new  PretragaVozilaTabela(taksiSluzba, taksiSluzbai,dispecer);
+				 pvt.setVisible(true);
+			}
+		});
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnNewButton.setBounds(43, 318, 135, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnClose.setBounds(412, 318, 135, 34);
 		contentPane.add(btnClose);

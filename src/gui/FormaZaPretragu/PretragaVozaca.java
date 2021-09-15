@@ -6,11 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import gui.formeZaPrikaz.PretragaVozacaTabela;
+import gui.formeZaPrikaz.PretragaVozilaTabela;
+import korisnici.Dispeceri;
+import taksiSluzba.TaksiSluzba;
+import taksiSluzba.TaksiSluzbai;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PretragaVozaca extends JFrame {
 
@@ -19,26 +28,8 @@ public class PretragaVozaca extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PretragaVozaca frame = new PretragaVozaca();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
-	public PretragaVozaca() {
+	public PretragaVozaca(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Petraga vozaca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 600, 351);
@@ -83,11 +74,22 @@ public class PretragaVozaca extends JFrame {
 		contentPane.add(lblAutomobil);
 		
 		JButton btnNewButton = new JButton("Pretraga");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PretragaVozacaTabela pvt = new  PretragaVozacaTabela(taksiSluzba, taksiSluzbai,dispecer);
+				 pvt.setVisible(true);
+			}
+		});
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnNewButton.setBounds(51, 270, 135, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnClose.setBounds(420, 270, 135, 34);
 		contentPane.add(btnClose);

@@ -18,11 +18,15 @@ import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import vozila.Automobil;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class PretragaVozacaTabela extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel tableModel;
+	private JButton btnNewButton;
 
 
 	public PretragaVozacaTabela(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
@@ -71,5 +75,15 @@ public class PretragaVozacaTabela extends JFrame {
 		table.setRowSelectionAllowed(true);
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		
+		btnNewButton = new JButton("Close");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnNewButton.setBounds(401, 300, 85, 40);
+		contentPane.add(btnNewButton);
 		table.setDefaultEditor(Object.class, null);
 	}}

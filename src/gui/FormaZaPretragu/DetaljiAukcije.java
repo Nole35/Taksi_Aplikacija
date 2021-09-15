@@ -1,4 +1,4 @@
-package gui.formeZaPrikaz;
+package gui.FormaZaPretragu;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -20,14 +20,14 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AktivneAukcije extends JFrame {
+public class DetaljiAukcije extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel tableModel;
 
 
-	public AktivneAukcije(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
-		setTitle("Aktivne aukcije");
+	public DetaljiAukcije(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
+		setTitle("Voznje aplikacijom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);
 		contentPane = new JPanel();
@@ -45,16 +45,11 @@ public class AktivneAukcije extends JFrame {
 				dispose();
 			}
 		});
-		btnNewButton.setBounds(656, 254, 106, 45);
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnNewButton.setBounds(392, 260, 161, 40);
 		contentPane.add(btnNewButton);
 		
-		JButton btnPokreniAukciju = new JButton("Pokreni aukciju");
-		btnPokreniAukciju.setBounds(134, 254, 140, 45);
-		btnPokreniAukciju.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		contentPane.add(btnPokreniAukciju);
-		
-		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja","Napomena","Cijena"};
+		String[] kolone = new String[] {"ID Voznje", "ID vozaca", "Korisnicko ime", "Prosjecna ocjena", "Broj voznji ","Vrijeme", "Ocjena ponude"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeA().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeA().size(); i++) {
 			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeA().get(i);
@@ -65,11 +60,7 @@ public class AktivneAukcije extends JFrame {
 			sadrzaj[i][4] = voznja.getMusterijaId();
 			sadrzaj[i][5] = voznja.getVozacId();
 			sadrzaj[i][6] = voznja.getBrojPredjenihKilometara();
-			sadrzaj[i][7] = voznja.getTrajanjeVoznje();
-			sadrzaj[i][8] = voznja.getStatus();
-			sadrzaj[i][9] = voznja.getTipPorucivanja();
-			sadrzaj[i][10] = voznja.getNapomena();
-			sadrzaj[i][11] = voznja.getCijena();
+			
 			
 			
 			
@@ -85,6 +76,7 @@ public class AktivneAukcije extends JFrame {
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setDefaultEditor(Object.class, null);
-		
+	
+	}
 
-}}}
+}}

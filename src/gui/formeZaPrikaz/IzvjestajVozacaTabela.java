@@ -4,31 +4,33 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import vozila.Automobil;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class PretragaVozilaTabela extends JFrame {
-
+public class IzvjestajVozacaTabela extends JFrame {
+	
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel tableModel;
+	private JButton btnStampaj;
 
-	public PretragaVozilaTabela(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
-		setTitle("Vozila");
+
+	public IzvjestajVozacaTabela(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
+		setTitle("Voznje vozaca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 401);
 		contentPane = new JPanel();
@@ -38,7 +40,7 @@ public class PretragaVozilaTabela extends JFrame {
 		
 		
 		
-		String[] kolone = new String[] {"ID", "Model", "Proizvodjac", "Godina proizvodnje", "Broj registracije", "Broj taksi vozila", "Vrsta automobila","Id vozaca"};
+		String[] kolone = new String[] {"ID", "Ukupan broj", "Ukupna duzina", "Ukupno vrijeme", "Prosjecna duzina", "Prosecno vrijeme ", "Ukupna zarada","Prosjecna zarada"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sviNeobrisaniAutomobili().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sviNeobrisaniAutomobili().size(); i++) {
 			Automobil automobil = taksiSluzba.sviNeobrisaniAutomobili().get(i);
@@ -79,8 +81,12 @@ public class PretragaVozilaTabela extends JFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		btnNewButton.setBounds(350, 296, 95, 44);
+		btnNewButton.setBounds(650, 296, 95, 44);
 		contentPane.add(btnNewButton);
+		
+		btnStampaj = new JButton("Stampaj");
+		btnStampaj.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnStampaj.setBounds(62, 296, 95, 44);
+		contentPane.add(btnStampaj);
 	}	
 }
-	

@@ -13,9 +13,15 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import gui.FormaZaPretragu.PretragaVozaca;
+import gui.FormaZaPretragu.PretragaVozila;
 import gui.formaZaDodjeluVoznje.TabelaZaDodjelu;
 import gui.formaZaIzvjestaj.IzvjestajVozaca;
 import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
+import gui.formeZaPrikaz.AktivneAukcije;
+import gui.formeZaPrikaz.IstorijaAukcija;
+import gui.formeZaPrikaz.PretragaVozacaTabela;
+import gui.formeZaPrikaz.PretragaVozilaTabela;
 import gui.formeZaPrikaz.VozaciProzor;
 import gui.formeZaPrikaz.VozilaProzor;
 import gui.formeZaPrikaz.VoznjeAProzor;
@@ -154,10 +160,25 @@ public class DispecerProzor extends JFrame {
 		mainMenu.add(mnNewMenu);
 		
 		JMenuItem mntmNewMenuItem = new JMenuItem("Aktivne aukcije");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AktivneAukcije aa = new  AktivneAukcije(taksiSluzba, taksiSluzbai,dispecer);
+				 aa.setVisible(true);
+			
+				
+			}
+		});
 		mntmNewMenuItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Istorija aukcija");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IstorijaAukcija ia = new  IstorijaAukcija(taksiSluzba, taksiSluzbai,dispecer);
+				 ia.setVisible(true);
+				
+			}
+		});
 		mntmNewMenuItem_1.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu.add(mntmNewMenuItem_1);
 		
@@ -194,10 +215,24 @@ public class DispecerProzor extends JFrame {
 		mainMenu.add(mnNewMenu_2);
 		
 		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Pretraga vozila");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PretragaVozila pv = new  PretragaVozila(taksiSluzba, taksiSluzbai,dispecer);
+				 pv.setVisible(true);
+				
+			}
+		});
 		mntmNewMenuItem_2.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu_2.add(mntmNewMenuItem_2);
 		
 		JMenuItem mntmNewMenuItem_3 = new JMenuItem("Pretraga vozaca");
+		mntmNewMenuItem_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PretragaVozaca pv = new  PretragaVozaca(taksiSluzba, taksiSluzbai,dispecer);
+				 pv.setVisible(true);
+				
+			}
+		});
 		mntmNewMenuItem_3.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu_2.add(mntmNewMenuItem_3);
 		

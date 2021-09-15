@@ -20,8 +20,7 @@ import gui.IstorijaVoznji.IstorijaVozacaT;
 import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
 import gui.formaZaIzvjestaj.IzvjestajVoznjiV;
 import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznjeT;
-
-
+import gui.formeZaPrikaz.LicitacijaVozaca;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
@@ -106,7 +105,23 @@ public class VozacProzor extends JFrame {
 		mntmNewMenuItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(mntmNewMenuItem);
 		
+		JMenu mnNewMenu = new JMenu("Licitacija");
+		mnNewMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		mainMenu.add(mnNewMenu);
+		
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("Licitiranje za voznju");
+		mntmNewMenuItem_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LicitacijaVozaca lv = new  LicitacijaVozaca(taksiSluzba, taksiSluzbai,vozac);
+				 lv.setVisible(true);
+				
+			}
+		});
+		mntmNewMenuItem_1.setFont(new Font("SansSerif", Font.PLAIN, 12));
+		mnNewMenu.add(mntmNewMenuItem_1);
+		
 		JButton btnClose = new JButton("Close");
+		mainMenu.add(btnClose);
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				PrijavaVozac pv = new PrijavaVozac(taksiSluzba,taksiSluzbai);
@@ -116,7 +131,6 @@ public class VozacProzor extends JFrame {
 			}
 		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		mainMenu.add(btnClose);
 		
 
 	}

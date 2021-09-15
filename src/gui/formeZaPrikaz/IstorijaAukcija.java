@@ -11,7 +11,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import gui.FormaZaPretragu.DetaljiAukcije;
 import korisnici.Dispeceri;
+import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 import voznje.VoznjaAplikacija;
@@ -20,14 +22,16 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AktivneAukcije extends JFrame {
+public class IstorijaAukcija extends JFrame {
+
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel tableModel;
+	
 
 
-	public AktivneAukcije(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
-		setTitle("Aktivne aukcije");
+	public IstorijaAukcija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
+		setTitle("Voznje aplikacijom");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);
 		contentPane = new JPanel();
@@ -42,34 +46,32 @@ public class AktivneAukcije extends JFrame {
 		JButton btnNewButton = new JButton("Close");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
+				dispose();			}
+			
 		});
-		btnNewButton.setBounds(656, 254, 106, 45);
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnNewButton.setBounds(646, 290, 160, 40);
 		contentPane.add(btnNewButton);
 		
-		JButton btnPokreniAukciju = new JButton("Pokreni aukciju");
-		btnPokreniAukciju.setBounds(134, 254, 140, 45);
-		btnPokreniAukciju.setFont(new Font("SansSerif", Font.PLAIN, 14));
-		contentPane.add(btnPokreniAukciju);
+		JButton btnAukcija = new JButton("Aukcija");
+		btnAukcija.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DetaljiAukcije da = new  DetaljiAukcije(taksiSluzba, taksiSluzbai,dispecer);
+				 da.setVisible(true);
+			}
+		});
+		btnAukcija.setFont(new Font("SansSerif", Font.PLAIN, 14));
+		btnAukcija.setBounds(51, 290, 160, 40);
+		contentPane.add(btnAukcija);
 		
-		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja","Napomena","Cijena"};
+		String[] kolone = new String[] {"ID Voznje", "Broj ponuda"};
 		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeA().size()][kolone.length];
 		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeA().size(); i++) {
 			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeA().get(i);
 			sadrzaj[i][0] = voznja.getId();
 			sadrzaj[i][1] = voznja.getDatumIVremePoruzbine();
-			sadrzaj[i][2] = voznja.getAdresaPolaska();
-			sadrzaj[i][3] = voznja.getAdresaDestinacije();
-			sadrzaj[i][4] = voznja.getMusterijaId();
-			sadrzaj[i][5] = voznja.getVozacId();
-			sadrzaj[i][6] = voznja.getBrojPredjenihKilometara();
-			sadrzaj[i][7] = voznja.getTrajanjeVoznje();
-			sadrzaj[i][8] = voznja.getStatus();
-			sadrzaj[i][9] = voznja.getTipPorucivanja();
-			sadrzaj[i][10] = voznja.getNapomena();
-			sadrzaj[i][11] = voznja.getCijena();
+
+			
 			
 			
 			
@@ -85,6 +87,7 @@ public class AktivneAukcije extends JFrame {
 		table.setColumnSelectionAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		table.setDefaultEditor(Object.class, null);
-		
+	
+	}
 
-}}}
+}}
