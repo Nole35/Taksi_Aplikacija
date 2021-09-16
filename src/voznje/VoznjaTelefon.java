@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class VoznjaTelefon extends Voznja {
     private final TipPorucivanja tipPorucivanja = TipPorucivanja.TELEFONOM;
     public VoznjaTelefon(
-            long id, String datumIVremePoruzbine, String adresaPolaska,
+            long id, LocalDateTime datumIVremePoruzbine, String adresaPolaska,
             String adresaDestinacije, long musterijaId, Musterija musterija,
             long vozacId, Vozaci vozac, int brojPredjenihKilometara,
             int trajanjeVoznje, Status status, boolean obrisan,int cijena,boolean ocjenjena, TipPorucivanja tipPorucivanja

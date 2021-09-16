@@ -3,6 +3,8 @@ package taksiSluzba;
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -11,6 +13,7 @@ import enumi.Status;
 import enumi.TelefonskaOdeljenja;
 import enumi.TipPorucivanja;
 import enumi.VrstaAutomobila;
+import gui.formeZaNarucivanje.NarucivanjeTelefon;
 import kolekcije.DoubleLinkedList;
 import korisnici.Musterija;
 import korisnici.Vozaci;
@@ -479,6 +482,8 @@ public class TaksiSluzba {
                 String[] split = line.split("\\|");
                 long id = Long.parseLong(split[0]);
                 String datumIVremePoruzbine = split[1];
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime ldt = LocalDateTime.parse(datumIVremePoruzbine,formatter);
                 String adresaPolaska = split[2];
                 String adresaDestinacije = split[3];
                 long musterijaId = Long.parseLong(split[4]);
@@ -488,14 +493,14 @@ public class TaksiSluzba {
                 int statusInt = Integer.parseInt(split[8]);
                 Status status = Status.values()[statusInt];
                 boolean obrisan = Boolean.parseBoolean(split[9]);
-                TipPorucivanja tipPorucivanja = TipPorucivanja.APLIKACIJOM;
+                TipPorucivanja tipPorucivanja = TipPorucivanja.valueOf(split[10]);
                 String napomena = split[11];
                 int cijena = Integer.parseInt(split[12]);
                 boolean ocjenjena = Boolean.parseBoolean(split[13]);
                 boolean petFriendly = Boolean.parseBoolean(split[14]);
 
 
-                VoznjaAplikacija voznja = new VoznjaAplikacija(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena, tipPorucivanja,napomena, petFriendly) {
+                VoznjaAplikacija voznja = new VoznjaAplikacija(id, ldt, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena, tipPorucivanja,napomena, petFriendly) {
                 };
                 voznje.add(voznja);
             }
@@ -530,6 +535,8 @@ public class TaksiSluzba {
                 String[] split = line.split("\\|");
                 long id = Long.parseLong(split[0]);
                 String datumIVremePoruzbine = split[1];
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                LocalDateTime ldt = LocalDateTime.parse(datumIVremePoruzbine,formatter);
                 String adresaPolaska = split[2];
                 String adresaDestinacije = split[3];
                 long musterijaId = Long.parseLong(split[4]);
@@ -539,12 +546,12 @@ public class TaksiSluzba {
                 int statusInt = Integer.parseInt(split[8]);
                 Status status = Status.values()[statusInt];
                 boolean obrisan = Boolean.parseBoolean(split[9]);
-                TipPorucivanja tipPorucivanja = TipPorucivanja.TELEFONOM;
+                TipPorucivanja tipPorucivanja = TipPorucivanja.valueOf(split[10]);
                 int cijena = Integer.parseInt(split[11]);
                 boolean ocjenjena = Boolean.parseBoolean(split[12]);
 
 
-                VoznjaTelefon voznjat = new VoznjaTelefon(id, datumIVremePoruzbine, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena, tipPorucivanja) {
+                VoznjaTelefon voznjat = new VoznjaTelefon(id, ldt, adresaPolaska, adresaDestinacije, musterijaId, null, vozacId, null, brojPredjenihKilometara, trajanjeVoznje, status, obrisan,cijena,ocjenjena, tipPorucivanja) {
                 };
                 voznjet.add(voznjat);
             }
@@ -807,6 +814,46 @@ public class TaksiSluzba {
   		}
   		return neobrisani;
   	}
+    public DoubleLinkedList<String> sveZavrseneTelefon() {
+        DoubleLinkedList<String> neobrisani = new DoubleLinkedList<String>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        for (VoznjaTelefon voznjat : voznjet) {
+            if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.ZAVRSENA)) {
+                String datum = voznjat.getDatumIVremePoruzbine().format(formatter);
+                neobrisani.add(datum);
+            }
+        }
+        return neobrisani;
+    }
+    public DoubleLinkedList<String> sveZavrseneAplikacija() {
+        DoubleLinkedList<String> neobrisani = new DoubleLinkedList<String>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        for (VoznjaAplikacija voznjat : voznje) {
+            if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.ZAVRSENA)) {
+                String datum = voznjat.getDatumIVremePoruzbine().format(formatter);
+                neobrisani.add(datum);
+            }
+        }
+        return neobrisani;
+    }
+    public DoubleLinkedList<VoznjaTelefon> sveZavrseneTelefon1() {
+        DoubleLinkedList<VoznjaTelefon> neobrisani = new DoubleLinkedList<VoznjaTelefon>();
+        for (VoznjaTelefon voznjat : voznjet) {
+            if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.ZAVRSENA)) {
+                neobrisani.add(voznjat);
+            }
+        }
+        return neobrisani;
+    }
+    public DoubleLinkedList<VoznjaAplikacija> sveZavrseneAplikacija1() {
+        DoubleLinkedList<VoznjaAplikacija> neobrisani = new DoubleLinkedList<VoznjaAplikacija>();
+        for (VoznjaAplikacija voznjat : voznje) {
+            if(!voznjat.isObrisan() && voznjat.getStatus().equals(Status.ZAVRSENA)) {
+                neobrisani.add(voznjat);
+            }
+        }
+        return neobrisani;
+    }
     public ArrayList<VoznjaTelefon> sveNeobrisaneVoznjeDodTel() {
   		ArrayList<VoznjaTelefon> neobrisani = new ArrayList<VoznjaTelefon>();
   		for (VoznjaTelefon voznjat : voznjet) {
@@ -957,6 +1004,117 @@ public class TaksiSluzba {
         } else {
             return binarySearchAutomobil(array, target, mid + 1, high);
         }
+    }
+    public boolean nadjiDatum(String datum){
+        for(VoznjaAplikacija voznja : voznje){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            if(voznja.getDatumIVremePoruzbine().format(formatter).equals(datum)){
+                return true;
+            }
+        }
+        for(VoznjaTelefon voznja : voznjet){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            if(voznja.getDatumIVremePoruzbine().format(formatter).equals(datum)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public DoubleLinkedList<Integer> nadjiVoznjuNarucenuPrekoTelefonaPoDatumu(String datum){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DoubleLinkedList<Integer> ukupanBrojLista = new DoubleLinkedList<>();
+        for(VoznjaTelefon voznja : voznjet){
+            if(voznja.getDatumIVremePoruzbine().format(formatter).equals(datum) && (voznja.getStatus().equals(Status.ZAVRSENA))){
+                ukupanBrojLista.add((int) voznja.getId());
+            }
+        }
+        return ukupanBrojLista;
+    }
+    public DoubleLinkedList<Integer> nadjiVoznjuNarucenuPrekoAplikacijePoDatumu(String datum){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DoubleLinkedList<Integer> ukupanBrojLista = new DoubleLinkedList<>();
+        for(VoznjaAplikacija voznja : voznje){
+            if(voznja.getDatumIVremePoruzbine().format(formatter).equals(datum) && (voznja.getStatus().equals(Status.ZAVRSENA))){
+                ukupanBrojLista.add((int) voznja.getId());
+            }
+        }
+        return ukupanBrojLista;
+    }
+    public double ukupnoTrajanjeVoznjiTelefoni(int id){
+        double trajanjeVoznje = 0;
+        for(VoznjaTelefon voznjePrekoTelefona : voznjet){
+            if(voznjePrekoTelefona.getId() == id && (voznjePrekoTelefona.getStatus().equals(Status.ZAVRSENA))){
+                trajanjeVoznje = voznjePrekoTelefona.getTrajanjeVoznje();
+            }
+        }
+        return trajanjeVoznje;
+    }
+
+    public double ukupnoTrajanjeVoznjiAplikacija(int id){
+        double trajanjeVoznje = 0;
+        for(VoznjaAplikacija voznjePrekoAplikacije : voznje){
+            if(voznjePrekoAplikacije.getId() == id && (voznjePrekoAplikacije.getStatus().equals(Status.ZAVRSENA))){
+                trajanjeVoznje = voznjePrekoAplikacije.getTrajanjeVoznje();
+            }
+        }
+        return trajanjeVoznje;
+    }
+
+    public double ukupnaKilometrazaTelefoni(int id){
+        double kilometraza = 0;
+        for(VoznjaTelefon voznjePrekoTelefona : voznjet){
+            if(voznjePrekoTelefona.getId() == id && (voznjePrekoTelefona.getStatus().equals(Status.ZAVRSENA))){
+                kilometraza = voznjePrekoTelefona.getBrojPredjenihKilometara();
+            }
+        }
+        return kilometraza;
+    }
+
+    public double ukupnaKilometrazaAplikacija(int id){
+        double kilometraza = 0;
+        for(VoznjaAplikacija voznjePrekoAplikacije : voznje){
+            if(voznjePrekoAplikacije.getId() == id && (voznjePrekoAplikacije.getStatus().equals(Status.ZAVRSENA))){
+                kilometraza = voznjePrekoAplikacije.getBrojPredjenihKilometara();
+            }
+        }
+        return kilometraza;
+    }
+
+    public double ukupnaZaradaTelefoni(int id){
+        double rezultat = 0;
+        for(VoznjaTelefon voznja : voznjet){
+            if(voznja.getId() == id && (voznja.getStatus().equals(Status.ZAVRSENA))){
+                rezultat += voznja.getCijena();
+            }
+        }
+        return rezultat;
+    }
+
+    public double ukupnaZaradaAplikacija(int id){
+        double rezultat = 0;
+        for(VoznjaAplikacija voznja : voznje){
+            if(voznja.getId() == id && (voznja.getStatus().equals(Status.ZAVRSENA))){
+                rezultat += voznja.getCijena();
+            }
+        }
+        return rezultat;
+    }
+
+    public DoubleLinkedList<String> listaKorisnickihImenaVozaca(int id){
+        DoubleLinkedList<String> vozaci = new DoubleLinkedList<>();
+        for(VoznjaTelefon voznjePrekoTelefona : voznjet){
+            if(voznjePrekoTelefona.getId() == id && (voznjePrekoTelefona.getStatus().equals(Status.ZAVRSENA))) {
+                String vozacKorisnickoIme = voznjePrekoTelefona.getVozac().getKorisnickoIme();
+                vozaci.add(vozacKorisnickoIme);
+            }
+        }
+        for(VoznjaAplikacija voznjePrekoAplikacije : voznje){
+            if(voznjePrekoAplikacije.getId() == id && (voznjePrekoAplikacije.getStatus().equals(Status.ZAVRSENA))) {
+                String vozacKorisnickoIme = voznjePrekoAplikacije.getVozac().getKorisnickoIme();
+                vozaci.add(vozacKorisnickoIme);
+            }
+        }
+        return vozaci;
     }
 
 

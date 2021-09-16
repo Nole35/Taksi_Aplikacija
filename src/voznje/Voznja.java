@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 public abstract class Voznja {
     protected long id;
-    protected String datumIVremePoruzbine;
+    protected LocalDateTime datumIVremePoruzbine;
     protected String adresaPolaska;
     protected String adresaDestinacije;
     protected long musterijaId;
@@ -23,9 +23,9 @@ public abstract class Voznja {
     protected int cijena;
     protected boolean ocjenjena;
 
-    public Voznja(long id, String datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan,int cijena, boolean ocjenjena){
+    public Voznja(long id, LocalDateTime datumIVremePoruzbine, String adresaPolaska, String adresaDestinacije, long musterijaId, long vozacId, int brojPredjenihKilometara, int trajanjeVoznje, Status status, boolean obrisan,int cijena, boolean ocjenjena){
         this.id = 0;
-        this.datumIVremePoruzbine = "";
+        this.datumIVremePoruzbine = null;
         this.adresaPolaska = "";
         this.adresaDestinacije = "";
         this.musterijaId = 0;
@@ -43,7 +43,7 @@ public abstract class Voznja {
 
 
     public Voznja(long id,
-                  String datumIVremePoruzbine,
+                  LocalDateTime datumIVremePoruzbine,
                   String adresaPolaska,
                   String adresaDestinacije,
                   long musterijaId,
@@ -87,13 +87,14 @@ public abstract class Voznja {
         this.id = id;
     }
 
-    public String getDatumIVremePoruzbine() {
+    public LocalDateTime getDatumIVremePoruzbine() {
         return datumIVremePoruzbine;
     }
 
-    public void setDatumIVremePoruzbine(String datumIVremePoruzbine) {
+    public void setDatumIVremePoruzbine(LocalDateTime datumIVremePoruzbine) {
         this.datumIVremePoruzbine = datumIVremePoruzbine;
     }
+
     public String getAdresaPolaska() {
         return adresaPolaska;
     }

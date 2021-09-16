@@ -25,6 +25,7 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.awt.event.ActionEvent;
 
@@ -82,7 +83,7 @@ public class NarucivanjeTelefon extends JFrame {
 			 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			 
              Date datumKreiranja = new Date();
-             String strDate = formatter.format(datumKreiranja); 
+             LocalDateTime strDate = LocalDateTime.now();
              Status statusVoznje = Status.KREIRANA;
              
              if (adresaPolaska.equals("") || adresaDestinacije.equals("")) {

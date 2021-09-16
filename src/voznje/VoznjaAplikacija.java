@@ -18,7 +18,7 @@ public class VoznjaAplikacija extends Voznja {
    
     public VoznjaAplikacija(
             long id,
-            String datumIVremePoruzbine,
+            LocalDateTime datumIVremePoruzbine,
             String adresaPolaska,
             String adresaDestinacije,
             long musterijaId,

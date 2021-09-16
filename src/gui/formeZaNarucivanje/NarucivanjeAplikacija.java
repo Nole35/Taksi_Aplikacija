@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import javax.swing.JButton;
@@ -80,7 +81,7 @@ public NarucivanjeAplikacija(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,
 		 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		 
          Date datumKreiranja = new Date();
-         String strDate = formatter.format(datumKreiranja); 
+         LocalDateTime strDate = LocalDateTime.now();
          Status statusVoznje = Status.KREIRANA_NA_CEKANJU;
          if (adresaPolaska.equals("") || adresaDestinacije.equals("")) {
              System.out.println("Niste unijeli podatke");

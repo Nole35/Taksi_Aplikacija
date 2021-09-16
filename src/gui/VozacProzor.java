@@ -1,6 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,9 +16,7 @@ import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeA;
 import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeT;
 import gui.IstorijaVoznji.IstorijaVozacaA;
 import gui.IstorijaVoznji.IstorijaVozacaT;
-import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
-import gui.formaZaIzvjestaj.IzvjestajVoznjiV;
-import gui.formaZaZavrsavanjeVoznje.ZavrsavanjeVoznjeT;
+import gui.formaZaIzvjestaj.IzvjestajVozac;
 import gui.formeZaPrikaz.LicitacijaVozaca;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
@@ -98,7 +95,7 @@ public class VozacProzor extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Izvjestaj voznji");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				IzvjestajVoznjiV ivv = new  IzvjestajVoznjiV(taksiSluzba, taksiSluzbai,vozac);
+				IzvjestajVozac ivv = new  IzvjestajVozac(taksiSluzba, taksiSluzbai,vozac);
 				 ivv.setVisible(true);
 			}
 		});
