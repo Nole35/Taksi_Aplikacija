@@ -76,7 +76,7 @@ public class IzvjestajVozac extends JFrame {
 							double ukupnoTrajanje = 0;
 							double prosekKilometara = 0;
 							double prosekTrajanja = 0;
-							double prosecnoBezVoznje = 0;
+
 							double ukupnaZarada = 0;
 							double prosecnaZarada = 0;
 
@@ -114,8 +114,8 @@ public class IzvjestajVozac extends JFrame {
 								prosekKilometara = ukupnoKilometara / ukupnoVoznji;
 								prosekTrajanja = ukupnoTrajanje / ukupnoVoznji;
 								prosecnaZarada = ukupnaZarada / ukupnoVoznji;
-								//todo
-								prosecnoBezVoznje = (480 - ukupnoTrajanje) / 60;
+
+
 							}
 
 
@@ -125,7 +125,7 @@ public class IzvjestajVozac extends JFrame {
 							}
 
 						}
-						TabelaPrikaz tabelaPrikaz = new TabelaPrikaz(tests); // napraviti
+						TabelaPrikaz tabelaPrikaz = new TabelaPrikaz(tests);
 						tabelaPrikaz.setVisible(true);
 					}
 				}
@@ -136,6 +136,11 @@ public class IzvjestajVozac extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 15));
 		btnClose.setBounds(389, 178, 162, 41);
 		contentPane.add(btnClose);

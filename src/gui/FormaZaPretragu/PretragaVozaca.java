@@ -26,13 +26,15 @@ public class PretragaVozaca extends JFrame {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_3;
+
 
 
 
 	public PretragaVozaca(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Petraga vozaca");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 351);
+		setBounds(100, 100, 600, 444);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -56,7 +58,13 @@ public class PretragaVozaca extends JFrame {
 		lblPlata.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		lblPlata.setBounds(51, 130, 130, 30);
 		contentPane.add(lblPlata);
-		
+
+		JLabel lblModel = new JLabel("Model:");
+		lblModel.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblModel.setBounds(51, 190, 130, 30);
+		contentPane.add(lblModel);
+
+
 		textField = new JTextField();
 		textField.setColumns(10);
 		textField.setBounds(218, 10, 230, 30);
@@ -75,6 +83,11 @@ public class PretragaVozaca extends JFrame {
 		textField_2.setColumns(10);
 		textField_2.setBounds(218, 130, 230, 30);
 		contentPane.add(textField_2);
+
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(218, 190, 230, 30);
+		contentPane.add(textField_3);
 		
 
 
@@ -88,11 +101,12 @@ public class PretragaVozaca extends JFrame {
 					String ime = textField.getText();
 					String prezime = textField_1.getText();
 					String plata = textField_2.getText();
+					String model = textField_3.getText();
 
 
 
-					DoubleLinkedList<Vozaci> rezultatPretrageVozaca = taksiSluzba.pretraga1(ime, prezime, plata);
-					PretragaVozacaTabela pvvt = new PretragaVozacaTabela(rezultatPretrageVozaca);
+					DoubleLinkedList<Vozaci> rezultatPretrage1 = taksiSluzba.pretraga1(ime, prezime, plata,model);
+					PretragaVozacaTabela pvvt = new PretragaVozacaTabela(rezultatPretrage1);
 					pvvt.setVisible(true);
 				}
 			}
@@ -132,6 +146,10 @@ public class PretragaVozaca extends JFrame {
 		}
 		if(textField_2.getText().trim().equals("")) {
 			poruka += "- Unesite godinu proizvodnje\n";
+			ok = false;
+		}
+		if(textField_3.getText().trim().equals("")) {
+			poruka += "- Unesite model\n";
 			ok = false;
 		}
 

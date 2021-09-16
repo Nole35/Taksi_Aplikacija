@@ -121,18 +121,19 @@ public class TaksiSluzba {
         return auto;
     }
 
-    public DoubleLinkedList<Vozaci> pretraga1(String ime, String prezime, String plata){
+    public DoubleLinkedList<Vozaci> pretraga1(String ime, String prezime, String plata, String model){
         DoubleLinkedList<Vozaci> vozacc = new DoubleLinkedList<Vozaci>();
         for (Vozaci vozac: vozaci
         ) {
             if ((ime.equals("") || ime.equals(vozac.getIme())) &&
                     (prezime.equals("") || prezime.equals(vozac.getPrezime())) &&
-                    (plata.equals("") || plata.equals(vozac.getPlata()))
+                    (plata.equals("") || Double.parseDouble(plata) == vozac.getPlata())
 
             ) {
                 System.out.println(ime + " / " + vozac.getIme());
                 System.out.println(prezime + " / " + vozac.getPrezime());
                 System.out.println(plata + " / " + vozac.getPlata());
+                System.out.println(model + " / " + vozac.getAutomobil().getModel());
 
 
                 vozacc.add(vozac);
