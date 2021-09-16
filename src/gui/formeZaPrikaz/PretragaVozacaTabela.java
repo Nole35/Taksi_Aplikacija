@@ -13,6 +13,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import kolekcije.DoubleLinkedList;
 import korisnici.Dispeceri;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
@@ -29,7 +30,7 @@ public class PretragaVozacaTabela extends JFrame {
 	private JButton btnNewButton;
 
 
-	public PretragaVozacaTabela(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
+	public PretragaVozacaTabela(DoubleLinkedList<Vozaci> rezultatPretrage1) {
 		setTitle("Vozaci");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 400);
@@ -41,27 +42,22 @@ public class PretragaVozacaTabela extends JFrame {
 		scrollPane.setBounds(10, 33, 766, 234);
 		contentPane.add(scrollPane);
 		String[] kolone = new String[] {"ID", "Korisnicko ime", "Ime", "Prezime", "JMBG", "Adresa ", "Pol", "Broj telefona", "Plata", "Prosjecna ocjena","ID automobila"};
-		Object[][] sadrzaj = new Object[taksiSluzba.sviNeobrisaniVozaci().size()][kolone.length];
-		for(int i=0; i<taksiSluzba.sviNeobrisaniVozaci().size(); i++) {
-			Vozaci vozaci = taksiSluzba.sviNeobrisaniVozaci().get(i);
-			sadrzaj[i][0] = vozaci.getId();
-			sadrzaj[i][1] = vozaci.getKorisnickoIme();
-			sadrzaj[i][2] = vozaci.getIme();
-			sadrzaj[i][3] = vozaci.getPrezime();
-			sadrzaj[i][4] = vozaci.getJmbg();
-			sadrzaj[i][5] = vozaci.getAdresa();
-			sadrzaj[i][6] = vozaci.getPol();
-			sadrzaj[i][7] = vozaci.getBrojTelefona();
-			sadrzaj[i][8] = vozaci.getPlata();
-			sadrzaj[i][9] = vozaci.getBrojClanskeKarte();
-			for (Automobil automobil: taksiSluzba.getVozila()
-				 ) {
-				if (automobil.getIdVozaca() == vozaci.getId()){
-					sadrzaj[i][10] = automobil.getId();
-				}
+		Object[][] sadrzaj = new Object[rezultatPretrage1.size()][kolone.length];
+		for(int i=0; i<rezultatPretrage1.size(); i++) {
+			Vozaci vozac = rezultatPretrage1.get(i);
+			sadrzaj[i][0] = vozac.getId();
+			sadrzaj[i][1] = vozac.getKorisnickoIme();
+			sadrzaj[i][2] = vozac.getIme();
+			sadrzaj[i][3] = vozac.getPrezime();
+			sadrzaj[i][4] = vozac.getJmbg();
+			sadrzaj[i][5] = vozac.getAdresa();
+			sadrzaj[i][6] = vozac.getPol();
+			sadrzaj[i][7] = vozac.getBrojTelefona();
+			sadrzaj[i][8] = vozac.getPlata();
+			sadrzaj[i][9] = vozac.getProsjecnaOcjena();
+			sadrzaj[i][10] = vozac.getBrojTelefona();
 
-			}
-			
+
 		}
 		tableModel = new DefaultTableModel(
 				sadrzaj,kolone );

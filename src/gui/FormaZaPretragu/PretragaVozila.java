@@ -113,6 +113,7 @@ public class PretragaVozila extends JFrame {
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				dispose();
 			}
 		});
