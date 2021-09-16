@@ -13,6 +13,7 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
+import kolekcije.DoubleLinkedList;
 import korisnici.Dispeceri;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
@@ -27,7 +28,7 @@ public class PretragaVozilaTabela extends JFrame {
 	private JTable table;
 	private DefaultTableModel tableModel;
 
-	public PretragaVozilaTabela(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
+	public PretragaVozilaTabela(DoubleLinkedList<Automobil> rezultatPretrage) {
 		setTitle("Vozila");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 799, 401);
@@ -39,9 +40,9 @@ public class PretragaVozilaTabela extends JFrame {
 		
 		
 		String[] kolone = new String[] {"ID", "Model", "Proizvodjac", "Godina proizvodnje", "Broj registracije", "Broj taksi vozila", "Vrsta automobila","Id vozaca"};
-		Object[][] sadrzaj = new Object[taksiSluzba.sviNeobrisaniAutomobili().size()][kolone.length];
-		for(int i=0; i<taksiSluzba.sviNeobrisaniAutomobili().size(); i++) {
-			Automobil automobil = taksiSluzba.sviNeobrisaniAutomobili().get(i);
+		Object[][] sadrzaj = new Object[rezultatPretrage.size()][kolone.length];
+		for(int i=0; i<rezultatPretrage.size(); i++) {
+			Automobil automobil = rezultatPretrage.get(i);
 			sadrzaj[i][0] = automobil.getId();
 			sadrzaj[i][1] = automobil.getModel();
 			sadrzaj[i][2] = automobil.getProizvodjac();

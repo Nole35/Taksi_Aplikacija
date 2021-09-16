@@ -1,13 +1,13 @@
-1|Miro23|jordan|Miroslav|Mir|1111|Pupinova 14|1|988|false|950.0|1234|5
-2|Cobe24|brajant|Cican|Cicak|2222|Strumicka 4|1|766|false|805.5|5678|4
-3|Ana10|mesi|Ana|Antonic|3333|Slovacka 8|0|544|false|750.25|9012|3
-4|Kris7|ronaldoa|Kristijan|Krstic|4444|Gogoljeva 14|0|322|false|1208.72|3456|2
-5|Jana2|barabar|Jana|Jankovic|5555|Buha 22|0|100|true|452.66|7890|2
-2|asdas|asdasdasd|asdad|sadasd|5155151516987|asdsadasd|0|659595959|true|959.0|65955|5
-2|sdsad|sadada|sadadad|sdasd|0911000180850|dawfafadsf|0|6959294|true|100.0|101|4
-2|sadasd|asdsad|sadsad|sadasd|099100018085|asdasd|0|659592|true|656.0|456|2
-6|asdsad|asdsad|asdsadasfasfsdaf|safsafasfasfasf|098456216180|sdfasd|0|65959591|true|100.0|66541|4
-7|zxczxczx|cxzxczxczx|zxczxczxcz|xzczxczxc|564959595|zxczxc5|0|659595995|true|121562.0|1234556|3
-8|AAA|AAA|AAA|AAA|515695959|AAA494A94|0|659595949|true|300.0|300|2
-9|CCCC|CCCC|CCCC|CCCC|00069999959|56444644|0|959595959|true|450.0|1501|3
-10|EEEE|EEEE|EEEE|EEEE|6156466|6464646|0|646464646|true|444.0|444|4
+1|Miro23|jordan|Miroslav|Mir|1111|Pupinova 14|1|988|false|950.0|1234|5.3
+2|Cobe24|brajant|Cican|Cicak|2222|Strumicka 4|1|766|false|805.5|5678|3.0
+3|Ana10|mesi|Ana|Antonic|3333|Slovacka 8|0|544|false|750.25|9012|2.5
+4|Kris7|ronaldoa|Kristijan|Krstic|4444|Gogoljeva 14|0|322|false|1208.72|3456|2.5
+5|Jana2|barabar|Jana|Jankovic|5555|Buha 22|0|100|true|452.66|7890|2.5
+2|asdas|asdasdasd|asdad|sadasd|5155151516987|asdsadasd|0|659595959|true|959.0|65955|2.5
+2|sdsad|sadada|sadadad|sdasd|0911000180850|dawfafadsf|0|6959294|true|100.0|101|2.5
+2|sadasd|asdsad|sadsad|sadasd|099100018085|asdasd|0|659592|true|656.0|456|2.5
+6|asdsad|asdsad|asdsadasfasfsdaf|safsafasfasfasf|098456216180|sdfasd|0|65959591|true|100.0|66541|2.5
+7|zxczxczx|cxzxczxczx|zxczxczxcz|xzczxczxc|564959595|zxczxc5|0|659595995|true|121562.0|1234556|2.5
+8|AAA|AAA|AAA|AAA|515695959|AAA494A94|0|659595949|true|300.0|300|2.5
+9|CCCC|CCCC|CCCC|CCCC|00069999959|56444644|0|959595959|true|450.0|1501|2.5
+10|EEEE|EEEE|EEEE|EEEE|6156466|6464646|0|646464646|true|444.0|444|2.5

@@ -233,6 +233,20 @@ public class DoubleLinkedList<T> implements Iterable<T>{
     }
 
 
-
+    public T get(int index){
+        if(index < 0 || index >= listSize){
+            throw  new IndexOutOfBoundsException("Index out of bounds exception");
+        }
+        int i = 0;
+        ListNode<T> currentNode = head;
+        while(currentNode != null){
+            if(index == i){
+                return currentNode.getElement();
+            }
+            currentNode = currentNode.getNext();
+            i++;
+        }
+        return null;
+    }
 }
 

@@ -97,6 +97,27 @@ public class TaksiSluzba {
     }
 
 
+    public DoubleLinkedList<Automobil> pretraga(String model, String proizvodjac, String brojRegistracije, String brojTaksiVozila, String godinaProizvodnje){
+        DoubleLinkedList<Automobil> auto = new DoubleLinkedList<Automobil>();
+        for (Automobil automobil: vozila
+					) {
+            if ((model.equals("") || model.equals(automobil.getModel())) &&
+                    (proizvodjac.equals("") || proizvodjac.equals(automobil.getProizvodjac())) &&
+                    (brojRegistracije.equals("") || brojRegistracije.equals(automobil.getBrojRegistarskeOznake())) &&
+                    (brojTaksiVozila.equals("") || Integer.parseInt(brojTaksiVozila) == automobil.getBrojTaksiVozila()) &&
+                    (godinaProizvodnje.equals("") || Integer.parseInt(godinaProizvodnje) == automobil.getGodinaProizvodnje())
+            ) {
+                System.out.println(model + " / " + automobil.getModel());
+                System.out.println(proizvodjac + " / " + automobil.getProizvodjac());
+                System.out.println(brojRegistracije + " / " + automobil.getBrojRegistarskeOznake());
+                System.out.println(brojTaksiVozila + " / " + automobil.getBrojTaksiVozila());
+                System.out.println(godinaProizvodnje + " / " + automobil.getGodinaProizvodnje());
+                auto.add(automobil);
+            }
+        }
+        return auto;
+    }
+
 
     public Musterija nadjiMusteriju(String korisnickoIme) {
         for (Musterija musterija : musterije) {
@@ -387,7 +408,7 @@ public class TaksiSluzba {
             String sadrzaj = "";
             for (Vozaci vozaci : vozaci) {
                 sadrzaj += vozaci.getId() + "|" + vozaci.getKorisnickoIme() + "|" + vozaci.getLozinka() + "|"
-                        + vozaci.getIme() + "|" + vozaci.getPrezime() + "|" + vozaci.getJmbg() + "|" + vozaci.getAdresa() + "|" + vozaci.getPol().ordinal() + "|" + vozaci.getBrojTelefona() + "|" + vozaci.isObrisan() + "|" + vozaci.getPlata() + "|" + vozaci.getBrojClanskeKarte() +  "\n";
+                        + vozaci.getIme() + "|" + vozaci.getPrezime() + "|" + vozaci.getJmbg() + "|" + vozaci.getAdresa() + "|" + vozaci.getPol().ordinal() + "|" + vozaci.getBrojTelefona() + "|" + vozaci.isObrisan() + "|" + vozaci.getPlata() + "|" + vozaci.getBrojClanskeKarte() + "|" + vozaci.getProsjecnaOcjena() +  "\n";
                 System.out.println(sadrzaj);
             }
             br.write(sadrzaj);
@@ -759,8 +780,8 @@ public class TaksiSluzba {
 		return neobrisani;
 	}
     
-    public ArrayList<Vozaci> sviNeobrisaniVozaci() {
-		ArrayList<Vozaci> neobrisani = new ArrayList<Vozaci>();
+    public DoubleLinkedList<Vozaci> sviNeobrisaniVozaci() {
+        DoubleLinkedList<Vozaci> neobrisani = new DoubleLinkedList<Vozaci>();
 		for (Vozaci vozaci : vozaci) {
 			if(!vozaci.isObrisan()) {
 				neobrisani.add(vozaci);
@@ -896,6 +917,47 @@ public class TaksiSluzba {
     
 
 
+	//binarna
+
+    public int pronadjiVozacaBinarySearch(DoubleLinkedList<Vozaci> array, int target){ // Ukloniti static
+        return binarySearchVozaca(array, target, 0, array.size());
+    }
+
+    public int binarySearchVozaca(DoubleLinkedList<Vozaci> array, int target, int low, int high){ // Ukloniti static
+
+        if(low > high){
+            return 0;
+        }
+        int mid = (low + high) / 2;
+
+        if (array.getElement(mid).getId() == target){
+            return mid;
+        } else if (array.getElement(mid).getId() > target){
+            return  binarySearchVozaca(array, target, low, mid-1);
+        } else {
+            return binarySearchVozaca(array, target, mid + 1, high);
+        }
+    }
+
+    public  int pronadjiAutomobilBinarySearch(DoubleLinkedList<Automobil> array, int target){ // Ukloniti static
+        return binarySearchAutomobil(array, target, 0, array.size());
+    }
+
+    public  int binarySearchAutomobil(DoubleLinkedList<Automobil> array, int target, int low, int high){ // Ukloniti static
+
+        if(low > high){
+            return 0;
+        }
+        int mid = (low + high) / 2;
+
+        if (array.getElement(mid).getId() == target){
+            return mid;
+        } else if (array.getElement(mid).getId() > target){
+            return  binarySearchAutomobil(array, target, low, mid-1);
+        } else {
+            return binarySearchAutomobil(array, target, mid + 1, high);
+        }
+    }
 
 
 

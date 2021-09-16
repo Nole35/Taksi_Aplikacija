@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import gui.formeZaPrikaz.PretragaVozacaTabela;
 import gui.formeZaPrikaz.PretragaVozilaTabela;
 import korisnici.Dispeceri;
+import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
 import taksiSluzba.TaksiSluzbai;
 
@@ -22,6 +23,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class PretragaVozaca extends JFrame {
+
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -37,6 +39,10 @@ public class PretragaVozaca extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+
+
+
 		
 		JLabel lblIme = new JLabel("Ime:");
 		lblIme.setFont(new Font("SansSerif", Font.PLAIN, 18));
@@ -72,6 +78,8 @@ public class PretragaVozaca extends JFrame {
 		lblAutomobil.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		lblAutomobil.setBounds(51, 190, 130, 30);
 		contentPane.add(lblAutomobil);
+
+
 		
 		JButton btnNewButton = new JButton("Pretraga");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -83,7 +91,7 @@ public class PretragaVozaca extends JFrame {
 		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnNewButton.setBounds(51, 270, 135, 34);
 		contentPane.add(btnNewButton);
-		
+
 		JButton btnClose = new JButton("Close");
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,10 +101,12 @@ public class PretragaVozaca extends JFrame {
 		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 18));
 		btnClose.setBounds(420, 270, 135, 34);
 		contentPane.add(btnClose);
-		
+
 		JComboBox comboBox = new JComboBox();
 		comboBox.setBounds(218, 190, 230, 30);
 		contentPane.add(comboBox);
 	}
+
+
 
 }

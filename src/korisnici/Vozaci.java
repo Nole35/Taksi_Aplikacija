@@ -67,8 +67,13 @@ public class Vozaci extends Osoba {
         this.voznje = voznje;
     }
 
+    public double getProsjecnaOcjena() {
+        return prosjecnaOcjena;
+    }
 
-
+    public void setProsjecnaOcjena(double prosjecnaOcjena) {
+        this.prosjecnaOcjena = prosjecnaOcjena;
+    }
 
     @Override
     public String toString() {

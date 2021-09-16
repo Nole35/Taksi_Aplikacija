@@ -9,19 +9,19 @@ import voznje.VoznjaAplikacija;
 
 public class BinarnaPretraga {
 
-    public Vozaci pronadjiVozacaBinarySearch(DoubleLinkedList<Vozaci> array, long target){ // Ukloniti static
+    public int pronadjiVozacaBinarySearch(DoubleLinkedList<Vozaci> array, int target){ // Ukloniti static
         return binarySearchVozaca(array, target, 0, array.size());
     }
 
-    public  Vozaci binarySearchVozaca(DoubleLinkedList<Vozaci> array, long target, long low, long high){ // Ukloniti static
+    public int binarySearchVozaca(DoubleLinkedList<Vozaci> array, int target, int low, int high){ // Ukloniti static
 
         if(low > high){
-            return null;
+            return 0;
         }
-        long mid = (low + high) / 2;
+        int mid = (low + high) / 2;
 
         if (array.getElement(mid).getId() == target){
-            return array.getElement(mid);
+            return mid;
         } else if (array.getElement(mid).getId() > target){
             return  binarySearchVozaca(array, target, low, mid-1);
         } else {

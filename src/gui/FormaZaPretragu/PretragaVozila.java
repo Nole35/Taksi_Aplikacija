@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import gui.formeZaPrikaz.PretragaVozacaTabela;
 import gui.formeZaPrikaz.PretragaVozilaTabela;
 import kolekcije.DoubleLinkedList;
 import korisnici.Dispeceri;
@@ -89,42 +90,17 @@ public class PretragaVozila extends JFrame {
 		JButton btnNewButton = new JButton("Pretraga");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try {
-
+				if(validacija() == true) {
 					String model = textField.getText();
 					String proizvodjac = textField_1.getText();
 					String brojRegistracije = textField_2.getText();
 					String brojTaksiVozila = textField_3.getText();
 					String godinaProizvodnje = textField_4.getText();
 
-
-					DoubleLinkedList<Automobil> listaAutomobila = new DoubleLinkedList<Automobil>();
-					for (Automobil automobil: taksiSluzba.getVozila()
-					) {
-						if ((model.equals("") || model.equals(automobil.getModel())) &&
-								(proizvodjac.equals("") || proizvodjac.equals(automobil.getProizvodjac())) &&
-								(brojRegistracije.equals("") || brojRegistracije.equals(automobil.getBrojRegistarskeOznake())) &&
-								(brojTaksiVozila.equals("") || Integer.parseInt(brojTaksiVozila) == automobil.getBrojTaksiVozila())  &&
-								(godinaProizvodnje.equals("") || Integer.parseInt(godinaProizvodnje) == automobil.getGodinaProizvodnje())
-						){
-							System.out.println(model + " / " + automobil.getModel());
-							System.out.println(proizvodjac  + " / " + automobil.getProizvodjac());
-							System.out.println(brojRegistracije  + " / " +  automobil.getBrojRegistarskeOznake());
-							System.out.println(brojTaksiVozila  + " / " +  automobil.getBrojTaksiVozila());
-							System.out.println(godinaProizvodnje  + " / " +  automobil.getGodinaProizvodnje());
-
-							listaAutomobila.add(automobil);
-						}
-
-					}
-
-				}catch (Exception e1){
-					JOptionPane.showMessageDialog( new Frame(),
-							"Došlo je do greške provjerite unose!",
-							null,
-							JOptionPane.WARNING_MESSAGE);
+					DoubleLinkedList<Automobil> rezultatPretrage = taksiSluzba.pretraga(model, proizvodjac, brojRegistracije, brojTaksiVozila, godinaProizvodnje);
+					PretragaVozilaTabela pvt = new PretragaVozilaTabela(rezultatPretrage);
+					pvt.setVisible(true);
 				}
-
 			}
 		});
 
@@ -147,9 +123,38 @@ public class PretragaVozila extends JFrame {
 
 
 
-	}
 
 
 	}
+	private boolean validacija() {
+		boolean ok = true;
+		String poruka = "Molimo popravite sledece greske u unosu:\n";
+
+		if(textField.getText().trim().equals("")) {
+			poruka += "- Unesite model\n";
+			ok = false;
+		}
+		if(textField_1.getText().trim().equals("")) {
+			poruka += "- Unesite proizvodjaca\n";
+			ok = false;
+		}
+		if(textField_2.getText().trim().equals("")) {
+			poruka += "- Unesite godinu proizvodnje\n";
+			ok = false;
+		}
+		if(textField_4.getText().trim().equals("")) {
+			poruka += "- Unesite broj registracije\n";
+			ok = false;
+		}
+
+		if(ok == false) {
+			JOptionPane.showMessageDialog(null, poruka, "Neispravni podaci", JOptionPane.WARNING_MESSAGE);
+		}
+
+		return ok;
+	}
+}
+
+
 
 

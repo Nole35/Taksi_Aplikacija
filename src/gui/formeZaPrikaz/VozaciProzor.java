@@ -9,9 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import aisp.BinarnaPretraga;
 import gui.DispecerProzor;
 import gui.formeZaDodavanje.DodajVozaca;
 import gui.formeZaIzmjenu.IzmjenaVozaca;
+import kolekcije.DoubleLinkedList;
 import korisnici.Dispeceri;
 import korisnici.Vozaci;
 import taksiSluzba.TaksiSluzba;
@@ -32,14 +34,13 @@ import gui.formeZaDodavanje.DodajVozilo;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class VozaciProzor extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private DefaultTableModel tableModel;
-	
-
 
 	public VozaciProzor(TaksiSluzba taksiSluzba, TaksiSluzbai taksiSluzbai,Dispeceri dispecer) {
 		setTitle("Vozaci");
@@ -72,9 +73,7 @@ public class VozaciProzor extends JFrame {
 				if (automobil.getIdVozaca() == vozaci.getId()){
 					sadrzaj[i][11] = automobil.getId();
 				}
-
 			}
-			
 		}
 		tableModel = new DefaultTableModel(
 				sadrzaj,kolone );
@@ -114,12 +113,23 @@ public class VozaciProzor extends JFrame {
 				}
 				else {
 					String korisnickoIme = table.getValueAt(red, 1).toString();
+					String id = table.getValueAt(red, 0).toString();
+					int idd = Integer.parseInt(id);
+
 					Vozaci vozaci = taksiSluzba.nadjiVozaca(korisnickoIme);
+
+
+					DoubleLinkedList<Vozaci> binarna = taksiSluzba.sviNeobrisaniVozaci();
+					int index = taksiSluzba.pronadjiVozacaBinarySearch(binarna, idd);
+					Vozaci trazeniVozac = binarna.get(index);
+
+
+
 					int izbor = JOptionPane.showConfirmDialog(null, 
 							"Da li ste sigurni da zelite da obrisete vozaca?", 
 							korisnickoIme + " - Potvrda brisanja", JOptionPane.YES_NO_OPTION);
 					if(izbor == JOptionPane.YES_OPTION) {
-						vozaci.setObrisan(true);
+						trazeniVozac.setObrisan(true);
 						tableModel.removeRow(red);
 						taksiSluzba.snimiVozace("vozaci.txt");
 						JOptionPane.showMessageDialog(null, "Vozac izbrisan", "Brisanje  ", JOptionPane.INFORMATION_MESSAGE);
