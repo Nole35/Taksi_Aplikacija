@@ -1,13 +1,13 @@
-151|2020-04-24 23:34|Klisa|Grbavica|11|3|12|27|3|false|APLIKACIJOM|nema|1500|5|false
-152|2020-01-07 23:34|Sajmiste|Liman|12|5|7|15|1|false|APLIKACIJOM|nema|1500|4|false
-154|2020-02-25 23:34|Adice|Rotkvarija|13|1|17|33|4|false|APLIKACIJOM|nema|1500|3|false
-154|2020-06-27 23:34|Liman|Big|13|1|17|33|4|false|APLIKACIJOM|nema|1500|2|false
-155|2020-08-05 23:34|Irig|Kamenica|15|2|28|60|5|false|APLIKACIJOM|nema|1500|1|false
-156|2021-06-24 23:34|asdasd|sdasdsadasas|14|0|0|0|0|true|APLIKACIJOM|nema|1500|5|false
-157|2021-06-24 23:34|czxczxczxc|zczxczxczxc|14|0|0|0|1|true|APLIKACIJOM|testr|1500|4|false
-158|2021-06-24 23:34|asdasdasd|asdasdasda|14|0|0|0|1|true|APLIKACIJOM|dime|0|2|false
-159|2021-06-25 23:34|AAAA|ACACACA|14|0|0|0|1|true|APLIKACIJOM|ACACACACA|0|3|false
-160|2021-06-25 23:34|sds|sds|14|0|0|0|1|false|APLIKACIJOM||0|1|false
-161|2021-06-25 23:34|AAAAAAAA|AAAAAAAAAAAAA|14|0|0|0|1|true|APLIKACIJOM|EEEEEEEEEEE|0|5|false
-162|2021-06-25 23:34|SSSSSSS|SSSSSSSSS|14|0|0|0|1|true|APLIKACIJOM|SSSSSSSS|0|3|true
-163|2021-06-25 23:34|tttttttttttttt|tttttttttttt|14|0|0|0|1|true|APLIKACIJOM||0|2|true
+151|2020-04-24|Klisa|Grbavica|11|3|12|27|3|false|APLIKACIJOM|nema|1500|5|false
+152|2020-01-07|Sajmiste|Liman|12|5|7|15|1|false|APLIKACIJOM|nema|1500|4|false
+153|2020-02-25|Adice|Rotkvarija|14|4|9|21|2|false|APLIKACIJOM|nema|1500|3|false
+154|2020-06-27|Liman|Big|13|1|17|33|4|false|APLIKACIJOM|nema|1500|2|false
+155|2020-08-5|Irig|Kamenica|15|2|28|60|5|false|APLIKACIJOM|nema|1500|1|false
+156|2021-06-24|asdasd|sdasdsadasas|14|0|0|0|0|true|APLIKACIJOM|nema|1500|5|false
+157|2021-06-24|czxczxczxc|zczxczxczxc|14|0|0|0|1|true|APLIKACIJOM|testr|1500|4|false
+158|2021-06-24|asdasdasd|asdasdasda|14|0|0|0|1|true|APLIKACIJOM|dime|0|2|false
+159|2021-06-25|AAAA|ACACACA|14|0|0|0|1|true|APLIKACIJOM|ACACACACA|0|3|false
+160|2021-06-25|||14|0|0|0|1|false|APLIKACIJOM||0|1|false
+161|2021-06-25|AAAAAAAA|AAAAAAAAAAAAA|14|0|0|0|1|true|APLIKACIJOM|EEEEEEEEEEE|0|5|false
+162|2021-06-25|SSSSSSS|SSSSSSSSS|14|0|0|0|1|true|APLIKACIJOM|SSSSSSSS|0|3|true
+163|2021-06-25|tttttttttttttt|tttttttttttt|14|0|0|0|1|true|APLIKACIJOM||0|2|true

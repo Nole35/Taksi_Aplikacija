@@ -1174,23 +1174,22 @@ public class TaksiSluzba {
         return rezultat;
     }
 
-    public DoubleLinkedList<String> listaKorisnickihImenaVozaca(int id){
-        DoubleLinkedList<String> vozaci = new DoubleLinkedList<>();
-        for(VoznjaTelefon voznjePrekoTelefona : voznjet){
-            if(voznjePrekoTelefona.getId() == id && (voznjePrekoTelefona.getStatus().equals(Status.ZAVRSENA))) {
-                String vozacKorisnickoIme = voznjePrekoTelefona.getVozac().getKorisnickoIme();
-                vozaci.add(vozacKorisnickoIme);
-            }
-        }
-        for(VoznjaAplikacija voznjePrekoAplikacije : voznje){
-            if(voznjePrekoAplikacije.getId() == id && (voznjePrekoAplikacije.getStatus().equals(Status.ZAVRSENA))) {
-                String vozacKorisnickoIme = voznjePrekoAplikacije.getVozac().getKorisnickoIme();
-                vozaci.add(vozacKorisnickoIme);
-            }
-        }
-        return vozaci;
-    }
-
+    public DoubleLinkedList<Integer> listaIdevaVozaca(int id){
+		DoubleLinkedList<Integer> vozaci = new DoubleLinkedList<>();
+		for(VoznjaTelefon voznjePrekoTelefona : voznjet){
+			if(voznjePrekoTelefona.getId() == id && (voznjePrekoTelefona.getStatus().equals(Status.ZAVRSENA))) {
+				int vozacID = (int) voznjePrekoTelefona.getVozac().getId();
+				vozaci.add(vozacID);
+			}
+		}
+		for(VoznjaAplikacija voznjePrekoAplikacije : voznje){
+			if(voznjePrekoAplikacije.getId() == id && (voznjePrekoAplikacije.getStatus().equals(Status.ZAVRSENA))) {
+				int vozacID = (int) voznjePrekoAplikacije.getVozac().getId();
+				vozaci.add(vozacID);
+			}
+		}
+		return vozaci;
+	}
 
 
 }

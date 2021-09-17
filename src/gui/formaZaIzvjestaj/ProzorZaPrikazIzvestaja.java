@@ -3,82 +3,129 @@ package gui.formaZaIzvjestaj;
 import taksiSluzba.TaksiSluzba;
 
 import javax.swing.*;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ProzorZaPrikazIzvestaja extends JFrame {
-    private JLabel ukupanBrojVoznji = new JLabel("Ukupan broj voznji ");
-    private JTextField tukupanBrojVoznji = new JTextField(12);
-    private JLabel ukupanBrojVoznjiTelefon = new JLabel("Ukupan broj voznji narucenih putem telefona");
-    private JTextField tukupanBrojVoznjiTelefon = new JTextField(12);
-    private JLabel ukupanBrojVoznjiAplikacija = new JLabel("Ukupan broj voznji narucenih putem aplikacije");
-    private JTextField tukupanBrojVoznjiAplikacija = new JTextField(12);
-    private JLabel prosecnoTrajanjeVoznje = new JLabel("Prosecno trajanje voznje ");
-    private JTextField tprosecnoTrajanjeVoznje = new JTextField(12);
-    private JLabel prosecanBrojPredjenihKm = new JLabel("Prosecna kilometraza ");
-    private JTextField tprosecanBrojPredjenihKm = new JTextField(12);
-    private JLabel ukupnaZaradaZaSveVoznje = new JLabel("Ukupna zarada za sve voznje ");
-    private JTextField tukupnaZaradaZaSveVoznje = new JTextField(12);
-    private JLabel prosecnaZaradaPoVoznji = new JLabel("Prosecna zarada po voznji ");
-    private JTextField tprosecnaZaradaPoVoznji = new JTextField(12);
-    private JLabel ukupanBrojVozacaKojiSuVozili = new JLabel("Ukupan broj aktivnih vozaca ");
-    private JTextField tukupanBrojVozacaKojiSuVozili = new JTextField(12);
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JTextField textField_6;
+	private JTextField textField_7;
+	
+	public TaksiSluzba ucitavanje;
+	public ProzorZaPrikazIzvestaja(int ukupanBrojSvihVoznji, int ukupanBrojVoznjiAplikacija,int ukupanBrojVoznjiTelefon, int prosecnoTrajanjeVoznji, int prosecnaKilometraza, int ukupnaZaradaZaSveVoznje, int prosecnaZaradaPoVoznji, int ukupanBrojAktivnihVozaca) {
+		
+		
+		JLabel lblNewLabel = new JLabel("Ukupan broj voznji:");
+		lblNewLabel.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblNewLabel.setBounds(26, 31, 180, 40);
+		getContentPane().add(lblNewLabel);
+		
+		JLabel lblBrojVoznjiPorucenih_1 = new JLabel("Broj voznji porucenih telefonom:");
+		lblBrojVoznjiPorucenih_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_1.setBounds(26, 97, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_1);
+		
+		JLabel lblBrojVoznjiPorucenih_2 = new JLabel("Broj voznji porucenih aplikacijom:");
+		lblBrojVoznjiPorucenih_2.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_2.setBounds(26, 175, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_2);
+		
+		JLabel lblBrojVoznjiPorucenih_2_1 = new JLabel("Prosjecno trajanje voznje:");
+		lblBrojVoznjiPorucenih_2_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_2_1.setBounds(26, 256, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_2_1);
+		
+		JLabel lblBrojVoznjiPorucenih_2_1_1 = new JLabel("Prosjecno duzina voznje:");
+		lblBrojVoznjiPorucenih_2_1_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_2_1_1.setBounds(26, 332, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_2_1_1);
+		
+		JLabel lblBrojVoznjiPorucenih_2_1_1_1 = new JLabel("Ukupna zarada:");
+		lblBrojVoznjiPorucenih_2_1_1_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_2_1_1_1.setBounds(26, 392, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_2_1_1_1);
+		
+		JLabel lblBrojVoznjiPorucenih_2_1_1_1_1 = new JLabel("Ukupan broj vozaca za taj period:");
+		lblBrojVoznjiPorucenih_2_1_1_1_1.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_2_1_1_1_1.setBounds(26, 509, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_2_1_1_1_1);
+		
+		JButton btnNewButton = new JButton("Stampaj");
+		btnNewButton.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		btnNewButton.setBounds(26, 584, 120, 40);
+		getContentPane().add(btnNewButton);
+		
+		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose ();
+			}
+		});
+		btnClose.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		btnClose.setBounds(279, 584, 120, 40);
+		getContentPane().add(btnClose);
+		
+		JLabel lblBrojVoznjiPorucenih_2_1_1_1_2 = new JLabel("Prosecna zarada:");
+		lblBrojVoznjiPorucenih_2_1_1_1_2.setFont(new Font("SansSerif", Font.PLAIN, 18));
+		lblBrojVoznjiPorucenih_2_1_1_1_2.setBounds(26, 461, 274, 40);
+		getContentPane().add(lblBrojVoznjiPorucenih_2_1_1_1_2);
+		
+		textField = new JTextField();
+		textField.setText(String.valueOf(ukupanBrojSvihVoznji));
+		textField.setBounds(310, 31, 134, 29);
+		getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setText(String.valueOf(ukupanBrojVoznjiAplikacija));
+		textField_1.setColumns(10);
+		textField_1.setBounds(310, 97, 134, 29);
+		getContentPane().add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setText(String.valueOf(ukupanBrojVoznjiTelefon));
+		textField_2.setColumns(10);
+		textField_2.setBounds(310, 175, 134, 29);
+		getContentPane().add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setText(prosecnoTrajanjeVoznji + " min");
+		textField_3.setColumns(10);
+		textField_3.setBounds(310, 256, 134, 29);
+		getContentPane().add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setText(prosecnaKilometraza + " km");
+		textField_4.setColumns(10);
+		textField_4.setBounds(310, 332, 134, 29);
+		getContentPane().add(textField_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setText(ukupnaZaradaZaSveVoznje + " din");
+		textField_5.setColumns(10);
+		textField_5.setBounds(310, 391, 134, 29);
+		getContentPane().add(textField_5);
+		
+		textField_6 = new JTextField();
+		textField_6.setText(prosecnaZaradaPoVoznji + " din");
+		textField_6.setColumns(10);
+		textField_6.setBounds(310, 461, 134, 29);
+		getContentPane().add(textField_6);
+		
+		textField_7 = new JTextField();
+		textField_7.setText(String.valueOf(ukupanBrojAktivnihVozaca));
+		textField_7.setColumns(10);
+		textField_7.setBounds(310, 509, 134, 29);
+		getContentPane().add(textField_7);
+	}
 
-    public TaksiSluzba ucitavanje;
+   
 
-    public ProzorZaPrikazIzvestaja(int ukupanBrojSvihVoznji, int ukupanBrojVoznjiAplikacija, int ukupanBrojVoznjiTelefon, int prosecnoTrajanjeVoznji, int prosecnaKilometraza, int ukupnaZaradaZaSveVoznje, int prosecnaZaradaPoVoznji, int brojVozacaKojiSuVozili) {
-        setTitle("Prikaz izvestaja");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        initGUI();
-        setResizable(false);
-        pack();
-        setLocationRelativeTo(null);
-        popunjavanjePolja(ukupanBrojSvihVoznji,ukupanBrojVoznjiAplikacija,ukupanBrojVoznjiTelefon,prosecnoTrajanjeVoznji,prosecnaKilometraza,ukupnaZaradaZaSveVoznje,prosecnaZaradaPoVoznji,brojVozacaKojiSuVozili);
-    }
-
-
-    private void initGUI(){
-//        MigLayout layout = new MigLayout("wrap 2");
-
-//        setLayout(layout);
-        add(ukupanBrojVoznji);
-        add(tukupanBrojVoznji);
-        add(ukupanBrojVoznjiTelefon);
-        add(tukupanBrojVoznjiTelefon);
-        add(ukupanBrojVoznjiAplikacija);
-        add(tukupanBrojVoznjiAplikacija);
-        add(prosecnoTrajanjeVoznje);
-        add(tprosecnoTrajanjeVoznje);
-        add(prosecanBrojPredjenihKm);
-        add(tprosecanBrojPredjenihKm);
-        add(ukupnaZaradaZaSveVoznje);
-        add(tukupnaZaradaZaSveVoznje);
-        add(prosecnaZaradaPoVoznji);
-        add(tprosecnaZaradaPoVoznji);
-        add(ukupanBrojVozacaKojiSuVozili);
-        add(tukupanBrojVozacaKojiSuVozili);
-
-        tukupanBrojVoznji.setEditable(false);
-        tukupanBrojVoznjiAplikacija.setEditable(false);
-        tukupanBrojVoznjiTelefon.setEditable(false);
-        tprosecanBrojPredjenihKm.setEditable(false);
-        tprosecnoTrajanjeVoznje.setEditable(false);
-        tukupnaZaradaZaSveVoznje.setEditable(false);
-        tprosecnaZaradaPoVoznji.setEditable(false);
-        tukupanBrojVozacaKojiSuVozili.setEditable(false);
-
-    }
-
-
-    //ovo kopirati
-    private void popunjavanjePolja(int ukupanBrojSvihVoznji, int ukupanBrojVoznjiAplikacija, int ukupanBrojVoznjiTelefon, int prosecnoTrajanjeVoznji, int prosecnaKilometraza, int ukupnaZaradaZaSveVoznje, int prosecnaZaradaPoVoznji, int brojVozacaKojiSuVozili) {
-
-        tukupanBrojVoznji.setText(String.valueOf(ukupanBrojSvihVoznji));
-        tukupanBrojVoznjiAplikacija.setText(String.valueOf(ukupanBrojVoznjiAplikacija));
-        tukupanBrojVoznjiTelefon.setText(String.valueOf(ukupanBrojVoznjiTelefon));
-        tprosecnoTrajanjeVoznje.setText(prosecnoTrajanjeVoznji + " min");
-        tprosecanBrojPredjenihKm.setText(prosecnaKilometraza + " km");
-        tukupnaZaradaZaSveVoznje.setText(ukupnaZaradaZaSveVoznje + " din");
-        tprosecnaZaradaPoVoznji.setText(prosecnaZaradaPoVoznji + " din");
-        tukupanBrojVozacaKojiSuVozili.setText(String.valueOf(brojVozacaKojiSuVozili));
-
-    }
 }
+

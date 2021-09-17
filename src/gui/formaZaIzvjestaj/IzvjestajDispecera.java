@@ -20,6 +20,7 @@ public class IzvjestajDispecera extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	public TaksiSluzba taksiSluzba;
 
 	public IzvjestajDispecera(TaksiSluzba taksiSluzba, String[] days) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -168,19 +169,19 @@ public class IzvjestajDispecera extends JFrame {
 
 
 					// UKUPAN BROJ AKTIVNIH VOZACA
-					DoubleLinkedList<String> novaListaVozaca = new DoubleLinkedList<>();
-					for(Integer idKojiTrebaPronaci : listaBezDupliranihIDevaTelefon){
-						DoubleLinkedList<String> listaSvihKorisnickihImenaVozaca = taksiSluzba.listaKorisnickihImenaVozaca(idKojiTrebaPronaci);
-						for(String f : listaSvihKorisnickihImenaVozaca){
-							novaListaVozaca.add(f);
-						}
-					}
-					Set<String> listaBezDupliranihVozaca = findDuplicatesStrings(novaListaVozaca);
-					int count = 0;
-					for(String s : listaBezDupliranihVozaca){
-						count++;
-					}
-					int ukupanBrojAktivnihVozaca = count;
+					DoubleLinkedList<Integer> novaListaa = new DoubleLinkedList<>();
+                    for(Integer idKojiTrebaPronaci : listaBezDupliranihIDevaTelefon){
+                        DoubleLinkedList<Integer> listasvihIdevavozaca = taksiSluzba.listaIdevaVozaca(idKojiTrebaPronaci);
+                        for(Integer f : listasvihIdevavozaca){
+                            novaListaa.add(f);
+                        }
+                    }
+                    Set<Integer> listabezdupliranih = findDuplicatesIntegers(novaListaa);
+                    int count2 = 0;
+                    for(Integer s : listabezdupliranih){
+                        count2++;
+                    }
+                    int ukupanBrojAktivnihVozaca = count2;
 
 					if(ukupanBrojSvihVoznji == 0){
 						JOptionPane.showMessageDialog(null, "Nazalost, za uneti datum, nema voznji.", "Obavestenje", JOptionPane.INFORMATION_MESSAGE);
