@@ -1,4 +1,4 @@
-31|Golf 2|Volkswagen|2002|aa11|911|0|true|1
+31|Golf 2|Volkswagen|2002|aa11|911|0|false|1
 32|Koral 45|Yugo|2018|aa22|912|0|false|2
 33|R7|Mazda|2000|aa33|913|0|true|3
 34|Cbr|Kombi|1966|aa44|914|1|false|4

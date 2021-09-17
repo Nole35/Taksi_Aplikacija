@@ -140,11 +140,15 @@ public class PretragaVozila extends JFrame {
 			ok = false;
 		}
 		if(textField_2.getText().trim().equals("")) {
-			poruka += "- Unesite godinu proizvodnje\n";
+			poruka += "- Unesite broj registracije\n";
+			ok = false;
+		}
+		if(textField_3.getText().trim().equals("")) {
+			poruka += "- Unesite broj taksi vozila\n";
 			ok = false;
 		}
 		if(textField_4.getText().trim().equals("")) {
-			poruka += "- Unesite broj registracije\n";
+			poruka += "- Unesite godinu proizvodnje\n";
 			ok = false;
 		}
 

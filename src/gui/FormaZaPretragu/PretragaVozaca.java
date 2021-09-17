@@ -137,15 +137,15 @@ public class PretragaVozaca extends JFrame {
 		String poruka = "Molimo popravite sledece greske u unosu:\n";
 
 		if(textField.getText().trim().equals("")) {
-			poruka += "- Unesite model\n";
+			poruka += "- Unesite ime\n";
 			ok = false;
 		}
 		if(textField_1.getText().trim().equals("")) {
-			poruka += "- Unesite proizvodjaca\n";
+			poruka += "- Unesite prezime\n";
 			ok = false;
 		}
 		if(textField_2.getText().trim().equals("")) {
-			poruka += "- Unesite godinu proizvodnje\n";
+			poruka += "- Unesite platu\n";
 			ok = false;
 		}
 		if(textField_3.getText().trim().equals("")) {
