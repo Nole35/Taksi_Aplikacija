@@ -83,16 +83,15 @@ public class Ponuda {
             String korisnickoImeVozaca,
             double prosjecnaOcjenaVozaca,
             int brojVoznjiVozaca,
-            int vrijemeDolaska
-    ){
+            double ocjenaPonude){
         this.idVoznje = idVoznje;
         this.idVozaca = idVozaca;
         this.korisnickoImeVozaca = korisnickoImeVozaca;
         this.brojVoznjiVozaca = brojVoznjiVozaca;
         this.vrijemeDolaska = vrijemeDolaska;
         this.prosjecnaOcjenaVozaca = prosjecnaOcjenaVozaca;
-        ocjenaPonude = (double) (izracunajOcjenuBrojVoznji(this.brojVoznjiVozaca) + (2 * izracunajOcjenuVrijeme(this.vrijemeDolaska)) + prosjecnaOcjenaVozaca);
-        System.out.println("OCJENA PONUDE " + ocjenaPonude);
+        this.ocjenaPonude = (double) (izracunajOcjenuBrojVoznji(this.brojVoznjiVozaca) + (2 * izracunajOcjenuVrijeme(this.vrijemeDolaska)) + prosjecnaOcjenaVozaca);
+        System.out.println("OCJENA PONUDE " + this.ocjenaPonude);
 
     }
 
