@@ -16,6 +16,7 @@ import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeA;
 import gui.FormeZaOdbijanjeIPrihvatanjeVoznje.PrihvatanjeIOdbijanjeVoznjeT;
 import gui.IstorijaVoznji.IstorijaVozacaA;
 import gui.IstorijaVoznji.IstorijaVozacaT;
+import gui.formaZaIzvjestaj.IzvestajPoVozacu;
 import gui.formaZaIzvjestaj.IzvjestajVozac;
 import gui.formeZaPrikaz.LicitacijaVozaca;
 import korisnici.Vozaci;
@@ -31,6 +32,7 @@ public class VozacProzor extends JFrame {
 	
 	public VozacProzor(TaksiSluzba taksiSluzba,TaksiSluzbai taksiSluzbai,Vozaci vozac) {
 		setTitle("Vozac: " + vozac.getIme());
+		Vozaci vozac1 =  vozac;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 700, 350);
 		contentPane = new JPanel();
@@ -101,6 +103,15 @@ public class VozacProzor extends JFrame {
 		});
 		mntmNewMenuItem.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		VoznjeMenu.add(mntmNewMenuItem);
+		
+		JMenuItem mntmNewMenuItem_2 = new JMenuItem("Izvestaj  po vozacu");
+		mntmNewMenuItem_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				IzvestajPoVozacu ipv = new IzvestajPoVozacu( taksiSluzba, vozac.getId());
+				ipv.setVisible(true);
+			}
+		});
+		VoznjeMenu.add(mntmNewMenuItem_2);
 		
 		JMenu mnNewMenu = new JMenu("Licitacija");
 		mnNewMenu.setFont(new Font("SansSerif", Font.PLAIN, 14));

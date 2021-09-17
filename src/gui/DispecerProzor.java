@@ -17,8 +17,7 @@ import gui.FormaZaPretragu.PretragaVozaca;
 import gui.FormaZaPretragu.PretragaVozila;
 import gui.formaZaDodjeluVoznje.TabelaZaDodjelu;
 import gui.formaZaIzvjestaj.IzvjestajDispecera;
-import gui.formaZaIzvjestaj.IzvjestajVozaca;
-import gui.formaZaIzvjestaj.IzvjestajVoznjiD;
+
 import gui.formeZaPrikaz.AktivneAukcije;
 import gui.formeZaPrikaz.IstorijaAukcija;
 import gui.formeZaPrikaz.PretragaVozacaTabela;
@@ -200,17 +199,6 @@ public class DispecerProzor extends JFrame {
 		});
 		mntmNewMenuItem_4.setFont(new Font("SansSerif", Font.PLAIN, 12));
 		mnNewMenu_1.add(mntmNewMenuItem_4);
-		
-		JMenuItem mntmNewMenuItem_5 = new JMenuItem("Izvjestaj vozaca");
-		mntmNewMenuItem_5.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				IzvjestajVozaca iv = new  IzvjestajVozaca(taksiSluzba, taksiSluzbai,dispecer);
-				 iv.setVisible(true);
-				
-			}
-		});
-		mntmNewMenuItem_5.setFont(new Font("SansSerif", Font.PLAIN, 12));
-		mnNewMenu_1.add(mntmNewMenuItem_5);
 		
 		JMenu mnNewMenu_2 = new JMenu("Pretraga");
 		mnNewMenu_2.setFont(new Font("SansSerif", Font.PLAIN, 14));

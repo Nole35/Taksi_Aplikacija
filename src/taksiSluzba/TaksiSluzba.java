@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 
-import aisp.Ponuda;
 import enumi.Pol;
 import enumi.Status;
 import enumi.TelefonskaOdeljenja;
@@ -36,17 +35,16 @@ public class TaksiSluzba {
     private DoubleLinkedList<Automobil> vozila;
     private DoubleLinkedList<VoznjaAplikacija> voznje;
     private DoubleLinkedList<VoznjaTelefon> voznjet;
-    private DoubleLinkedList<Ponuda> ponude;
     
     private String pib;
     private String naziv;
     private String adresa;
     private double cijenaStartaVoznje;
     private double cijenaPoKilometru;
+    
 
-
-
-
+    
+    
 
     public TaksiSluzba() {
     	
@@ -57,7 +55,7 @@ public class TaksiSluzba {
         this.vozila = new DoubleLinkedList<>();
         this.voznje = new DoubleLinkedList<>();
         this.voznjet = new DoubleLinkedList<>();
-        this.ponude = new DoubleLinkedList<>();
+        
     
         
 
@@ -68,7 +66,6 @@ public class TaksiSluzba {
         ucitajVoznje("voznje.txt");
         ucitajVoznjet("voznjet.txt");
         ucitajTaksisluzbu("taksisluzba.txt");
-        ucitajPonude("ponuda.txt");
         for (Vozaci vozaci:this.getVozaci()
              ) {
             for (Automobil automobil: this.getVozila()
@@ -487,56 +484,6 @@ public class TaksiSluzba {
                 sadrzaj += automobil.getId() + "|" + automobil.getModel() + "|" + automobil.getProizvodjac() + "|"
                         + automobil.getGodinaProizvodnje() + "|" + automobil.getBrojRegistarskeOznake() + "|" + automobil.getBrojTaksiVozila() + "|" + automobil.getVrstaAutomobila().ordinal() + "|" + automobil.isObrisan() + "|"+ automobil.getIdVozaca() +   "\n";
                
-            }
-            br.write(sadrzaj);
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public void ucitajPonude(String imeFajla) {
-        try {
-            File ponudaFile = new File("src/fajlovi/" + imeFajla);
-            BufferedReader br = new BufferedReader(new FileReader(ponudaFile));
-            String line = null;
-            while ((line = br.readLine()) != null) {
-                System.out.println(line);
-                String[] split = line.split("\\|");
-                int idVoznje = Integer.parseInt(split[0]);
-                int idVozaca = Integer.parseInt(split[1]);
-                String korisnickoImeVozaca = split[2];
-                double prosjecnaOcjenaVozaca = Double.parseDouble(split[3]);
-                int brojVoznjiVozaca = Integer.parseInt(split[4]);
-                double ocjenaPonude = Double.parseDouble(split[5]);
-
-
-
-
-                Ponuda ponudas = new Ponuda (idVoznje, idVozaca, korisnickoImeVozaca, prosjecnaOcjenaVozaca, brojVoznjiVozaca, ocjenaPonude);
-                ;
-                ponude.add(ponudas);
-            }
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    public void snimiPonude(String imeFajla) {
-        try {
-            PrintWriter writer = new PrintWriter("src/fajlovi/" + imeFajla);
-            writer.print("");
-
-            writer.close();
-            File file = new File("src/fajlovi/" + imeFajla);
-            BufferedWriter br = new BufferedWriter(new FileWriter(file,true));
-
-            String sadrzaj = "";
-            for (Ponuda ponuda : ponude) {
-                sadrzaj += ponuda.getIdVoznje() + "|" + ponuda.getIdVozaca() + "|" + ponuda.getKorisnickoImeVozaca() + "|"
-                        + ponuda.getProsjecnaOcjenaVozaca() + "|" + ponuda.getBrojVoznjiVozaca() + "|" + ponuda.getOcjenaPonude() +   "\n";
-
             }
             br.write(sadrzaj);
             br.close();
@@ -1182,6 +1129,7 @@ public class TaksiSluzba {
 				vozaci.add(vozacID);
 			}
 		}
+		
 		for(VoznjaAplikacija voznjePrekoAplikacije : voznje){
 			if(voznjePrekoAplikacije.getId() == id && (voznjePrekoAplikacije.getStatus().equals(Status.ZAVRSENA))) {
 				int vozacID = (int) voznjePrekoAplikacije.getVozac().getId();
