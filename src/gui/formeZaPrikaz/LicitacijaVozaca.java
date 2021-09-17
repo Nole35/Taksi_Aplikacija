@@ -56,10 +56,10 @@ public class LicitacijaVozaca extends JFrame {
 		contentPane.add(btnLicitiraj);
 		
 
-		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja","Napomena","Cijena","Pet friendly"};
-		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeA().size()][kolone.length];
-		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeA().size(); i++) {
-			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeA().get(i);
+		String[] kolone = new String[] {"ID", "Datum i vrijeme narudzbe", "Adresa polaska", "Adresa destinacije", "Musterija id", "Vozac id", "Broj predjenih kilometara", "Trajanje voznje", "Status", "Tip porucivanja","Napomena","Cijena"};
+		Object[][] sadrzaj = new Object[taksiSluzba.sveNeobrisaneVoznjeNaCekApl().size()][kolone.length];
+		for(int i=0; i<taksiSluzba.sveNeobrisaneVoznjeNaCekApl().size(); i++) {
+			VoznjaAplikacija voznja = taksiSluzba.sveNeobrisaneVoznjeNaCekApl().get(i);
 			sadrzaj[i][0] = voznja.getId();
 			sadrzaj[i][1] = voznja.getDatumIVremePoruzbine();
 			sadrzaj[i][2] = voznja.getAdresaPolaska();

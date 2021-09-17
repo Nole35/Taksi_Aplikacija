@@ -115,7 +115,7 @@ public class DoubleLinkedList<T> implements Iterable<T>{
         }
     }
 
-    // Nije radilo za sortiranje
+
     public void swapElements(T element1, T element2){
 
         if (head == null || element1 == null) {

@@ -127,7 +127,8 @@ public class TaksiSluzba {
         ) {
             if ((ime.equals("") || ime.equals(vozac.getIme())) &&
                     (prezime.equals("") || prezime.equals(vozac.getPrezime())) &&
-                    (plata.equals("") || Double.parseDouble(plata) == vozac.getPlata())
+                    (plata.equals("") || Double.parseDouble(plata) == vozac.getPlata()) &&
+                    (model.equals("") || model.equals(vozac.getAutomobil().getModel()))
 
             ) {
                 System.out.println(ime + " / " + vozac.getIme());
